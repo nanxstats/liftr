@@ -1,0 +1,10 @@
+Package: liftr
+Type: Package
+Title: liftr
+Version: 0.1
+Date: 2015-07-10
+Author: Nan Xiao <nanx@uchicago.edu>, Tengfei Yin <tengfei.yin@sbgenomics.com>
+Maintainer: Nan Xiao <nanx@uchicago.edu>
+Description: liftr
+License: GPL
+LazyData: TRUE
