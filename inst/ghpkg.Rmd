@@ -1,0 +1,1 @@
+RUN Rscript -e "devtools::install_github(c(`r liftr_ghpkgs`))"

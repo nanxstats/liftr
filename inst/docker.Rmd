@@ -1,0 +1,41 @@
+---
+title: "Dockerized R Markdown Document"
+author: "Nan Xiao"
+date: "`r Sys.Date()`"
+output:
+  html_document
+liftr:
+  from: "rocker/r-base:latest"
+  maintainer: "Nan Xiao"
+  maintainer_email: "nanx@uchicago.edu"
+  cranpkg:
+    - kernlab
+---
+
+## Spectral clustering example
+
+This is an R Markdown document that could be rendered under a Docker container using `liftr`. The document requires the `specc()` function in the `kernlab` package on CRAN to perform a simple spectral clustering:
+
+```{r specc, fig.cap = 'Spectral Clustering of Spirals Data'}
+library("kernlab")
+data(spirals)
+sc = specc(spirals, centers = 2)
+print(sc)
+plot(spirals, col = sc)
+```
+
+## Options of liftr in this document
+
+The document front-matter metadata includes the options for `liftr`, which is used for dockerizing the document:
+
+```{r liftrmeta}
+rmarkdown::metadata$liftr
+```
+
+## System and session information
+
+The R session information of the Docker container is shown below.
+
+```{r session}
+sessionInfo()
+```

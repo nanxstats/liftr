@@ -1,0 +1,165 @@
+---
+title: "Dockerize R Markdown Documents"
+author: "Nan Xiao <<nanx@uchicago.edu>>"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Dockerize R Markdown Documents}
+---
+
+# Add `liftr` Metadata
+
+To dockerize your R Markdown document, the first step is adding `liftr` options in the YAML front-matter of a document. For example:
+
+```
+---
+title: "The Missing Example of liftr"
+author: "Author Name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    highlight: haddock
+    theme: readable
+liftr:
+  maintainer: "Author Name"
+  maintainer_email: "name@example.com"
+  from: "rocker/r-base:latest"
+  latex: false
+  syslib:
+    - gfortran
+    - samtools
+  cranpkg:
+    - randomForest
+  biocpkg:
+    - Gviz
+    - ggbio
+  ghpkg:
+    - "road2stat/liftr"
+  rabix: true
+  rabix_json: "https://s3.amazonaws.com/rabix/rabix-test/bwa-mem.json"
+  rabix_d: "~/liftr_rabix/bwa/"
+  rabix_args:
+    - reference: "https://s3.amazonaws.com/rabix/rabix-test/chr20.fa"
+    - reads: "https://s3.amazonaws.com/rabix/rabix-test/example_human_Illumina.pe_1.fastq"
+    - reads: "https://s3.amazonaws.com/rabix/rabix-test/example_human_Illumina.pe_2.fastq"
+---
+```
+
+All available options are expained below.
+
+## Required options
+
+  * `maintainer` - Maintainer name for the `Dockerfile`.
+  * `maintainer_email` - Maintainer email address for the `Dockerfile`.
+
+## Optional options
+
+  * `from` - [Base image](https://docs.docker.com/reference/builder/#from) for building the docker image. Default is `"rocker/r-base:latest"`.
+  * `latex` - Is TeX environment needed when rendering the document? Default is `false`.
+  * `syslib` - Debian/Ubuntu system software packages depended in the document. Please also include software packages depended by the R packages included below, such as `gfortran` here required for compiling `randomForest`.
+  * `cranpkg` - CRAN packages depended in the document.
+  * `biocpkg` - Bioconductor packages depended in the document.
+  * `ghpkg` - GitHub R packages depended in the document. We accept the same format as the `repo` argument in `devtools::install_github`. Normally, `"username/repo"` would be sufficient.
+
+## Rabix options
+
+The Rabix options are optional. Just make sure `rabix: true` when you need to enable Rabix support.
+
+  * `rabix` - Logical. Should Rabix support be enabled for this document?
+  * `rabix_json` - The URI (local file path or HTTP URL) to a JSON document that describes the Rabix app.
+  * `rabix_d` - Working directory for the task. Required when `rabix: true`. We recommend to set this as the same directory (or a subdirectory) as the directory of the input R Markdown document, for better reproducibility and easier access of the output.
+  * `rabix_args` - Additional arguments for Rabix and the Rabix app, usually the inputs and parameters. Run `rabix -h` or [read this page](https://github.com/rabix/rabix/blob/master/README.md) for more details.
+
+# Use `lift()` and `drender()`
+
+After adding proper `liftr` metadata to the document YAML data block, we can use `lift()` to parse the document and generate a `Dockerfile` (it will also generate a `Rabixfile` if necessary).
+
+We will use [docker.Rmd](https://github.com/road2stat/liftr/blob/master/inst/docker.Rmd) included in the package as an example. First, we create a new directory and copy the example document to the directory:
+
+```{r, eval = FALSE}
+dir_docker = "~/liftr_docker/"
+dir.create(dir_docker)
+file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+```
+
+Then, we use `lift()` to parse the document and generate `Dockerfile`:
+
+```{r, eval = FALSE}
+library("liftr")
+docker_input = paste0(dir_docker, "docker.Rmd")
+lift(docker_input)
+```
+
+After successfully running `lift()` on `docker.Rmd`, the `Dockerfile` will be in the `~/liftr_docker/` directory.
+
+Now we can use `drender()` on `docker.Rmd` to render the document to a html file, under a Docker container:
+
+```{r, eval = FALSE}
+drender(docker_input)
+```
+
+The `drender()` function will parse the `Dockerfile`, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
+
+In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `drender()` functions to render the document as above.
+
+# Rabix Support
+
+[Rabix](https://www.rabix.org) is an open source implementation of the [Common Workflow Language](https://github.com/common-workflow-language/common-workflow-language) specification for building portable bioinformatics pipelines. Users can write JSON-based tools/workflows and run them with Rabix.
+
+We will use `rabix.Rmd` included in the package as an example. As before, we create a new directory and copy the example document to the directory:
+
+```{r, eval = FALSE}
+dir_rabix  = "~/liftr_rabix/"
+dir.create(dir_rabix)
+file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
+```
+
+Use `lift()` and `drender()` as before:
+
+```{r, eval = FALSE}
+library("liftr")
+rabix_input = paste0(dir_rabix, "rabix.Rmd")
+lift(rabix_input)
+drender(rabix_input)
+```
+
+Rabix tools/workflows will run first, the document will be rendered after. In this way, we can use the output of the bioinformatics pipelines for further analysis in our R Markdown document. See [rabix.Rmd](https://github.com/road2stat/liftr/blob/master/inst/rabix.Rmd) for details.
+
+If successfully rendered, the output `rabix.html` will be in the `~/liftr_rabix/` directory.
+
+# System Requirements
+
+As the host platform, Linux is currently preferred over the other platforms due to certain limitations of running Docker and performance issues.
+
+## Docker
+
+We need Docker installed to render the documents. 
+
+To install Docker in Ubuntu:
+
+    sudo apt-get install docker.io
+
+We should configure Docker to [run without sudo](https://docs.docker.com/installation/ubuntulinux/#create-a-docker-group). To avoid `sudo` when using the `docker` command, simply create a group named `docker` and add yourself to it:
+
+    sudo usermod -aG docker your-username
+
+[Here](https://docs.docker.com/installation/) is a detailed guide for installing Docker on most platforms. Anyhow, just make sure you can run `docker` under shell.
+
+## Rabix
+
+Rabix needs to be installed if you want to run Rabix tools/workflows before rendering the documents. Make sure you can run `rabix` under shell after installation.
+
+To install Rabix in Ubuntu:
+
+    sudo apt-get install python-dev python-pip docker.io phantomjs libyaml-dev
+    sudo pip install rabix
+
+[Here](https://github.com/rabix/rabix/blob/master/README.md) is a more detailed guide for installing Rabix on other platforms.
+
+<hr>
+
+`--EOF--`

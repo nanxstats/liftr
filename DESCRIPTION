@@ -1,10 +1,17 @@
 Package: liftr
 Type: Package
-Title: liftr
+Title: Dockerize R Markdown Documents
 Version: 0.1
 Date: 2015-07-10
 Author: Nan Xiao <nanx@uchicago.edu>, Tengfei Yin <tengfei.yin@sbgenomics.com>
 Maintainer: Nan Xiao <nanx@uchicago.edu>
-Description: liftr
+Description: Dockerize R Markdown documents with support for Rabix.
 License: GPL
-LazyData: TRUE
+SystemRequirements: Docker, Rabix
+VignetteBuilder: knitr
+URL: http://liftr.me
+BugReports: https://github.com/road2stat/liftr/issues
+Imports:
+    yaml,
+    knitr,
+    rmarkdown

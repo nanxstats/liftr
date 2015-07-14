@@ -3,12 +3,12 @@
 \docType{package}
 \name{liftr-package}
 \alias{liftr-package}
-\title{liftr}
+\title{Dockerize R Markdown Documents}
 \description{
-liftr
+liftr dockerizes your R Markdown documents.
 }
 \details{
-The vignette can be opened with \code{vignette('liftr')}.
+The vignette can be opened with \code{vignette('liftr-intro')}.
 
 \tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
 License: \tab GPL\cr }

@@ -1,0 +1,1 @@
+RUN Rscript -e "source('http://bioconductor.org/biocLite.R');biocLite(c(`r liftr_biocpkgs`))"
