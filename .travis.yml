@@ -1,4 +1,4 @@
 language: r
 sudo: required
 after_success:
-  - Rscript -e 'devtools::install_github(\"jimhester/covr\"); covr::coveralls()'
+  - Rscript -e 'devtools::install_github("jimhester/covr"); covr::coveralls()'
