@@ -18,8 +18,7 @@ Or, you can install the cutting-edge development version from GitHub:
 
 ```r
 # install.packages("devtools")  # if devtools was not installed
-library("devtools")
-install_github("road2stat/liftr")
+devtools::install_github("road2stat/liftr")
 ```
 
 To load the package in R, simply use
