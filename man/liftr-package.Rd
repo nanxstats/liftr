@@ -15,6 +15,7 @@ License: \tab GPL\cr }
 }
 \author{
 Nan Xiao <\email{nanx@uchicago.edu}>
+        Miaozhu Li <\email{miaozhu.li@duke.edu}>
         Teng-Fei Yin <\email{tengfei.yin@sbgenomics.com}>
 }
 

@@ -29,6 +29,7 @@ liftr:
   maintainer_email: "name@example.com"
   from: "rocker/r-base:latest"
   latex: false
+  pandoc: true
   syslib:
     - gfortran
     - samtools
@@ -60,6 +61,7 @@ All available options are expained below.
 
   * `from` - [Base image](https://docs.docker.com/reference/builder/#from) for building the docker image. Default is `"rocker/r-base:latest"`.
   * `latex` - Is TeX environment needed when rendering the document? Default is `false`.
+  * `pandoc` - Should we install pandoc in the container? Default is `true`. If pandoc was already installed in the base image, this should be set to `false` to avoid potential errors. For example, for [`rocker/rstudio`](https://registry.hub.docker.com/u/rocker/rstudio/) and [`bioconductor/...`](http://www.bioconductor.org/help/docker/) images, this option will be automatically set to `false` since they already have pandoc installed.
   * `syslib` - Debian/Ubuntu system software packages depended in the document. Please also include software packages depended by the R packages included below, such as `gfortran` here required for compiling `randomForest`.
   * `cranpkg` - CRAN packages depended in the document.
   * `biocpkg` - Bioconductor packages depended in the document.

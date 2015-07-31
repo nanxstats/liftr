@@ -75,12 +75,14 @@ lift = function(input = NULL, output_dir = NULL) {
 
   opt_list = opt_all_list$liftr
 
+  # base image
   if (!is.null(opt_list$from)) {
     liftr_from = opt_list$from
   } else {
     liftr_from = 'rocker/r-base:latest'
   }
 
+  # maintainer name
   if (!is.null(opt_list$maintainer)) {
     liftr_maintainer = opt_list$maintainer
   } else {
@@ -93,6 +95,7 @@ lift = function(input = NULL, output_dir = NULL) {
     stop('Cannot find `maintainer_email` option in file header')
   }
 
+  # system dependencies
   if (!is.null(opt_list$syslib)) {
     liftr_syslib =
       paste(readLines(system.file('syslib.Rmd', package = 'liftr')),
@@ -101,6 +104,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_syslib = NULL
   }
 
+  # texlive
   if (!is.null(opt_list$latex)) {
     if (opt_list$latex == TRUE) {
       liftr_texlive =
@@ -113,8 +117,27 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_texlive = NULL
   }
 
+  # pandoc
+  # this solves https://github.com/road2stat/liftr/issues/12
+  if (is_from_bioc(liftr_from) | is_from_rstudio(liftr_from)) {
+    liftr_pandoc = NULL
+  } else {
+    if (!is.null(opt_list$pandoc)) {
+      if (opt_list$pandoc == FALSE) {
+        liftr_pandoc = NULL
+      } else {
+        liftr_pandoc = paste(readLines(
+          system.file('pandoc.Rmd', package = 'liftr')), collapse = '\n')
+      }
+    } else {
+      liftr_pandoc = paste(readLines(
+        system.file('pandoc.Rmd', package = 'liftr')), collapse = '\n')
+    }
+  }
+
   factory_pkg = c('devtools', 'knitr', 'rmarkdown', 'shiny')
 
+  # CRAN packages
   if (!is.null(opt_list$cranpkg)) {
     liftr_cranpkg = paste(quote_str(factory_pkg),
                           quote_str(opt_list$cranpkg),
@@ -123,6 +146,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_cranpkg = quote_str(factory_pkg)
   }
 
+  # Bioconductor packages
   if (!is.null(opt_list$biocpkg)) {
     liftr_biocpkgs = quote_str(opt_list$biocpkg)
     tmp = tempfile()
@@ -133,6 +157,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_biocpkg = NULL
   }
 
+  # GitHub packages
   if (!is.null(opt_list$ghpkg)) {
     liftr_ghpkgs = quote_str(opt_list$ghpkg)
     tmp = tempfile()
@@ -144,6 +169,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_ghpkg = NULL
   }
 
+  # write Dockerfile
   if (is.null(output_dir)) output_dir = file_dir(input)
 
   invisible(knit(system.file('Dockerfile.Rmd',

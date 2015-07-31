@@ -20,4 +20,5 @@ Depends:
 Imports:
     yaml,
     knitr,
-    rmarkdown
+    rmarkdown,
+    stringr

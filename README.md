@@ -8,16 +8,16 @@
 
 ## Installation
 
-To download and install `liftr` from CRAN, type the following commands in R:
+To download and install `liftr` from CRAN:
 
 ```r
 install.packages("liftr")
 ```
 
-Or, you can install the cutting-edge development version from GitHub:
+Or, you can try the development version on GitHub:
 
 ```r
-# install.packages("devtools")  # if devtools was not installed
+# install.packages("devtools")
 devtools::install_github("road2stat/liftr")
 ```
 
@@ -27,4 +27,4 @@ To load the package in R, simply use
 library("liftr")
 ```
 
-and you are all set. See the package vignette `vignette("liftr-intro")` for a quick-start guide.
+and you are all set. See [the vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.

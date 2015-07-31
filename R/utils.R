@@ -21,3 +21,13 @@ uuid = function () {
         substr(id, 16, 18), '_', substr(id, 19, 30), sep = '',
         collapse = '')
 }
+
+#' check if from Bioconductor base images
+#' @importFrom stringr str_trim
+#' @noRd
+is_from_bioc = function (x) substr(str_trim(x), 1L, 13L) == 'bioconductor/'
+
+#' check if from the rocker/rstudio base image
+#' @importFrom stringr str_trim
+#' @noRd
+is_from_rstudio = function (x) substr(str_trim(x), 1L, 14L) == 'rocker/rstudio'
