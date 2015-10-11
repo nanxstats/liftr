@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' # 1. Dockerized R Markdown document
-#' dir_docker = paste0(tempdir(), '/liftr_docker/')
+#' dir_docker = paste0(tempdir(), '/lift_docker/')
 #' dir.create(dir_docker)
 #' file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
 #' # use lift() to parse Rmd and generate Dockerfile
@@ -32,7 +32,7 @@
 #' readLines(paste0(dir_docker, "Dockerfile"))
 #'
 #' # 2. Dockerized R Markdown document with Rabix options
-#' dir_rabix = paste0(tempdir(), '/liftr_rabix/')
+#' dir_rabix = paste0(tempdir(), '/lift_rabix/')
 #' dir.create(dir_rabix)
 #' file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
 #' lift(input = paste0(dir_rabix, "rabix.Rmd"))
@@ -135,15 +135,19 @@ lift = function(input = NULL, output_dir = NULL) {
     }
   }
 
-  factory_pkg = c('devtools', 'knitr', 'rmarkdown', 'shiny')
+  # Factory packages
+  liftr_factorypkgs = c('devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl')
+  liftr_factorypkg = quote_str(liftr_factorypkgs)
 
   # CRAN packages
   if (!is.null(opt_list$cranpkg)) {
-    liftr_cranpkg = paste(quote_str(factory_pkg),
-                          quote_str(opt_list$cranpkg),
-                          sep = ',')
+    liftr_cranpkgs = quote_str(opt_list$cranpkg)
+    tmp = tempfile()
+    invisible(knit(input = system.file('cranpkg.Rmd', package = 'liftr'),
+                   output = tmp, quiet = TRUE))
+    liftr_cranpkg = readLines(tmp)
   } else {
-    liftr_cranpkg = quote_str(factory_pkg)
+    liftr_cranpkg = NULL
   }
 
   # Bioconductor packages

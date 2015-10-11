@@ -29,7 +29,7 @@ YAML front-matter metadata format used by liftr.
 }
 \examples{
 # 1. Dockerized R Markdown document
-dir_docker = paste0(tempdir(), '/liftr_docker/')
+dir_docker = paste0(tempdir(), '/lift_docker/')
 dir.create(dir_docker)
 file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
 # use lift() to parse Rmd and generate Dockerfile
@@ -38,7 +38,7 @@ lift(paste0(dir_docker, "docker.Rmd"))
 readLines(paste0(dir_docker, "Dockerfile"))
 
 # 2. Dockerized R Markdown document with Rabix options
-dir_rabix = paste0(tempdir(), '/liftr_rabix/')
+dir_rabix = paste0(tempdir(), '/lift_rabix/')
 dir.create(dir_rabix)
 file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
 lift(input = paste0(dir_rabix, "rabix.Rmd"))

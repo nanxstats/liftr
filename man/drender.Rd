@@ -48,23 +48,25 @@ rendering dockerized R Markdown documents.
 # 1. Dockerized R Markdown document
 # Docker is required to run the example,
 # so make sure we can use `docker` in shell.
-\donttest{dir_docker = "~/liftr_docker/"
+dir_docker = paste0(tempdir(), '/drender_docker/')
 dir.create(dir_docker)
 file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
 docker_input = paste0(dir_docker, "docker.Rmd")
 lift(docker_input)
+\dontrun{
 drender(docker_input)
 # view rendered document
-browseURL(paste0(dir_docker, "docker.html"))
+browseURL(paste0(dir_docker, "docker.html"))}
 
 # 2. Dockerized R Markdown document with Rabix options
 # Docker and Rabix are required to run the example,
 # so make sure we can use `docker` and `rabix` in shell.
-dir_rabix  = "~/liftr_rabix/"
+dir_rabix  = paste0(tempdir(), '/drender_rabix/')
 dir.create(dir_rabix)
 file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
 rabix_input = paste0(dir_rabix, "rabix.Rmd")
 lift(rabix_input)
+\dontrun{
 drender(rabix_input)
 # view rendered document
 browseURL(paste0(dir_rabix, "rabix.html"))}

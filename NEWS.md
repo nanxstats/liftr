@@ -1,3 +1,14 @@
+# CHANGES IN liftr VERSION 0.3 (2015-10-10)
+
+## NEW FEATURES
+
+* Support specifying CRAN package version precisely.
+
+## IMPROVEMENTS
+
+* Modified examples in documentation to comply with the lastest CRAN Repository Policy.
+* Installing packages with https.
+
 # CHANGES IN liftr VERSION 0.2 (2015-07-30)
 
 ## BUG FIXES

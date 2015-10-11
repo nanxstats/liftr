@@ -61,9 +61,9 @@ All available options are expained below.
 
   * `from` - [Base image](https://docs.docker.com/reference/builder/#from) for building the docker image. Default is `"rocker/r-base:latest"`.
   * `latex` - Is TeX environment needed when rendering the document? Default is `false`.
-  * `pandoc` - Should we install pandoc in the container? Default is `true`. If pandoc was already installed in the base image, this should be set to `false` to avoid potential errors. For example, for [`rocker/rstudio`](https://registry.hub.docker.com/u/rocker/rstudio/) and [`bioconductor/...`](http://www.bioconductor.org/help/docker/) images, this option will be automatically set to `false` since they already have pandoc installed.
+  * `pandoc` - Should we install pandoc in the container? Default is `true`. If pandoc was already installed in the base image, this should be set to `false` to avoid potential errors. For example, for [`rocker/rstudio`](https://registry.hub.docker.com/u/rocker/rstudio/) and [`bioconductor/...`](https://www.bioconductor.org/help/docker/) images, this option will be automatically set to `false` since they already have pandoc installed.
   * `syslib` - Debian/Ubuntu system software packages depended in the document. Please also include software packages depended by the R packages included below, such as `gfortran` here required for compiling `randomForest`.
-  * `cranpkg` - CRAN packages depended in the document.
+  * `cranpkg` - CRAN packages depended in the document. If only `pkgname` is provided, `liftr` will install the _latest_ version of the package on CRAN. To improve reproducibility, we recommend to use the package name with a specified version number: `pkgname/pkgversion` (e.g. `ggplot2/1.0.0`), even if the version is the current latest version. Note: `pkgversion` must be provided to install the archived versions of packages.
   * `biocpkg` - Bioconductor packages depended in the document.
   * `ghpkg` - GitHub R packages depended in the document. We accept the same format as the `repo` argument in `devtools::install_github`. Normally, `"username/repo"` would be sufficient.
 
@@ -72,7 +72,7 @@ All available options are expained below.
 The Rabix options are optional. Just make sure `rabix: true` when you need to enable Rabix support.
 
   * `rabix` - Logical. Should Rabix support be enabled for this document?
-  * `rabix_json` - The URI (local file path or HTTP URL) to a JSON document that describes the Rabix app.
+  * `rabix_json` - The URI (local file path or HTTP/HTTPS URL) to a JSON document that describes the Rabix app.
   * `rabix_d` - Working directory for the task. Required when `rabix: true`. We recommend to set this as the same directory (or a subdirectory) as the directory of the input R Markdown document, for better reproducibility and easier access of the output.
   * `rabix_args` - Additional arguments for Rabix and the Rabix app, usually the inputs and parameters. Run `rabix -h` or [read this page](https://github.com/rabix/rabix/blob/master/README.md) for more details.
 

@@ -20,7 +20,9 @@ RUN  rm -f /var/lib/dpkg/available \
 
 `r liftr_pandoc`
 
-RUN Rscript -e "install.packages(c(`r liftr_cranpkg`), repos = 'http://cran.rstudio.com')"
+RUN Rscript -e "install.packages(c(`r liftr_factorypkg`), repos = 'https://cran.rstudio.com')"
+
+`r liftr_cranpkg`
 `r liftr_biocpkg`
 `r liftr_ghpkg`
 

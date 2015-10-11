@@ -1,0 +1,1 @@
+RUN Rscript -e "source('https://cdn.rawgit.com/road2stat/liftrlib/fab41764ea8b56677d05c70c86225774164b6ca0/install_cran.R');install_cran(c(`r liftr_cranpkgs`))"
