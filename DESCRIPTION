@@ -22,3 +22,9 @@ Imports:
     knitr,
     rmarkdown,
     stringr
+RoxygenNote: 5.0.1
+Collate:
+    liftr-package.R
+    utils.R
+    lift.R
+    drender.R
