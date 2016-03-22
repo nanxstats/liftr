@@ -10,6 +10,9 @@ liftr:
   maintainer_email: "nanx@uchicago.edu"
   cranpkg:
     - kernlab
+  extra:
+    - ADD https://raw.githubusercontent.com/road2stat/liftr/master/inst/docker.Rmd /
+    - COPY /Users/tengfei/Code/gitrepos/liftr/inst/Dockerfile.Rmd /
 ---
 
 ## Spectral clustering example

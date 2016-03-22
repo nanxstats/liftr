@@ -26,5 +26,10 @@ RUN Rscript -e "install.packages(c(`r liftr_factorypkg`), repos = 'https://cran.
 `r liftr_biocpkg`
 `r liftr_ghpkg`
 
+```{r echo= FALSE,  results = "asis"}
+if(length(liftr_extra))
+  writeLines()
+```
+
 RUN mkdir /liftrroot/
 WORKDIR /liftrroot/

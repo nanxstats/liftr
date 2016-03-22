@@ -1,0 +1,68 @@
+---
+title: "Uniform random number generator example"
+output:
+  BiocStyle::html_document:
+    toc: true
+    number_sections: true
+    highlight: haddock
+    css: style.css
+    includes:
+      in_header: logo.md
+liftr:
+  maintainer: "Tengfei Yin"
+  maintainer_email: "yintengfei@gmail.com"
+  from: "rocker/hadleyverse"
+  latex: false
+  pandoc: true
+params:
+  seed: 1
+  n: 1
+  min: 0
+  max: 1
+rabix:
+  id: "runif_generator"
+  label: "random_number"
+  baseCommand: runif.R
+  inputs: 
+    - id: "number"
+      description: "number of observations. If length(n) > 1, the length is taken to be the number required "
+      type: "integer"
+      label: "number"
+      prefix: "--n"
+      default: 1
+      required: TRUE 
+      cmdInclude: TRUE
+    - id: "min"
+      description: "lower limits of the distribution. Must be finite"
+      type: "float"
+      label: "min"
+      prefix: "--min"
+      default: 0
+    - id: "max"
+      description: "upper limits of the distribution"
+      type: "float"
+      label: "max"
+      prefix: "--max"
+      default: 1
+    - id: "seed"
+      description: "seed with set.seed"
+      type: "float"
+      label: "seed"
+      prefix: "--seed"
+      default: 1
+---
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown(css.files = "custom.css")
+```
+
+
+## Summary
+```{r}
+set.seed(params$seed)
+r <- runif(n = as.integer(params$n), 
+           min = as.numeric(params$min), 
+           max = as.numeric(params$max))
+summary(r)
+hist(r)
+```
