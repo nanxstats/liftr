@@ -40,7 +40,7 @@
 #' # so make sure we can use `docker` in shell.
 #' dir_docker = paste0(tempdir(), '/drender_docker/')
 #' dir.create(dir_docker)
-#' file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+#' file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
 #' docker_input = paste0(dir_docker, "docker.Rmd")
 #' lift(docker_input)
 #' \dontrun{
@@ -53,7 +53,7 @@
 #' # so make sure we can use `docker` and `rabix` in shell.
 #' dir_rabix  = paste0(tempdir(), '/drender_rabix/')
 #' dir.create(dir_rabix)
-#' file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
+#' file.copy(system.file("template/rabix.Rmd", package = "liftr"), dir_rabix)
 #' rabix_input = paste0(dir_rabix, "rabix.Rmd")
 #' lift(rabix_input)
 #' \dontrun{
