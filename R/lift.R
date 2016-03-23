@@ -45,7 +45,7 @@ lift = function(input = NULL, output_dir = NULL, ...) {
 
   if (is.null(input))
     stop('missing input file')
-  if(file.info(input)$isdir){
+  if(!is.na(file.info(input)$isdir) && file.info(input)$isdir){
     message("input is folder, treat it as shiny app folder")
     ## treat as shiny app folder
     message("parsing dependecies and genrate liftr file ...")
@@ -53,7 +53,7 @@ lift = function(input = NULL, output_dir = NULL, ...) {
     return()
   }else{
     ## treat as file
-    if (!file.exists(normalizePath(input))){
+    if (!file.exists(input)){
       stop('input file or shiny app folder does not exist')
     }
   }
