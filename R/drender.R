@@ -20,6 +20,7 @@
 #' If not specified, we will generate and use a random name.
 #' @param reset Should we cleanup the Docker container and
 #' Docker image after getting the rendered result?
+#' @param prebuild a command line string to call before docker build
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -62,12 +63,16 @@
 #' browseURL(paste0(dir_rabix, "rabix.html"))}
 drender = function (input = NULL,
                     tag = NULL, build_args = NULL, container_name = NULL,
-                    reset = TRUE, ...) {
+                    reset = TRUE,
+                    prebuild = NULL,
+                    ...) {
 
   if (is.null(input))
     stop('missing input file')
   if (!file.exists(normalizePath(input)))
     stop('input file does not exist')
+
+
 
   # run rabix first if Rabixfile is found
   rabixfile_path = paste0(file_dir(input), '/Rabixfile')
@@ -92,7 +97,7 @@ drender = function (input = NULL,
     stop('Cannot find `docker` on system search path,
          please ensure we can use `docker` from shell')
 
-  image_name = ifelse(is.null(tag), file_name_sans(input), tag)
+  image_name = ifelse(is.null(tag), tolower(file_name_sans(input)), tag)
   docker_build_cmd = paste0("docker build --no-cache=true --rm=true ",
                             build_args, " -t=\"", image_name, "\" ",
                             file_dir(dockerfile_path))
@@ -139,10 +144,18 @@ drender = function (input = NULL,
 
     docker_run_cmd = paste0(docker_run_cmd_base, render_cmd, "\"")
 
-    }
+  }
 
+  if(!is.null(prebuild)){
+    message(prebuild)
+    system2(prebuild)
+  }
+
+  message(docker_build_cmd)
   system(docker_build_cmd)
+  message(docker_run_cmd)
   system(docker_run_cmd)
+
 
   # cleanup docker containers and images
   # TODO: needs exception handling

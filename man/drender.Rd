@@ -5,7 +5,7 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, reset = TRUE, ...)
+  container_name = NULL, reset = TRUE, prebuild = NULL, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -22,6 +22,9 @@ If not specified, we will generate and use a random name.}
 
 \item{reset}{Should we cleanup the Docker container and
 Docker image after getting the rendered result?}
+
+\item{prebuild}{a command line string to call before docker build, for exmple
+if you are using mac os, you can pass something like "docker-machine start default;eval '$(docker-machine env default)'"}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}

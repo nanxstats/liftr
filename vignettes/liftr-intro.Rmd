@@ -85,7 +85,7 @@ We will use [docker.Rmd](https://github.com/road2stat/liftr/blob/master/inst/doc
 ```{r, eval = FALSE}
 dir_docker = "~/liftr_docker/"
 dir.create(dir_docker)
-file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
 ```
 
 Then, we use `lift()` to parse the document and generate `Dockerfile`:
@@ -107,6 +107,22 @@ drender(docker_input)
 The `drender()` function will parse the `Dockerfile`, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
 
 In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `drender()` functions to render the document as above.
+
+# Render an interacive Rmarkdown shiny doc
+
+
+```{r, eval = FALSE}
+file.copy(system.file("examples/ShinyDoc.Rmd", package = "liftr"), dir_docker)
+docker_input = paste0(dir_docker, "ShinyDoc.Rmd")
+lift(docker_input)
+# if you are on mac, define pre-build command to start docker first
+prebuild = "docker-machine start default;docker-machine env default;eval \"$(docker-machine env default)\""
+drender(docker_input, prebuild = prebuild)
+```
+
+# Dockerize a shiny app 
+
+
 
 # Rabix Support
 

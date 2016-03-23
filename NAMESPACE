@@ -2,6 +2,7 @@
 
 export(drender)
 export(lift)
+export(lift_docopt)
 export(lift_shinyapp)
 export(parse_rmd)
 importFrom(knitr,knit)
