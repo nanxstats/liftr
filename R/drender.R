@@ -226,7 +226,7 @@ drender = function (input = NULL,
   }
 
   if(is_shinyapp(input)){
-    return(c('image_name' = image_name,
+    return(list('image_name' = image_name,
              'container_name' = container_name,
              'shiny_run' = shiny_run,
              'url' = url))
