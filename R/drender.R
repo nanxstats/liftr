@@ -18,9 +18,14 @@
 #' \code{--pull=true -m="1024m" --memory-swap="-1"}.
 #' @param container_name Docker container name to run.
 #' If not specified, we will generate and use a random name.
+#' @param clean default FALSE, if TRUE, clean all containers before build.
 #' @param reset Should we cleanup the Docker container and
 #' Docker image after getting the rendered result?
 #' @param prebuild a command line string to call before docker build
+#' @param cache default TRUE, if FALSE, build with --no-cache=true
+#' @param rm default FALSE, if TRUE build with --rm
+#' @param port default 80 map to shiny's 3838 service
+#' @param browseURL FALSE, if TRUE open shiny app in the browser.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -63,8 +68,13 @@
 #' browseURL(paste0(dir_rabix, "rabix.html"))}
 drender = function (input = NULL,
                     tag = NULL, build_args = NULL, container_name = NULL,
-                    reset = TRUE,
+                    reset = FALSE,
+                    clean = FALSE,
+                    cache = TRUE,
+                    rm = FALSE,
                     prebuild = NULL,
+                    port = 80,
+                    browseURL = FALSE,
                     ...) {
 
   if (is.null(input))
@@ -73,7 +83,11 @@ drender = function (input = NULL,
     stop('input file does not exist')
 
 
-
+ if(clean){
+   message("cleaning containers...")
+   system("docker stop $(docker ps -a -q)")
+   system("docker rm $(docker ps -a -q)")
+ }
   # run rabix first if Rabixfile is found
   rabixfile_path = paste0(file_dir(input), '/Rabixfile')
 
@@ -88,7 +102,12 @@ drender = function (input = NULL,
   }
 
   # docker build
-  dockerfile_path = paste0(file_dir(input), '/Dockerfile')
+  if(!is.na(file.info(input)$isdir) && file.info(input)$isdir){
+    dockerfile_path = file.path(dirname(input), '/Dockerfile')
+  }else{
+    dockerfile_path = paste0(file_dir(input), '/Dockerfile')
+  }
+
 
   if (!file.exists(dockerfile_path))
     stop('Cannot find Dockerfile in the same directory of input file')
@@ -98,7 +117,9 @@ drender = function (input = NULL,
          please ensure we can use `docker` from shell')
 
   image_name = ifelse(is.null(tag), tolower(file_name_sans(input)), tag)
-  docker_build_cmd = paste0("docker build --no-cache=true --rm=true ",
+  docker_build_cmd = paste0("docker build ",
+                            ifelse(cache, " ", " --no-cache=true "),
+                            ifelse(rm, " --rm=true ", " "),
                             build_args, " -t=\"", image_name, "\" ",
                             file_dir(dockerfile_path))
 
@@ -107,21 +128,34 @@ drender = function (input = NULL,
                           paste0('liftr_container_', uuid()),
                           container_name)
 
+
   docker_run_cmd_base =
-    paste0("docker run --rm -i -t --name \"", container_name,
+    paste0("docker run ",
+           ifelse(rm, " --rm ", " "),
+           "--name \"", container_name,
            "\" -u `id -u $USER` -v \"",
            file_dir(dockerfile_path), ":", "/liftrroot/\" ",
            image_name,
            " /usr/bin/Rscript -e \"library('knitr');library('rmarkdown');",
            "library('shiny');setwd('/liftrroot/');")
 
+
   # process additional arguments passed to rmarkdown::render()
   dots_arg = list(...)
 
   if (length(dots_arg) == 0L) {
+    if(get_type(input) == "shinydoc"){
+      docker_run_cmd = paste0(docker_run_cmd_base,
+                              render_engine(input),
+                              "(",quote_str(basename(input)),");",
+                              "file.copy(", quote_str(c(basename(input),"/srv/shiny-server/")),
+                              ")\"")
+    }else{
+      docker_run_cmd = paste0(docker_run_cmd_base, render_engine(input),
+                              "('",
+                              file_name(input), "')\"")
+    }
 
-    docker_run_cmd = paste0(docker_run_cmd_base, "render(input = '",
-                            file_name(input), "')\"")
 
   } else {
 
@@ -135,14 +169,19 @@ drender = function (input = NULL,
            are not supported to be changed now, we will consider
            this in the next versions.')
     }
+    if(is_shinyapp(input)){
+      dots_arg$file = file_name(input)
+    }else{
+      dots_arg$input = file_name(input)
+    }
 
-    dots_arg$input = file_name(input)
     tmp = tempfile()
     dput(dots_arg, file = tmp)
     render_args = paste0(readLines(tmp), collapse = '\n')
-    render_cmd = paste0("do.call(render, ", render_args, ')')
+    render_cmd = paste0("do.call(",render_engine(input), ", ",render_args, ")")
 
     docker_run_cmd = paste0(docker_run_cmd_base, render_cmd, "\"")
+
 
   }
 
@@ -153,8 +192,29 @@ drender = function (input = NULL,
 
   message(docker_build_cmd)
   system(docker_build_cmd)
-  message(docker_run_cmd)
-  system(docker_run_cmd)
+
+  if(is_shinyapp(input) || is_shinydoc(input)){
+    shiny_run = paste("docker run -dp ", paste0(port, ":3838 "), image_name)
+    url = paste0("http://localhost:", port, "/", basename(input))
+
+
+
+    if(browseURL){
+      message("lauching shiny app in docker ...")
+      system(shiny_run)
+      message("Open browser for ", url)
+      browseURL(url)
+    }else{
+      message("run docker like this:  ", shiny_run)
+      message("You can view it at ", url)
+    }
+
+  }else{
+    message(docker_run_cmd)
+    system(docker_run_cmd)
+  }
+
+
 
 
   # cleanup docker containers and images
@@ -165,6 +225,14 @@ drender = function (input = NULL,
     system(paste0("docker rmi -f \"", image_name, "\""))
   }
 
-  return(c('image_name' = image_name, 'container_name' = container_name))
+  if(is_shinyapp(input)){
+    return(c('image_name' = image_name,
+             'container_name' = container_name,
+             'shiny_run' = shiny_run,
+             'url' = url))
+  }else{
+    return(list('image_name' = image_name, 'container_name' = container_name))
+  }
+
 
 }

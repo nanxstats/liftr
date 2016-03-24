@@ -5,7 +5,8 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, reset = TRUE, prebuild = NULL, ...)
+  container_name = NULL, reset = FALSE, clean = FALSE, cache = TRUE,
+  rm = FALSE, prebuild = NULL, port = 80, browseURL = FALSE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -23,8 +24,17 @@ If not specified, we will generate and use a random name.}
 \item{reset}{Should we cleanup the Docker container and
 Docker image after getting the rendered result?}
 
-\item{prebuild}{a command line string to call before docker build, for exmple
-if you are using mac os, you can pass something like "docker-machine start default;eval '$(docker-machine env default)'"}
+\item{clean}{default FALSE, if TRUE, clean all containers before build.}
+
+\item{cache}{default TRUE, if FALSE, build with --no-cache=true}
+
+\item{rm}{default FALSE, if TRUE build with --rm}
+
+\item{prebuild}{a command line string to call before docker build}
+
+\item{port}{default 80 map to shiny's 3838 service}
+
+\item{browseURL}{FALSE, if TRUE open shiny app in the browser.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}

@@ -2,11 +2,10 @@ FROM `r liftr_from`
 
 MAINTAINER `r liftr_maintainer` <`r liftr_maintainer_email`>
 
-# System dependencies for required R packages
 RUN  rm -f /var/lib/dpkg/available \
   && rm -rf  /var/cache/apt/* \
-  && apt-get update -qq \
-  && apt-get install -t unstable -y --no-install-recommends \
+  && apt-get update \
+  && apt-get install  -y --no-install-recommends \
     ca-certificates \
     libssl-dev \
     libcurl4-openssl-dev \
@@ -28,7 +27,7 @@ RUN Rscript -e "install.packages(c(`r liftr_factorypkg`), repos = 'https://cran.
 
 ```{r echo= FALSE,  results = "asis"}
 if(length(liftr_extra))
-  writeLines()
+  writeLines(liftr_extra)
 ```
 
 RUN mkdir /liftrroot/

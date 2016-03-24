@@ -110,21 +110,29 @@ In order to share the dockerized R Markdown document, simply share the `.Rmd` fi
 
 # Render an interacive Rmarkdown shiny doc
 
+This will generate a dockerized container for your shiny doc, you can launch it anywhere and browse it from browser. 
 
 ```{r, eval = FALSE}
 file.copy(system.file("examples/ShinyDoc.Rmd", package = "liftr"), dir_docker)
 docker_input = paste0(dir_docker, "ShinyDoc.Rmd")
 lift(docker_input)
-# if you are on mac, define pre-build command to start docker first
-prebuild = "docker-machine start default;docker-machine env default;eval \"$(docker-machine env default)\""
-drender(docker_input, prebuild = prebuild)
+drender(docker_input, clean = TRUE, browseURL = TRUE)
 ```
 
 # Dockerize a shiny app 
 
+This will generate a dockerized container for your shiny app folder, you can launch it anywhere and browse it from browser. 
 
 
-# Rabix Support
+```{r, eval = FALSE}
+file.copy(system.file("examples/shinyapp", package = "liftr"), 
+          dir_docker, recursive = TRUE)
+docker_input = paste0(dir_docker, "shinyapp")
+lift(docker_input)
+drender(docker_input, clean = TRUE, browseURL = TRUE)
+```
+
+# Rabix Support (This is now under development)
 
 [Rabix](https://www.rabix.org) is an open source implementation of the [Common Workflow Language](https://github.com/common-workflow-language/common-workflow-language) specification for building portable bioinformatics pipelines. Users can write JSON-based tools/workflows and run them with Rabix.
 

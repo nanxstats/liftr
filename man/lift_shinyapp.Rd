@@ -6,7 +6,7 @@
 \usage{
 lift_shinyapp(appDir = getwd(), appFiles = NULL,
   output_file = "docker.Rmd", output_dir = NULL, maintainer = NULL,
-  email = NULL)
+  email = NULL, shiny_base = "rocker/shiny")
 }
 \arguments{
 \item{appDir}{Directory containing application. Defaults to current working directory.}
@@ -16,6 +16,8 @@ lift_shinyapp(appDir = getwd(), appFiles = NULL,
 \item{output_file}{A temporariy R markdown file with liftr header passed from shina app folder.}
 
 \item{output_dir}{output_dir Directory to output \code{Dockerfile}. If not provided, will be the same directory as \code{input}.}
+
+\item{shiny_base}{base image for shiny, by default it's rocker/shiny}
 }
 \description{
 Parse dependecies from a shiny app folder and lift it into a Dockerfile

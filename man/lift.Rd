@@ -4,13 +4,15 @@
 \alias{lift}
 \title{Dockerize R Markdown Documents}
 \usage{
-lift(input = NULL, output_dir = NULL, ...)
+lift(input = NULL, output_dir = NULL, dockerfile = NULL, ...)
 }
 \arguments{
-\item{input}{Input (R Markdown) file or shiny app folder.}
+\item{input}{Input (R Markdown or Shiny R markdown) file or shiny app folder.}
 
 \item{output_dir}{Directory to output \code{Dockerfile}.
 If not provided, will be the same directory as \code{input}.}
+
+\item{dockerfile}{a Dockerfile path, if not, use our template.}
 
 \item{...}{Extra arguments passed to liftShinyApp function.}
 }

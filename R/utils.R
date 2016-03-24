@@ -1,6 +1,10 @@
 # convert string vectors to single quote-marked string sep by comma
 quote_str = function (x) paste0("\'", paste(x, collapse = "','"), "\'")
 
+squote = function(x){
+  gsub("\"", "\'", x)
+}
+
 # get directory of the file
 file_dir = function (x) dirname(normalizePath(x))
 
@@ -163,5 +167,109 @@ split_arg = function(x){
   .arg
 }
 
+# get type from a input file
+get_type = function(input){
+  if(!is.na(file.info(input)$isdir) && file.info(input)$isdir){
+    if(is_shinyapp(input)){
+      return("shinyapp")
+    }else{
+      return(NULL)
+    }
 
+  }else{
+    ## treat as file
+    if (!file.exists(input)){
+      stop('input file or shiny app folder does not exist')
+    }
+  }
+
+  .run = liftr:::parse_rmd(input)$runtime
+  if(!is.null(.run) && .run == "shiny"){
+    return("shinydoc")
+  }else{
+    return("rmd")
+  }
+
+}
+
+is_shinydoc = function(input){
+  get_type(input) == "shinydoc"
+}
+
+is_shinyapp = function(input){
+  if(!is.na(file.info(input)$isdir) && file.info(input)$isdir){
+    fls = list.files(input)
+    res = "app.R" %in% fls | ("server.R" %in% fls && "ui.R" %in% fls)
+    return(res)
+  }else{
+    return(FALSE)
+  }
+}
+
+
+render_engine = function(input){
+  switch(get_type(input),
+         "rmd" = "render",
+         "shinydoc" = "run",
+         NULL)
+
+}
+
+.showFields <- function(x, title = NULL, values = NULL, full = FALSE){
+  if (missing(values)){
+    flds = names(x$getRefClass()$fields())
+  }else{
+    flds = values
+  }
+
+  if(!length(x))
+    return(NULL)
+
+  if(!full){
+    idx <- sapply(flds, is.null)
+    if(!is.null(title) && !all(idx)){
+      message(title)
+    }
+
+    ## ugly, change later
+    for (fld in flds[!idx]){
+      if(is.list(x[[fld]])){
+        if(length(x[[fld]])){
+          message(fld, ":")
+          .showList(x[[fld]], space =  "  ")
+        }
+      }else if(is(x[[fld]], "Item")){
+        x[[fld]]$show()
+      }else{
+        if(is.character(x[[fld]])){
+          if(x[[fld]] != "" && length(x[[fld]])){
+            message(fld, " : ", paste0(x[[fld]], collapse = " "))
+          }
+        }else{
+          if(!is.null(x[[fld]]) && length(x[[fld]]))
+            message(fld, " : ", x[[fld]])
+        }
+      }
+    }
+
+  }else{
+    message(title)
+    ## ugly, change later
+    for (fld in flds){
+      if(is.list(x[[fld]])){
+        message(fld, ":")
+        .showList(x[[fld]], space =  "  ", full = full)
+      }else if(is(x[[fld]], "Item")){
+        x[[fld]]$show()
+      }else{
+        if(is.character(x[[fld]])){
+          message(fld, " : ", paste0(x[[fld]], collapse = " "))
+        }else{
+          message(fld, " : ", x[[fld]])
+        }
+      }
+    }
+
+  }
+}
 

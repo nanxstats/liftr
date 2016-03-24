@@ -10,9 +10,10 @@
 #' See \code{vignette('liftr-intro')} for details about the extended
 #' YAML front-matter metadata format used by liftr.
 #'
-#' @param input Input (R Markdown) file or shiny app folder.
+#' @param input Input (R Markdown or Shiny R markdown) file or shiny app folder.
 #' @param output_dir Directory to output \code{Dockerfile}.
 #' If not provided, will be the same directory as \code{input}.
+#' @param dockerfile a Dockerfile path, if not, use our template.
 #' @param ... Extra arguments passed to liftShinyApp function.
 #'
 #' @return \code{Dockerfile} (and \code{Rabixfile} if possible).
@@ -41,16 +42,19 @@
 #' readLines(paste0(dir_rabix, "Dockerfile"))
 #' # view generated Rabixfile
 #' readLines(paste0(dir_rabix, "Rabixfile"))
-lift = function(input = NULL, output_dir = NULL, ...) {
+lift = function(input = NULL, output_dir = NULL, dockerfile = NULL, ...) {
 
   if (is.null(input))
     stop('missing input file')
   if(!is.na(file.info(input)$isdir) && file.info(input)$isdir){
-    message("input is folder, treat it as shiny app folder")
-    ## treat as shiny app folder
-    message("parsing dependecies and genrate liftr file ...")
-    lift_shinyapp(input, output_dir = output_dir, ...)
-    return()
+    if(is_shinyapp(input)){
+      message("parsing shiny app dependecies and genrate liftr file ...")
+      lift_shinyapp(input, output_dir = output_dir, ...)
+      return()
+    }else{
+      stop("your input folder is not a shinyapp folder")
+    }
+
   }else{
     ## treat as file
     if (!file.exists(input)){
@@ -123,13 +127,14 @@ lift = function(input = NULL, output_dir = NULL, ...) {
           system.file('template/pandoc.Rmd', package = 'liftr')), collapse = '\n')
       }
     } else {
-      liftr_pandoc = paste(readLines(
-        system.file('template/pandoc.Rmd', package = 'liftr')), collapse = '\n')
+      liftr_pandoc = NULL
+      ## liftr_pandoc = paste(readLines(
+        ## system.file('template/pandoc.Rmd', package = 'liftr')), collapse = '\n')
     }
   }
 
   # Factory packages
-  liftr_factorypkgs = c('devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl')
+  liftr_factorypkgs = c('devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl', 'rsconnect')
   liftr_factorypkg = quote_str(liftr_factorypkgs)
 
   # CRAN packages
@@ -166,20 +171,35 @@ lift = function(input = NULL, output_dir = NULL, ...) {
     liftr_ghpkg = NULL
   }
 
+
+
   # extra: plain docker file line, like ADD, COPY, CMD etc
   if (!is.null(opt_list$extra)) {
     liftr_extra = opt_list$extra
+    if(get_type(input) == "shinydoc"){
+
+      liftr_extra = c(liftr_extra,
+                      paste0("ADD ", basename(input), " /srv/shiny-server/"))
+    }
   } else {
-    liftr_extra = NULL
+    if(get_type(input) == "shinydoc"){
+
+      liftr_extra = paste0("ADD ", basename(input), " /srv/shiny-server/")
+    }else{
+      liftr_extra = NULL
+    }
+
   }
 
   # write Dockerfile
   if (is.null(output_dir)) output_dir = file_dir(input)
-
-  invisible(knit(system.file('template/Dockerfile.Rmd',
-                             package = 'liftr'),
-                 output = paste0(normalizePath(output_dir),
-                                 '/Dockerfile'),
+  if(is.null(dockerfile)){
+    dockerfile = system.file('template/Dockerfile.Rmd', package = 'liftr')
+  }
+  .out.dockerfile = paste0(normalizePath(output_dir), '/Dockerfile')
+  message("Dockerfile:", .out.dockerfile)
+  invisible(knit(dockerfile,
+                 output = .out.dockerfile,
                  quiet = TRUE))
 
   # handling rabix info
@@ -209,16 +229,15 @@ lift = function(input = NULL, output_dir = NULL, ...) {
         liftr_rabix_with_args = NULL
         liftr_rabix_args = NULL
       }
-
+      .out.rabixfile = paste0(normalizePath(output_dir), '/Rabixfile')
       invisible(knit(system.file('template/Rabixfile.Rmd',
                                  package = 'liftr'),
-                     output = paste0(normalizePath(output_dir),
-                                     '/Rabixfile'),
+                     output = .out.rabixfile,
                      quiet = TRUE))
 
     }
   }
-
+  return(list(dockerfile = .out.dockerfile))
 }
 
 #' parse Rmarkdown header
@@ -267,9 +286,17 @@ trans_name <- function(x){
 
 
 create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "docker.Rmd",
-                            maintainer = NULL, email = NULL){
-  stopifnot(dir.exists(appDir))
-  .out <- file.path(normalizePath(appDir), output_file)
+                            maintainer = NULL, email = NULL,
+                            from = "rocker/shiny"){
+
+    stopifnot(dir.exists(appDir))
+    .out <- file.path(normalizePath(dirname(appDir)), output_file)
+
+
+
+  .base <- paste0("COPY ", basename(appDir), " /srv/shiny-server/", basename(appDir))
+
+
   ## add dummy maintain name
   if(is.null(maintainer)){
     maintainer = Sys.info()[names(Sys.info()) == "user"]
@@ -280,17 +307,20 @@ create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "do
     message("email is not provided, create fake email address for placeholder: ", email)
   }
   .h <- list(maintainer = maintainer,
-             maintainer_email = email)
+             maintainer_email = email,
+             from = from,
+             extra = list(.base),
+             shiny = TRUE)
   ## add dummy email name
   ## search for liftr.rmd
   if(!file.exists(.out)){
-    ad = appDependencies(appDir = appDir, appFiles = appFiles)
+    ad = rsconnect::appDependencies(appDir = appDir, appFiles = appFiles)
     lst = by(ad, ad$source, function(x){
       as.list(x$package)
     })
     lst = trans_name(lst)
     res = list(liftr = c(.h,lst))
-    message("Ouput file: ", .out)
+    message("Shiny liftr file: ", .out)
     con = file(.out)
     txt = "---"
     txt = c(txt, as.yaml(res))
@@ -311,6 +341,7 @@ create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "do
 #' @param appFiles The files and directories to bundle and deploy (only if upload = TRUE). Can be NULL, in which case all the files in the directory containing the application are bundled. Takes precedence over appFileManifest if both are supplied.
 #' @param output_file A temporariy R markdown file with liftr header passed from shina app folder.
 #' @param output_dir output_dir Directory to output \code{Dockerfile}. If not provided, will be the same directory as \code{input}.
+#' @param shiny_base base image for shiny, by default it's rocker/shiny
 #' @export lift_shinyapp
 #' @aliases lift_shinyapp
 #' @examples
@@ -318,9 +349,11 @@ create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "do
 #' lift_shinayapp("test_app_folder")
 #' }
 lift_shinyapp <- function(appDir = getwd(), appFiles = NULL, output_file = "docker.Rmd", output_dir = NULL,
-                          maintainer = NULL, email = NULL){
+                          maintainer = NULL, email = NULL,
+                          shiny_base = "rocker/shiny"){
   .out <- create_lift_file(appDir = appDir, appFiles = appFiles, output_file = output_file,
-                           maintainer = maintainer, email = email)
+                           maintainer = maintainer, email = email,
+                           from = shiny_base)
   lift(.out, output_dir)
 }
 
@@ -513,6 +546,6 @@ guess_default = function(nm, fun){
   }
 }
 
-lift_cmd("runif", file.path(getwd()))
+
 
 

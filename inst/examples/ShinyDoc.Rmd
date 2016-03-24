@@ -3,7 +3,7 @@ title: "Interactive document"
 runtime: shiny
 output: html_document
 liftr:
-  from: "rocker/hadleyverse"
+  from: "rocker/shiny"
   maintainer: "Tengfei Yin"
   maintainer_email: "tengfei.yin@sbgenomics.com"
   cranpkg:
