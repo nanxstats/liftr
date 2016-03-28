@@ -26,6 +26,7 @@
 #' @param rm default FALSE, if TRUE build with --rm
 #' @param port default 80 map to shiny's 3838 service
 #' @param browseURL FALSE, if TRUE open shiny app in the browser.
+#' @param privileged TRUE, with '--privileged=true'
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -75,6 +76,7 @@ drender = function (input = NULL,
                     prebuild = NULL,
                     port = 80,
                     browseURL = FALSE,
+                    privileged = TRUE,
                     ...) {
 
   if (is.null(input))
@@ -118,6 +120,7 @@ drender = function (input = NULL,
 
   image_name = ifelse(is.null(tag), tolower(file_name_sans(input)), tag)
   docker_build_cmd = paste0("docker build ",
+                            ifelse(privileged, " -privileged=true"," "),
                             ifelse(cache, " ", " --no-cache=true "),
                             ifelse(rm, " --rm=true ", " "),
                             build_args, " -t=\"", image_name, "\" ",

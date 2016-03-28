@@ -6,7 +6,8 @@
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
   container_name = NULL, reset = FALSE, clean = FALSE, cache = TRUE,
-  rm = FALSE, prebuild = NULL, port = 80, browseURL = FALSE, ...)
+  rm = FALSE, prebuild = NULL, port = 80, browseURL = FALSE,
+  privileged = TRUE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -35,6 +36,8 @@ Docker image after getting the rendered result?}
 \item{port}{default 80 map to shiny's 3838 service}
 
 \item{browseURL}{FALSE, if TRUE open shiny app in the browser.}
+
+\item{privileged}{TRUE, with '--privileged=true'}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}

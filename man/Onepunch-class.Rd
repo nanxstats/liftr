@@ -47,6 +47,11 @@ Onepunch object
 \description{
 Onepunch object used for rendering
 }
+\section{Methods}{
+
+\describe{
+\item{\code{deploy(script = NULL, ...)}}{deploy inside container}
+}}
 \examples{
 o = Onepunch("~/liftr_docker/ShinyDoc.Rmd")
 \dontrun{
