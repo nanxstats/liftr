@@ -120,7 +120,7 @@ drender = function (input = NULL,
 
   image_name = ifelse(is.null(tag), tolower(file_name_sans(input)), tag)
   docker_build_cmd = paste0("docker build ",
-                            ifelse(privileged, " -privileged=true"," "),
+
                             ifelse(cache, " ", " --no-cache=true "),
                             ifelse(rm, " --rm=true ", " "),
                             build_args, " -t=\"", image_name, "\" ",
@@ -134,6 +134,7 @@ drender = function (input = NULL,
 
   docker_run_cmd_base =
     paste0("docker run ",
+           ifelse(privileged, " -privileged=true"," "),
            ifelse(rm, " --rm ", " "),
            "--name \"", container_name,
            "\" -u `id -u $USER` -v \"",
