@@ -237,7 +237,7 @@ lift = function(input = NULL, output_dir = NULL, dockerfile = NULL, ...) {
 
     }
   }
-  return(list(dockerfile = .out.dockerfile))
+  return(list(dockerfile = .out.dockerfile, rmd = input))
 }
 
 #' parse Rmarkdown header
@@ -546,6 +546,32 @@ guess_default = function(nm, fun){
   }
 }
 
+#' install from liftr rmarkdown with headers
+#'
+#' install from liftr rmarkdown with headers
+#' @param rmd A rmarkdown with lift header
+#' @export install_from_rmd
+#' @examples
+#' \dontrun{
+#' install_from_rmd("test.rmd")
+#' }
+install_from_rmd = function(rmd){
+  opt_list = parse_rmd(rmd)
+  liftr_cranpkgs = opt_list$liftr$cranpkg
+  liftr_biocpkgs = opt_list$liftr$biocpkg
+  liftr_ghpkgs = opt_list$liftr$ghpkg
+  if(!is.null(liftr_cranpkgs)){
+    source('https://cdn.rawgit.com/road2stat/liftrlib/fab41764ea8b56677d05c70c86225774164b6ca0/install_cran.R')
+    install_cran(liftr_cranpkgs)
+  }
+  if(!is.null(liftr_biocpkgs)){
+    source('http://bioconductor.org/biocLite.R')
+    biocLite(c(liftr_biocpkgs))
+  }
+  if(!is.null(liftr_ghpkgs)){
+    devtools::install_github(c(liftr_ghpkgs))
+  }
 
+}
 
 
