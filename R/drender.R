@@ -27,6 +27,7 @@
 #' @param port default 80 map to shiny's 3838 service
 #' @param browseURL FALSE, if TRUE open shiny app in the browser.
 #' @param privileged TRUE, with '--privileged=true'
+#' @param dind TRUE run with " -v /var/run/docker.sock:/var/run/docker.sock"
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -77,6 +78,7 @@ drender = function (input = NULL,
                     port = 80,
                     browseURL = FALSE,
                     privileged = TRUE,
+                    dind = TRUE,
                     ...) {
 
   if (is.null(input))
@@ -135,6 +137,7 @@ drender = function (input = NULL,
   docker_run_cmd_base =
     paste0("docker run ",
            ifelse(privileged, " -privileged=true"," "),
+           ifelse(dind, " -v /var/run/docker.sock:/var/run/docker.sock", " "),
            ifelse(rm, " --rm ", " "),
            "--name \"", container_name,
            "\" -u `id -u $USER` -v \"",

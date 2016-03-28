@@ -7,7 +7,7 @@
 drender(input = NULL, tag = NULL, build_args = NULL,
   container_name = NULL, reset = FALSE, clean = FALSE, cache = TRUE,
   rm = FALSE, prebuild = NULL, port = 80, browseURL = FALSE,
-  privileged = TRUE, ...)
+  privileged = TRUE, dind = TRUE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -38,6 +38,8 @@ Docker image after getting the rendered result?}
 \item{browseURL}{FALSE, if TRUE open shiny app in the browser.}
 
 \item{privileged}{TRUE, with '--privileged=true'}
+
+\item{dind}{TRUE run with " -v /var/run/docker.sock:/var/run/docker.sock"}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
