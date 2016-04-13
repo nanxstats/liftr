@@ -30,8 +30,8 @@ setClassUnion("logicalORNULL", c("logical", "NULL"))
 #' @exportClass Onepunch
 #' @export Onepunch
 #' @examples
-#' o = Onepunch("~/liftr_docker/ShinyDoc.Rmd")
 #' \dontrun{
+#' o = Onepunch("~/liftr_docker/ShinyDoc.Rmd")
 #' o$punch()
 #' o$clean()
 #' }
