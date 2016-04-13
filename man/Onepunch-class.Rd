@@ -53,8 +53,8 @@ Onepunch object used for rendering
 \item{\code{deploy(script = NULL, ...)}}{deploy inside container}
 }}
 \examples{
-o = Onepunch("~/liftr_docker/ShinyDoc.Rmd")
 \dontrun{
+o = Onepunch("~/liftr_docker/ShinyDoc.Rmd")
 o$punch()
 o$clean()
 }
