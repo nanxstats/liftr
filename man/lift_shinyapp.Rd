@@ -17,6 +17,10 @@ lift_shinyapp(appDir = getwd(), appFiles = NULL,
 
 \item{output_dir}{output_dir Directory to output \code{Dockerfile}. If not provided, will be the same directory as \code{input}.}
 
+\item{maintainer}{maintainer information for Dockerfile}
+
+\item{email}{email address for Dockerfile}
+
 \item{shiny_base}{base image for shiny, by default it's rocker/shiny}
 }
 \description{

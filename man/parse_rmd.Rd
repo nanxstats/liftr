@@ -6,6 +6,9 @@
 \usage{
 parse_rmd(input)
 }
+\arguments{
+\item{input}{Rmd file to be parsed into a list}
+}
 \description{
 parse Rmarkdown header and return a list
 }

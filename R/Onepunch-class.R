@@ -21,7 +21,8 @@ setClassUnion("logicalORNULL", c("logical", "NULL"))
 #' @param rm efault FALSE, if TRUE build with --rm
 #' @param clean clean all container or not
 #' @param type "shinyapp" or "shinydoc" or "rmd"
-#' @param browseURL logical, default FALSE, to open browser automatically or not for shiny
+#' @param browseURL logical, default FALSE, to open browser automatically or not
+#' for shiny
 #' @param shiny_run how to launch shiny from command line
 #' @param url returned URL for browsing.
 #'

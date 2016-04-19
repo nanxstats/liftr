@@ -22,6 +22,7 @@
 #'
 #' @importFrom knitr knit
 #' @importFrom yaml yaml.load as.yaml
+#' @importFrom rsconnect  appDependencies
 #'
 #' @examples
 #' # 1. Dockerized R Markdown document
@@ -248,6 +249,8 @@ lift = function(input = NULL, output_dir = NULL, dockerfile = NULL, ...) {
 #' or three hyphens --- as start line with three dots ...
 #' as end line
 #'
+#' @param input Rmd file to be parsed into a list
+#'
 #' @export parse_rmd
 #' @aliases parse_rmd
 #' @examples
@@ -314,7 +317,7 @@ create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "do
   ## add dummy email name
   ## search for liftr.rmd
   if(!file.exists(.out)){
-    ad = rsconnect::appDependencies(appDir = appDir, appFiles = appFiles)
+    ad = appDependencies(appDir = appDir, appFiles = appFiles)
     lst = by(ad, ad$source, function(x){
       as.list(x$package)
     })
@@ -341,6 +344,8 @@ create_lift_file = function(appDir = getwd(), appFiles = NULL, output_file = "do
 #' @param appFiles The files and directories to bundle and deploy (only if upload = TRUE). Can be NULL, in which case all the files in the directory containing the application are bundled. Takes precedence over appFileManifest if both are supplied.
 #' @param output_file A temporariy R markdown file with liftr header passed from shina app folder.
 #' @param output_dir output_dir Directory to output \code{Dockerfile}. If not provided, will be the same directory as \code{input}.
+#' @param maintainer maintainer information for Dockerfile
+#' @param email email address for Dockerfile
 #' @param shiny_base base image for shiny, by default it's rocker/shiny
 #' @export lift_shinyapp
 #' @aliases lift_shinyapp
@@ -546,32 +551,32 @@ guess_default = function(nm, fun){
   }
 }
 
-#' install from liftr rmarkdown with headers
+#' #' install from liftr rmarkdown with headers
+#' #'
+#' #' install from liftr rmarkdown with headers
+#' #' @param rmd A rmarkdown with lift header
+#' #' @export install_from_rmd
+#' #' @examples
+#' #' \dontrun{
+#' #' install_from_rmd("test.rmd")
+#' #' }
+#' install_from_rmd = function(rmd){
+#'   opt_list = parse_rmd(rmd)
+#'   liftr_cranpkgs = opt_list$liftr$cranpkg
+#'   liftr_biocpkgs = opt_list$liftr$biocpkg
+#'   liftr_ghpkgs = opt_list$liftr$ghpkg
+#'   if(!is.null(liftr_cranpkgs)){
+#'     source('https://cdn.rawgit.com/road2stat/liftrlib/fab41764ea8b56677d05c70c86225774164b6ca0/install_cran.R')
+#'     install_cran(liftr_cranpkgs)
+#'   }
+#'   if(!is.null(liftr_biocpkgs)){
+#'     source('http://bioconductor.org/biocLite.R')
+#'     biocLite(c(liftr_biocpkgs))
+#'   }
+#'   if(!is.null(liftr_ghpkgs)){
+#'     devtools::install_github(c(liftr_ghpkgs))
+#'   }
 #'
-#' install from liftr rmarkdown with headers
-#' @param rmd A rmarkdown with lift header
-#' @export install_from_rmd
-#' @examples
-#' \dontrun{
-#' install_from_rmd("test.rmd")
 #' }
-install_from_rmd = function(rmd){
-  opt_list = parse_rmd(rmd)
-  liftr_cranpkgs = opt_list$liftr$cranpkg
-  liftr_biocpkgs = opt_list$liftr$biocpkg
-  liftr_ghpkgs = opt_list$liftr$ghpkg
-  if(!is.null(liftr_cranpkgs)){
-    source('https://cdn.rawgit.com/road2stat/liftrlib/fab41764ea8b56677d05c70c86225774164b6ca0/install_cran.R')
-    install_cran(liftr_cranpkgs)
-  }
-  if(!is.null(liftr_biocpkgs)){
-    source('http://bioconductor.org/biocLite.R')
-    biocLite(c(liftr_biocpkgs))
-  }
-  if(!is.null(liftr_ghpkgs)){
-    devtools::install_github(c(liftr_ghpkgs))
-  }
-
-}
-
+#'
 

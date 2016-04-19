@@ -35,7 +35,8 @@ If not specified, it will use the same name as the input file.}
 
 \item{type}{"shinyapp" or "shinydoc" or "rmd"}
 
-\item{browseURL}{logical, default FALSE, to open browser automatically or not for shiny}
+\item{browseURL}{logical, default FALSE, to open browser automatically or not
+for shiny}
 
 \item{shiny_run}{how to launch shiny from command line}
 
