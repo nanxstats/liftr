@@ -21,7 +21,8 @@ Imports:
     yaml,
     knitr,
     rmarkdown,
-    stringr
+    stringr,
+    rsconnect
 RoxygenNote: 5.0.1
 Collate:
     liftr-package.R
