@@ -1,8 +1,8 @@
 # liftr
 
-[![Build Status](https://travis-ci.org/road2stat/liftr.png?branch=master)](https://travis-ci.org/road2stat/liftr)
-[![Coverage Status](https://coveralls.io/repos/road2stat/liftr/badge.svg?branch=master&service=github)](https://coveralls.io/github/road2stat/liftr?branch=master)
-[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/liftr)](http://cran.rstudio.com/package=liftr)
+[![Build Status](https://travis-ci.org/road2stat/liftr.svg?branch=master)](https://travis-ci.org/road2stat/liftr)
+[![CRAN Version](http://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
+[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/liftr)](http://cranlogs.r-pkg.org/badges/liftr)
 
 `liftr` extends the [R Markdown](http://rmarkdown.rstudio.com) metadata format, helps you generate `Dockerfile` for rendering documents in Docker containers. Users can also include and run pre-defined [Rabix](https://www.rabix.org) tools/workflows, then use Rabix output in their dockerized documents.
 
@@ -27,4 +27,8 @@ To load the package in R, simply use
 library("liftr")
 ```
 
-and you are all set. See [the vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.
+and you are all set. See the [package vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.
+
+## RStudio Addins
+
+Download the latest [RStudio preview version](https://www.rstudio.com/products/rstudio/download/preview/) to use the [RStudio addins](http://rstudio.github.io/rstudioaddins/) in liftr.

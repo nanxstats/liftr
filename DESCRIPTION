@@ -1,8 +1,8 @@
 Package: liftr
 Type: Package
 Title: Dockerize R Markdown Documents
-Version: 0.3
-Date: 2015-10-10
+Version: 0.4
+Date: 2016-01-18
 Authors@R: c(
     person("Miaozhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
     person("Tengfei", "Yin", email = "tengfei.yin@sbgenomics.com", role = "ctb"),
@@ -21,4 +21,8 @@ Imports:
     yaml,
     knitr,
     rmarkdown,
-    stringr
+    stringr,
+    shiny (>= 0.13),
+    miniUI (>= 0.1.1),
+    rstudioapi (>= 0.4)
+RoxygenNote: 5.0.1

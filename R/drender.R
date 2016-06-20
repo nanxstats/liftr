@@ -86,7 +86,8 @@ drender = function (input = NULL,
   dockerfile_path = paste0(file_dir(input), '/Dockerfile')
 
   if (!file.exists(dockerfile_path))
-    stop('Cannot find Dockerfile in the same directory of input file')
+    stop('Cannot find Dockerfile in the same directory of input file,
+         please dockerize the R Markdown document via lift() first.')
 
   if (Sys.which('docker') == '')
     stop('Cannot find `docker` on system search path,
@@ -154,4 +155,4 @@ drender = function (input = NULL,
 
   return(c('image_name' = image_name, 'container_name' = container_name))
 
-}
+  }

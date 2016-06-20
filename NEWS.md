@@ -1,3 +1,10 @@
+# CHANGES IN liftr VERSION 0.4 (2016-01-18)
+
+## NEW FEATURES
+
+* Added four RStudio addins as shortcuts to create, dockerize, and render
+  R Markdown documents.
+
 # CHANGES IN liftr VERSION 0.3 (2015-10-10)
 
 ## NEW FEATURES
