@@ -14,8 +14,8 @@ The vignette can be opened with \code{vignette('liftr-intro')}.
 License: \tab GPL\cr }
 }
 \author{
-Nan Xiao <\email{nanx@uchicago.edu}>
+Nan Xiao <\email{me@nanx.me}>
         Miaozhu Li <\email{miaozhu.li@duke.edu}>
-        Teng-Fei Yin <\email{tengfei.yin@sbgenomics.com}>
+        Tengfei Yin <\email{tengfei.yin@sbgenomics.com}>
 }
 

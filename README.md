@@ -28,7 +28,3 @@ library("liftr")
 ```
 
 and you are all set. See the [package vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.
-
-## RStudio Addins
-
-Download the latest [RStudio preview version](https://www.rstudio.com/products/rstudio/download/preview/) to use the [RStudio addins](http://rstudio.github.io/rstudioaddins/) in liftr.

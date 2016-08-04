@@ -7,7 +7,7 @@ output:
 liftr:
   from: "rocker/r-base:latest"
   maintainer: "Nan Xiao"
-  maintainer_email: "nanx@uchicago.edu"
+  maintainer_email: "me@nanx.me"
   cranpkg:
     - kernlab
 ---

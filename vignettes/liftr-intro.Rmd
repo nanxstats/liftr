@@ -1,11 +1,14 @@
 ---
 title: "Dockerize R Markdown Documents"
-author: "Nan Xiao <<nanx@uchicago.edu>>"
+author: "Nan Xiao <<http://nanx.me>>"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     toc: true
     number_sections: true
+    css: liftr.css
+    includes:
+      in_header: header.html
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Dockerize R Markdown Documents}
@@ -15,7 +18,7 @@ vignette: >
 
 To dockerize your R Markdown document, the first step is adding `liftr` options in the YAML front-matter of a document. For example:
 
-```
+```yaml
 ---
 title: "The Missing Example of liftr"
 author: "Author Name"
@@ -164,4 +167,4 @@ To install Rabix in Ubuntu:
 
 <hr>
 
-`--EOF--`
+Project website: [liftr.me](http://liftr.me)

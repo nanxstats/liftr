@@ -2,16 +2,15 @@ Package: liftr
 Type: Package
 Title: Dockerize R Markdown Documents
 Version: 0.4
-Date: 2016-01-18
 Authors@R: c(
     person("Miaozhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
     person("Tengfei", "Yin", email = "tengfei.yin@sbgenomics.com", role = "ctb"),
-    person("Nan", "Xiao", email = "nanx@uchicago.edu", role = c("aut", "cre"))
+    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"))
     )
-Maintainer: Nan Xiao <nanx@uchicago.edu>
+Maintainer: Nan Xiao <me@nanx.me>
 Description: Dockerize R Markdown documents with support for Rabix.
 License: GPL
-SystemRequirements: Docker, Rabix
+SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>), Rabix (see <https://github.com/rabix/rabix>)
 VignetteBuilder: knitr
 URL: http://liftr.me
 BugReports: https://github.com/road2stat/liftr/issues
@@ -21,8 +20,5 @@ Imports:
     yaml,
     knitr,
     rmarkdown,
-    stringr,
-    shiny (>= 0.13),
-    miniUI (>= 0.1.1),
-    rstudioapi (>= 0.4)
+    stringr
 RoxygenNote: 5.0.1
