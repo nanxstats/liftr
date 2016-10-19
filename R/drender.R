@@ -62,7 +62,9 @@
 #' browseURL(paste0(dir_rabix, "rabix.html"))}
 drender = function (input = NULL,
                     tag = NULL, build_args = NULL, container_name = NULL,
-                    reset = TRUE, ...) {
+                    reset = TRUE,
+                    noCache = TRUE,
+                    ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -94,7 +96,8 @@ drender = function (input = NULL,
          please ensure we can use `docker` from shell')
 
   image_name = ifelse(is.null(tag), file_name_sans(input), tag)
-  docker_build_cmd = paste0("docker build --no-cache=true --rm=true ",
+  noCache = paste0("--no-cache=",ifelse(isTRUE(noCache),"true","false"))
+  docker_build_cmd = paste0("docker build ",noCache," --rm=true ",
                             build_args, " -t=\"", image_name, "\" ",
                             file_dir(dockerfile_path))
 
