@@ -104,7 +104,7 @@ drender = function (input = NULL,
                           container_name)
 
   docker_run_cmd_base =
-    paste0("docker run --rm -i -t --name \"", container_name,
+    paste0("docker run --rm --name \"", container_name,
            "\" -u `id -u $USER` -v \"",
            file_dir(dockerfile_path), ":", "/liftrroot/\" ",
            image_name,
