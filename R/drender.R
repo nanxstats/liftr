@@ -20,6 +20,7 @@
 #' If not specified, we will generate and use a random name.
 #' @param reset Should we cleanup the Docker container and
 #' Docker image after getting the rendered result?
+#' @param noCache Sets the --no-cache arguments in 'docker run'
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
