@@ -9,7 +9,7 @@ Authors@R: c(
     )
 Maintainer: Nan Xiao <me@nanx.me>
 Description: Dockerize R Markdown documents with support for Rabix.
-License: GPL
+License: GPL-3 | file LICENSE
 SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>), Rabix (see <https://github.com/rabix/rabix>)
 VignetteBuilder: knitr
 URL: http://liftr.me

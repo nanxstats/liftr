@@ -1,6 +1,7 @@
-# liftr
+# liftr  <a href="http://liftr.me"><img src="http://nanx.me/images/project-liftr.png" align="right" alt="logo" height="180" width="180" /></a>
 
 [![Build Status](https://travis-ci.org/road2stat/liftr.svg?branch=master)](https://travis-ci.org/road2stat/liftr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/liftr?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/liftr)
 [![CRAN Version](http://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
 [![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/liftr)](http://cranlogs.r-pkg.org/badges/liftr)
 
