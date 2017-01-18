@@ -12,7 +12,7 @@ sans_ext = tools::file_path_sans_ext
 file_name_sans = function (x) basename(sans_ext(normalizePath(x)))
 
 # generate UUID for Docker container names
-# derived from http://stackoverflow.com/questions/10492817/
+# derived from https://stackoverflow.com/questions/10492817/
 uuid = function () {
   id = paste(sample(c(letters[1:6], 0:9), 30, replace = TRUE),
              collapse = '')

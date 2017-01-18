@@ -1,6 +1,6 @@
 ---
 title: "Dockerize R Markdown Documents"
-author: "Nan Xiao <<http://nanx.me>>"
+author: "Nan Xiao <<https://nanx.me>>"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
@@ -167,4 +167,4 @@ To install Rabix in Ubuntu:
 
 <hr>
 
-Project website: [liftr.me](http://liftr.me)
+Project website: [https://liftr.me](https://liftr.me)

@@ -11,7 +11,7 @@ liftr dockerizes your R Markdown documents.
 The vignette can be opened with \code{vignette('liftr-intro')}.
 
 \tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
-License: \tab GPL\cr }
+License: \tab GPL-3\cr }
 }
 \author{
 Nan Xiao <\email{me@nanx.me}>
