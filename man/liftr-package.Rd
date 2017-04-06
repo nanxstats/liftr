@@ -5,17 +5,16 @@
 \alias{liftr-package}
 \title{Dockerize R Markdown Documents}
 \description{
-liftr dockerizes your R Markdown documents.
+Persistent reproducible reporting via
+containerization of R Markdown documents.
 }
 \details{
-The vignette can be opened with \code{vignette('liftr-intro')}.
-
 \tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
 License: \tab GPL-3\cr }
 }
 \author{
 Nan Xiao <\email{me@nanx.me}>
         Miaozhu Li <\email{miaozhu.li@duke.edu}>
-        Tengfei Yin <\email{tengfei.yin@sbgenomics.com}>
+        Tengfei Yin <\email{tengfei.yin@sevenbridges.com}>
 }
 
