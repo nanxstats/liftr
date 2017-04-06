@@ -1,16 +1,16 @@
 Package: liftr
 Type: Package
 Title: Dockerize R Markdown Documents
-Version: 0.4
+Version: 0.4.9000
 Authors@R: c(
+    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre")),
     person("Miaozhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
-    person("Tengfei", "Yin", email = "tengfei.yin@sbgenomics.com", role = "ctb"),
-    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"))
+    person("Tengfei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
     )
 Maintainer: Nan Xiao <me@nanx.me>
-Description: Dockerize R Markdown documents with support for Rabix.
+Description: Persistent reproducible reporting via containerization of R Markdown documents.
 License: GPL-3 | file LICENSE
-SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>), Rabix (see <https://github.com/rabix/rabix>)
+SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>)
 VignetteBuilder: knitr
 URL: https://liftr.me, https://github.com/road2stat/liftr
 BugReports: https://github.com/road2stat/liftr/issues
