@@ -7,6 +7,7 @@
 - output image name and container name into a `.yml` file with the same name as the RMD for `drender()` runs.
 - make purge functions clean things up based on this `yml` file.
 - add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`.
+- convert the metadata field list into a table in vignette.
 
 # ui
 
