@@ -18,16 +18,18 @@
 #' \code{--pull=true -m="1024m" --memory-swap="-1"}.
 #' @param container_name Docker container name to run.
 #' If not specified, we will generate and use a random name.
-#' @param reset Should we cleanup the Docker container and
-#' Docker image after getting the rendered result?
-#' @param noCache Sets the --no-cache arguments in 'docker run'
+#' @param no_cache Logical. Controls the \code{--no-cache} argument
+#' in \code{docker run}. Setting this to be \code{TRUE} can accelerate
+#' the rendering speed substantially for repeated compilation since
+#' most of the Docker image layers will be cached, with only the
+#' changed (knitr related) image layer being updated. Default is \code{TRUE}.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
 #' @return Rendered file is written to the same directory of the input file.
 #' A character vector with the image name and container name will be
 #' returned. You will be able to manage them with \code{docker}
-#' commands later if \code{reset = FALSE}.
+#' commands later or with the cleanup functions.
 #'
 #' @export drender
 #'
@@ -61,11 +63,11 @@
 #' drender(rabix_input)
 #' # view rendered document
 #' browseURL(paste0(dir_rabix, "rabix.html"))}
-drender = function (input = NULL,
-                    tag = NULL, build_args = NULL, container_name = NULL,
-                    reset = TRUE,
-                    noCache = TRUE,
-                    ...) {
+
+drender = function(
+  input = NULL,
+  tag = NULL, build_args = NULL, container_name = NULL,
+  no_cache = TRUE, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -97,8 +99,8 @@ drender = function (input = NULL,
          please ensure we can use `docker` from shell')
 
   image_name = ifelse(is.null(tag), file_name_sans(input), tag)
-  noCache = paste0("--no-cache=",ifelse(isTRUE(noCache),"true","false"))
-  docker_build_cmd = paste0("docker build ",noCache," --rm=true ",
+  no_cache = paste0("--no-cache=", ifelse(no_cache, "true", "false"))
+  docker_build_cmd = paste0("docker build ", no_cache, " --rm=true ",
                             build_args, " -t=\"", image_name, "\" ",
                             file_dir(dockerfile_path))
 
@@ -120,8 +122,9 @@ drender = function (input = NULL,
 
   if (length(dots_arg) == 0L) {
 
-    docker_run_cmd = paste0(docker_run_cmd_base, "render(input = '",
-                            file_name(input), "')\"")
+    docker_run_cmd = paste0(
+      docker_run_cmd_base, "render(input = '",
+      file_name(input), "')\"")
 
   } else {
 
@@ -148,14 +151,6 @@ drender = function (input = NULL,
 
   system(docker_build_cmd)
   system(docker_run_cmd)
-
-  # cleanup docker containers and images
-  # TODO: needs exception handling
-  if (reset) {
-    system(paste0("docker stop \"", container_name, "\""))
-    system(paste0("docker rm -f \"", container_name, "\""))
-    system(paste0("docker rmi -f \"", image_name, "\""))
-  }
 
   return(c('image_name' = image_name, 'container_name' = container_name))
 

@@ -5,7 +5,7 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, reset = TRUE, noCache = TRUE, ...)
+  container_name = NULL, no_cache = TRUE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -20,10 +20,11 @@ If not specified, it will use the same name as the input file.}
 \item{container_name}{Docker container name to run.
 If not specified, we will generate and use a random name.}
 
-\item{reset}{Should we cleanup the Docker container and
-Docker image after getting the rendered result?}
-
-\item{noCache}{Sets the --no-cache arguments in 'docker run'}
+\item{no_cache}{Logical. Controls the \code{--no-cache} argument
+in \code{docker run}. Setting this to be \code{TRUE} can accelerate
+the rendering speed substantially for repeated compilation since
+most of the Docker image layers will be cached, with only the
+changed (knitr related) image layer being updated. Default is \code{TRUE}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
@@ -32,7 +33,7 @@ Docker image after getting the rendered result?}
 Rendered file is written to the same directory of the input file.
 A character vector with the image name and container name will be
 returned. You will be able to manage them with \code{docker}
-commands later if \code{reset = FALSE}.
+commands later or with the cleanup functions.
 }
 \description{
 Render dockerized R Markdown documents using Docker containers.
