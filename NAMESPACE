@@ -2,6 +2,10 @@
 
 export(drender)
 export(lift)
+export(remove_all)
+export(remove_container)
+export(remove_image)
+export(stop_container)
 importFrom(knitr,knit)
 importFrom(rmarkdown,render)
 importFrom(stringr,str_trim)
