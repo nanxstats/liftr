@@ -20,7 +20,7 @@ purge_container = function(container_name) {
   system(paste0("docker rm -f \"", container_name, "\""))
 }
 
-#' Remove Docker Image
+#' Purge Docker Image
 #'
 #' This function removes the Docker image used
 #' for rendering the R Markdown document by
@@ -28,37 +28,36 @@ purge_container = function(container_name) {
 #'
 #' @param image_name Name of the image to be removed.
 #'
-#' @export remove_image
+#' @export purge_image
 #'
 #' @return status
 #'
 #' @examples
 #' \dontrun{
-#' remove_image("report")}
+#' purge_image("report")}
 
-remove_image = function(image_name) {
+purge_image = function(image_name) {
   # TODO: needs exception handling
   system(paste0("docker rmi -f \"", image_name, "\""))
 }
 
-#' Cleanup Everything
+#' Purge Everything (Container + Image)
 #'
-#' This function will try to stop and remove the Docker container
-#' and image used for rendering the R Markdown document.
+#' This function will try to purge the Docker container
+#' and Docker image used for rendering the R Markdown document.
 #'
 #' @param container_name Name of the container to be stopped and removed.
 #' @param image_name Name of the image to be removed.
 #'
-#' @export remove_all
+#' @export purge_all
 #'
 #' @return status
 #'
 #' @examples
 #' \dontrun{
-#' remove_all("liftr_container_uuid", "report")}
+#' purge_all("liftr_container_uuid", "report")}
 
-remove_all = function(container_name, image_name) {
-  liftr::stop_container(container_name)
-  liftr::remove_container(container_name)
-  liftr::remove_image(image_name)
+purge_all = function(container_name, image_name) {
+  liftr::purge_container(container_name)
+  liftr::purge_image(image_name)
 }
