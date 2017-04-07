@@ -18,6 +18,7 @@ for rendering the R Markdown document by
 running \code{docker rm} commands.
 }
 \examples{
-\dontrun{remove_container("liftr_container_uuid")}
+\dontrun{
+remove_container("liftr_container_uuid")}
 }
 

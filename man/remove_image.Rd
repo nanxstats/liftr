@@ -18,6 +18,7 @@ for rendering the R Markdown document by
 running \code{docker rmi} commands.
 }
 \examples{
-\dontrun{remove_image("report")}
+\dontrun{
+remove_image("report")}
 }
 

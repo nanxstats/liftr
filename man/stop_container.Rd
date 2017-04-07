@@ -18,6 +18,7 @@ for rendering the R Markdown document by
 running \code{docker stop} commands.
 }
 \examples{
-\dontrun{stop_container("liftr_container_uuid")}
+\dontrun{
+stop_container("liftr_container_uuid")}
 }
 

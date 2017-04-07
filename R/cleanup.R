@@ -11,7 +11,8 @@
 #' @return status
 #'
 #' @examples
-#' \dontrun{stop_container("liftr_container_uuid")}
+#' \dontrun{
+#' stop_container("liftr_container_uuid")}
 
 stop_container = function(container_name) {
   # TODO: needs exception handling
@@ -31,7 +32,8 @@ stop_container = function(container_name) {
 #' @return status
 #'
 #' @examples
-#' \dontrun{remove_container("liftr_container_uuid")}
+#' \dontrun{
+#' remove_container("liftr_container_uuid")}
 
 remove_container = function(container_name) {
   # TODO: needs exception handling
@@ -51,7 +53,8 @@ remove_container = function(container_name) {
 #' @return status
 #'
 #' @examples
-#' \dontrun{remove_image("report")}
+#' \dontrun{
+#' remove_image("report")}
 
 remove_image = function(image_name) {
   # TODO: needs exception handling
@@ -70,7 +73,9 @@ remove_image = function(image_name) {
 #'
 #' @return status
 #'
-#' \dontrun{remove_all("liftr_container_uuid", "report")}
+#' @examples
+#' \dontrun{
+#' remove_all("liftr_container_uuid", "report")}
 
 remove_all = function(container_name, image_name) {
   liftr::stop_container(container_name)

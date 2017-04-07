@@ -13,11 +13,13 @@ remove_all(container_name, image_name)
 }
 \value{
 status
-
-\dontrun{remove_all("liftr_container_uuid", "report")}
 }
 \description{
 This function will try to stop and remove the Docker container
 and image used for rendering the R Markdown document.
+}
+\examples{
+\dontrun{
+remove_all("liftr_container_uuid", "report")}
 }
 
