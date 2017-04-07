@@ -1,42 +1,22 @@
-#' Stop Docker Container
+#' Purge Docker Container
 #'
-#' This function stops the Docker container used
-#' for rendering the R Markdown document by
-#' running \code{docker stop} commands.
+#' This function stops and removes the Docker container used
+#' for rendering the R Markdown document, by running
+#' \code{docker stop} and \code{docker rm} commands.
 #'
-#' @param container_name Name of the container to be stopped.
+#' @param container_name Name of the container to be stopped and removed.
 #'
-#' @export stop_container
+#' @export purge_container
 #'
 #' @return status
 #'
 #' @examples
 #' \dontrun{
-#' stop_container("liftr_container_uuid")}
+#' purge_container("liftr_container_uuid")}
 
-stop_container = function(container_name) {
+purge_container = function(container_name) {
   # TODO: needs exception handling
   system(paste0("docker stop \"", container_name, "\""))
-}
-
-#' Remove Docker Container
-#'
-#' This function removes the Docker container used
-#' for rendering the R Markdown document by
-#' running \code{docker rm} commands.
-#'
-#' @param container_name Name of the container to be removed.
-#'
-#' @export remove_container
-#'
-#' @return status
-#'
-#' @examples
-#' \dontrun{
-#' remove_container("liftr_container_uuid")}
-
-remove_container = function(container_name) {
-  # TODO: needs exception handling
   system(paste0("docker rm -f \"", container_name, "\""))
 }
 
