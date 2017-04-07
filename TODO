@@ -1,0 +1,19 @@
+# misc
+
+- merge the following todo list into `news.md` when they are done
+
+# infrastructure
+
+- output image name and container name into a `.yml` file with the same name as the RMD for `drender()` runs.
+- make purge functions clean things up based on this `yml` file.
+- add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`.
+
+# ui
+
+- add RStudio addins to create, dockerize, and render RMD files.
+
+# web
+
+- move video to vimeo
+- embed video into README
+- generate website with pkgdown
