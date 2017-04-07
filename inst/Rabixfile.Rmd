@@ -1,1 +1,0 @@
-rabix -v `r liftr_rabix_json` -d `r liftr_rabix_d` `r liftr_rabix_with_args` `r liftr_rabix_args`

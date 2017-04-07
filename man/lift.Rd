@@ -13,13 +13,10 @@ lift(input = NULL, output_dir = NULL)
 If not provided, will be the same directory as \code{input}.}
 }
 \value{
-\code{Dockerfile} (and \code{Rabixfile} if possible).
+\code{Dockerfile}.
 }
 \description{
 Generate \code{Dockerfile} for R Markdown documents.
-Rabix is supported if there is certain metadata in the R Markdown
-document: the function will generate a \code{Rabixfile} containing
-the parsed running parameters under the output directory.
 }
 \details{
 After running \link{lift}, run \link{drender} on the document to
@@ -28,7 +25,7 @@ See \code{vignette('liftr-intro')} for details about the extended
 YAML front-matter metadata format used by liftr.
 }
 \examples{
-# 1. Dockerized R Markdown document
+# Dockerized R Markdown document
 dir_docker = paste0(tempdir(), '/lift_docker/')
 dir.create(dir_docker)
 file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
@@ -36,15 +33,5 @@ file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
 lift(paste0(dir_docker, "docker.Rmd"))
 # view generated Dockerfile
 readLines(paste0(dir_docker, "Dockerfile"))
-
-# 2. Dockerized R Markdown document with Rabix options
-dir_rabix = paste0(tempdir(), '/lift_rabix/')
-dir.create(dir_rabix)
-file.copy(system.file("rabix.Rmd", package = "liftr"), dir_rabix)
-lift(input = paste0(dir_rabix, "rabix.Rmd"))
-# view generated Dockerfile
-readLines(paste0(dir_rabix, "Dockerfile"))
-# view generated Rabixfile
-readLines(paste0(dir_rabix, "Rabixfile"))
 }
 
