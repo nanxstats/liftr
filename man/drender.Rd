@@ -53,7 +53,7 @@ rendering dockerized R Markdown documents.
 # so make sure we can use `docker` in terminal.
 dir_docker = paste0(tempdir(), '/drender_docker/')
 dir.create(dir_docker)
-file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
 docker_input = paste0(dir_docker, "docker.Rmd")
 lift(docker_input)
 \dontrun{

@@ -28,7 +28,7 @@ YAML front-matter metadata format used by liftr.
 # Dockerized R Markdown document
 dir_docker = paste0(tempdir(), '/lift_docker/')
 dir.create(dir_docker)
-file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
 # use lift() to parse Rmd and generate Dockerfile
 lift(paste0(dir_docker, "docker.Rmd"))
 # view generated Dockerfile
