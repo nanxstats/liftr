@@ -24,7 +24,7 @@
 #' # Dockerized R Markdown document
 #' dir_docker = paste0(tempdir(), '/lift_docker/')
 #' dir.create(dir_docker)
-#' file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+#' file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
 #' # use lift() to parse Rmd and generate Dockerfile
 #' lift(paste0(dir_docker, "docker.Rmd"))
 #' # view generated Dockerfile
@@ -85,7 +85,7 @@ lift = function(input = NULL, output_dir = NULL) {
   # system dependencies
   if (!is.null(opt_list$syslib)) {
     liftr_syslib = paste(
-      readLines(system.file('syslib.Rmd', package = 'liftr')),
+      readLines(system.file('templates/system-deps.Rmd', package = 'liftr')),
       paste(opt_list$syslib, collapse = ' '), sep = ' ')
   } else {
     liftr_syslib = NULL
@@ -95,7 +95,7 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$latex)) {
     if (opt_list$latex == TRUE) {
       liftr_texlive = paste(
-        readLines(system.file('texlive.Rmd', package = 'liftr')),
+        readLines(system.file('templates/texlive.Rmd', package = 'liftr')),
         collapse = '\n')
     } else {
       liftr_texlive = NULL
@@ -114,11 +114,11 @@ lift = function(input = NULL, output_dir = NULL) {
         liftr_pandoc = NULL
       } else {
         liftr_pandoc = paste(readLines(
-          system.file('pandoc.Rmd', package = 'liftr')), collapse = '\n')
+          system.file('templates/doc-pandoc.Rmd', package = 'liftr')), collapse = '\n')
       }
     } else {
       liftr_pandoc = paste(readLines(
-        system.file('pandoc.Rmd', package = 'liftr')), collapse = '\n')
+        system.file('templates/doc-pandoc.Rmd', package = 'liftr')), collapse = '\n')
     }
   }
 
@@ -131,7 +131,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_cranpkgs = quote_str(opt_list$cranpkg)
     tmp = tempfile()
     invisible(knit(
-      input = system.file('cranpkg.Rmd', package = 'liftr'),
+      input = system.file('templates/pkg-cran.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
     liftr_cranpkg = readLines(tmp)
   } else {
@@ -143,7 +143,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_biocpkgs = quote_str(opt_list$biocpkg)
     tmp = tempfile()
     invisible(knit(
-      input = system.file('biocpkg.Rmd', package = 'liftr'),
+      input = system.file('templates/pkg-bioc.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
     liftr_biocpkg = readLines(tmp)
   } else {
@@ -155,7 +155,7 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_ghpkgs = quote_str(opt_list$ghpkg)
     tmp = tempfile()
     invisible(knit(
-      input = system.file('ghpkg.Rmd', package = 'liftr'),
+      input = system.file('templates/pkg-github.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
     liftr_ghpkg = readLines(tmp)
   } else {
@@ -166,7 +166,7 @@ lift = function(input = NULL, output_dir = NULL) {
   if (is.null(output_dir)) output_dir = file_dir(input)
 
   invisible(knit(
-    system.file('Dockerfile.Rmd', package = 'liftr'),
+    system.file('templates/base.Rmd', package = 'liftr'),
     output = paste0(normalizePath(output_dir), '/Dockerfile'),
     quiet = TRUE))
 
