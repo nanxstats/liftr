@@ -1,9 +1,12 @@
 #' Render Dockerized R Markdown Documents
 #'
+#' @description
 #' Render dockerized R Markdown documents using Docker containers.
 #'
+#' @details
 #' Before using \code{drender()}, run \link{lift} on the document
-#' first to generate \code{Dockerfile}.
+#' first to generate the \code{Dockerfile}.
+#'
 #' See \code{vignette('liftr-intro')} for details about the extended
 #' YAML front-matter metadata format and system requirements for
 #' rendering dockerized R Markdown documents.
@@ -20,7 +23,8 @@
 #' in \code{docker run}. Setting this to be \code{TRUE} can accelerate
 #' the rendering speed substantially for repeated compilation since
 #' most of the Docker image layers will be cached, with only the
-#' changed (knitr related) image layer being updated. Default is \code{TRUE}.
+#' changed (knitr related) image layer being updated.
+#' Default is \code{TRUE}.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -71,22 +75,24 @@ drender = function(
 
   image_name = ifelse(is.null(tag), file_name_sans(input), tag)
   no_cache = paste0("--no-cache=", ifelse(no_cache, "true", "false"))
-  docker_build_cmd = paste0("docker build ", no_cache, " --rm=true ",
-                            build_args, " -t=\"", image_name, "\" ",
-                            file_dir(dockerfile_path))
+  docker_build_cmd = paste0(
+    "docker build ", no_cache, " --rm=true ",
+    build_args, " -t=\"", image_name, "\" ",
+    file_dir(dockerfile_path))
 
   # docker run
-  container_name = ifelse(is.null(container_name),
-                          paste0('liftr_container_', uuid()),
-                          container_name)
+  container_name = ifelse(
+    is.null(container_name),
+    paste0('liftr_container_', uuid()),
+    container_name)
 
-  docker_run_cmd_base =
-    paste0("docker run --rm --name \"", container_name,
-           "\" -u `id -u $USER` -v \"",
-           file_dir(dockerfile_path), ":", "/liftrroot/\" ",
-           image_name,
-           " /usr/bin/Rscript -e \"library('knitr');library('rmarkdown');",
-           "library('shiny');setwd('/liftrroot/');")
+  docker_run_cmd_base = paste0(
+    "docker run --rm --name \"", container_name,
+    "\" -u `id -u $USER` -v \"",
+    file_dir(dockerfile_path), ":", "/liftrroot/\" ",
+    image_name,
+    " /usr/bin/Rscript -e \"library('knitr');library('rmarkdown');",
+    "library('shiny');setwd('/liftrroot/');")
 
   # process additional arguments passed to rmarkdown::render()
   dots_arg = list(...)

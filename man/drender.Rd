@@ -24,7 +24,8 @@ If not specified, we will generate and use a random name.}
 in \code{docker run}. Setting this to be \code{TRUE} can accelerate
 the rendering speed substantially for repeated compilation since
 most of the Docker image layers will be cached, with only the
-changed (knitr related) image layer being updated. Default is \code{TRUE}.}
+changed (knitr related) image layer being updated.
+Default is \code{TRUE}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
@@ -40,7 +41,8 @@ Render dockerized R Markdown documents using Docker containers.
 }
 \details{
 Before using \code{drender()}, run \link{lift} on the document
-first to generate \code{Dockerfile}.
+first to generate the \code{Dockerfile}.
+
 See \code{vignette('liftr-intro')} for details about the extended
 YAML front-matter metadata format and system requirements for
 rendering dockerized R Markdown documents.
