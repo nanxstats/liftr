@@ -1,7 +1,9 @@
 #' Dockerize R Markdown Documents
 #'
+#' @description
 #' Generate \code{Dockerfile} for R Markdown documents.
 #'
+#' @details
 #' After running \link{lift}, run \link{drender} on the document to
 #' render the Dockerized R Markdown document using Docker containers.
 #' See \code{vignette('liftr-intro')} for details about the extended
@@ -27,6 +29,7 @@
 #' lift(paste0(dir_docker, "docker.Rmd"))
 #' # view generated Dockerfile
 #' readLines(paste0(dir_docker, "Dockerfile"))
+
 lift = function(input = NULL, output_dir = NULL) {
 
   if (is.null(input))
@@ -51,9 +54,9 @@ lift = function(input = NULL, output_dir = NULL) {
     }
   }
 
-  doc_yaml = paste(doc_content[(header_pos[1L] + 1L):
-                                 (header_pos[2L] - 1L)],
-                   collapse = '\n')
+  doc_yaml = paste(
+    doc_content[(header_pos[1L] + 1L):(header_pos[2L] - 1L)],
+    collapse = '\n')
   opt_all_list = yaml.load(doc_yaml)
 
   # liftr options handling
@@ -63,11 +66,8 @@ lift = function(input = NULL, output_dir = NULL) {
   opt_list = opt_all_list$liftr
 
   # base image
-  if (!is.null(opt_list$from)) {
-    liftr_from = opt_list$from
-  } else {
-    liftr_from = 'rocker/r-base:latest'
-  }
+  liftr_from = if (!is.null(opt_list$from))
+    opt_list$from else 'rocker/r-base:latest'
 
   # maintainer name
   if (!is.null(opt_list$maintainer)) {
@@ -79,14 +79,14 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$maintainer_email)) {
     liftr_maintainer_email = opt_list$maintainer_email
   } else {
-    stop('Cannot find `maintainer_email` option in file header')
+    stop('Cannot find field `maintainer_email` in header')
   }
 
   # system dependencies
   if (!is.null(opt_list$syslib)) {
-    liftr_syslib =
-      paste(readLines(system.file('syslib.Rmd', package = 'liftr')),
-            paste(opt_list$syslib, collapse = ' '), sep = ' ')
+    liftr_syslib = paste(
+      readLines(system.file('syslib.Rmd', package = 'liftr')),
+      paste(opt_list$syslib, collapse = ' '), sep = ' ')
   } else {
     liftr_syslib = NULL
   }
@@ -94,9 +94,9 @@ lift = function(input = NULL, output_dir = NULL) {
   # texlive
   if (!is.null(opt_list$latex)) {
     if (opt_list$latex == TRUE) {
-      liftr_texlive =
-        paste(readLines(system.file('texlive.Rmd', package = 'liftr')),
-              collapse = '\n')
+      liftr_texlive = paste(
+        readLines(system.file('texlive.Rmd', package = 'liftr')),
+        collapse = '\n')
     } else {
       liftr_texlive = NULL
     }
@@ -130,8 +130,9 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$cranpkg)) {
     liftr_cranpkgs = quote_str(opt_list$cranpkg)
     tmp = tempfile()
-    invisible(knit(input = system.file('cranpkg.Rmd', package = 'liftr'),
-                   output = tmp, quiet = TRUE))
+    invisible(knit(
+      input = system.file('cranpkg.Rmd', package = 'liftr'),
+      output = tmp, quiet = TRUE))
     liftr_cranpkg = readLines(tmp)
   } else {
     liftr_cranpkg = NULL
@@ -141,8 +142,9 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$biocpkg)) {
     liftr_biocpkgs = quote_str(opt_list$biocpkg)
     tmp = tempfile()
-    invisible(knit(input = system.file('biocpkg.Rmd', package = 'liftr'),
-                   output = tmp, quiet = TRUE))
+    invisible(knit(
+      input = system.file('biocpkg.Rmd', package = 'liftr'),
+      output = tmp, quiet = TRUE))
     liftr_biocpkg = readLines(tmp)
   } else {
     liftr_biocpkg = NULL
@@ -152,21 +154,20 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$ghpkg)) {
     liftr_ghpkgs = quote_str(opt_list$ghpkg)
     tmp = tempfile()
-    invisible(knit(input = system.file('ghpkg.Rmd', package = 'liftr'),
-                   output = tmp,
-                   quiet = TRUE))
+    invisible(knit(
+      input = system.file('ghpkg.Rmd', package = 'liftr'),
+      output = tmp, quiet = TRUE))
     liftr_ghpkg = readLines(tmp)
   } else {
     liftr_ghpkg = NULL
   }
 
-  # write Dockerfile
+  # write output files
   if (is.null(output_dir)) output_dir = file_dir(input)
 
-  invisible(knit(system.file('Dockerfile.Rmd',
-                             package = 'liftr'),
-                 output = paste0(normalizePath(output_dir),
-                                 '/Dockerfile'),
-                 quiet = TRUE))
+  invisible(knit(
+    system.file('Dockerfile.Rmd', package = 'liftr'),
+    output = paste0(normalizePath(output_dir), '/Dockerfile'),
+    quiet = TRUE))
 
   }
