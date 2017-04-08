@@ -4,6 +4,7 @@
 
 # infrastructure
 
+- group `.Rmd`s under `inst/` into multiple semantic folders, rename files, update their locations in the R code.
 - output image name and container name into a `.yml` file with the same name as the RMD for `drender()` runs.
 - make purge functions clean things up based on this `yml` file.
 - add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`, add this into vignette.
