@@ -59,13 +59,55 @@ All available metadata fields are expained below.
 
 ## Optional metadata
 
-  * `from` - [Base image](https://docs.docker.com/reference/builder/#from) for building the docker image. Default is `"rocker/r-base:latest"`.
-  * `latex` - Is TeX environment needed when rendering the document? Default is `false`.
-  * `pandoc` - Should we install pandoc in the container? Default is `true`. If pandoc was already installed in the base image, this should be set to `false` to avoid potential errors. For example, for [`rocker/rstudio`](https://registry.hub.docker.com/u/rocker/rstudio/) and [`bioconductor/...`](https://www.bioconductor.org/help/docker/) images, this option will be automatically set to `false` since they already have pandoc installed.
-  * `syslib` - Debian/Ubuntu system software packages depended in the document. Please also include software packages depended by the R packages included below, such as `gfortran` here required for compiling `randomForest`.
-  * `cranpkg` - CRAN packages depended in the document. If only `pkgname` is provided, `liftr` will install the _latest_ version of the package on CRAN. To improve reproducibility, we recommend to use the package name with a specified version number: `pkgname/pkgversion` (e.g. `ggplot2/1.0.0`), even if the version is the current latest version. Note: `pkgversion` must be provided to install the archived versions of packages.
-  * `biocpkg` - Bioconductor packages depended in the document.
-  * `ghpkg` - GitHub R packages depended in the document. We accept the same format as the `repo` argument in `devtools::install_github`. Normally, `"username/repo"` would be sufficient.
+- `from`
+
+    [Base image](https://docs.docker.com/reference/builder/#from) for
+    building the docker image. Default is `"rocker/r-base:latest"`.
+
+- `latex`
+
+    Is TeX environment needed when rendering the document? Default is `false`.
+
+- `pandoc`
+
+    Should we install pandoc in the container? Default is `true`.
+
+    If pandoc was already installed in the base image, this should be
+    set to `false` to avoid potential errors. For example, for
+    [`rocker/rstudio` images](https://registry.hub.docker.com/u/rocker/rstudio/)
+    and [`bioconductor/...` images](https://www.bioconductor.org/help/docker/),
+    this option will be automatically set to `false` since they already
+    have pandoc installed.
+
+- `syslib`
+
+    Debian/Ubuntu system software packages depended in the document.
+
+    Please also include software packages depended by the R packages
+    included below, such as `gfortran` here required for compiling
+    `randomForest`.
+
+- `cranpkg`
+
+    CRAN packages depended in the document.
+
+    If only `pkgname` is provided, `liftr` will install the _latest_
+    version of the package on CRAN. To improve reproducibility,
+    we recommend to use the package name with a specified version number:
+    `pkgname/pkgversion` (e.g. `ggplot2/1.0.0`), even if the version
+    is the current latest version. Note: `pkgversion` must be provided
+    to install the archived versions of packages.
+
+- `biocpkg`
+
+    Bioconductor packages depended in the document.
+
+- `ghpkg`
+
+    GitHub R packages depended in the document.
+
+    We accept the same format as the `repo` argument in
+    `devtools::install_github`. Normally, `"username/repo"` is sufficient.
 
 # Use `lift()` and `drender()`
 
