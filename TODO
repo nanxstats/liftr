@@ -4,7 +4,7 @@
 
 # infrastructure
 
-- output image name and container name into a `.yml` file with the same name as the RMD for `drender()` runs.
+- output image name and container name into an YAML file for `drender()` runs for image purging later.
 - make purge functions clean things up based on this `yml` file.
 - add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`, add this into vignette.
 - Honor remote packages grammar: https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html instead of GitHub packages only in metadata.

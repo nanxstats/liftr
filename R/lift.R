@@ -1,7 +1,8 @@
 #' Dockerize R Markdown Documents
 #'
 #' @description
-#' Generate \code{Dockerfile} for R Markdown documents.
+#' Containerize R Markdown documents. This function generates
+#' \code{Dockerfile} based on the liftr metadata in the RMD document.
 #'
 #' @details
 #' After running \link{lift}, run \link{drender} on the document to
@@ -21,14 +22,17 @@
 #' @importFrom yaml yaml.load
 #'
 #' @examples
-#' # Dockerized R Markdown document
-#' dir_docker = paste0(tempdir(), '/lift_docker/')
-#' dir.create(dir_docker)
-#' file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
-#' # use lift() to parse Rmd and generate Dockerfile
-#' lift(paste0(dir_docker, "docker.Rmd"))
+#' # copy example file
+#' dir_example = paste0(tempdir(), '/liftr-minimal/')
+#' dir.create(dir_example)
+#' file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_example)
+#'
+#' # containerization
+#' input = paste0(dir_example, "liftr-minimal.Rmd")
+#' lift(input)
+#'
 #' # view generated Dockerfile
-#' readLines(paste0(dir_docker, "Dockerfile"))
+#' readLines(paste0(dir_example, "Dockerfile"))
 
 lift = function(input = NULL, output_dir = NULL) {
 

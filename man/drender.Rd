@@ -5,7 +5,7 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, no_cache = TRUE, ...)
+  container_name = NULL, no_cache = TRUE, output_yaml = TRUE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -18,7 +18,7 @@ If not specified, it will use the same name as the input file.}
 \code{--pull=true -m="1024m" --memory-swap="-1"}.}
 
 \item{container_name}{Docker container name to run.
-If not specified, we will generate and use a random name.}
+If not specified, will use a randomly generated name.}
 
 \item{no_cache}{Logical. Controls the \code{--no-cache} argument
 in \code{docker run}. Setting this to be \code{TRUE} can accelerate
@@ -29,6 +29,10 @@ Default is \code{TRUE}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
+
+\item{purge_info}{Logical. Should we write the Docker container and
+image information to a YAML file for purging later?
+Default is \code{TRUE}.}
 }
 \value{
 Rendered file is written to the same directory of the input file.
@@ -40,7 +44,7 @@ commands later or with the cleanup functions.
 Render dockerized R Markdown documents using Docker containers.
 }
 \details{
-Before using \code{drender()}, run \link{lift} on the document
+Before using \code{drender()}, run \link{lift} on the RMD document
 first to generate the \code{Dockerfile}.
 
 See \code{vignette('liftr-intro')} for details about the extended
@@ -48,17 +52,22 @@ YAML front-matter metadata format and system requirements for
 rendering dockerized R Markdown documents.
 }
 \examples{
-# Dockerized R Markdown document
-# Docker is required to run the example,
-# so make sure we can use `docker` in terminal.
-dir_docker = paste0(tempdir(), '/drender_docker/')
-dir.create(dir_docker)
-file.copy(system.file("examples/docker.Rmd", package = "liftr"), dir_docker)
-docker_input = paste0(dir_docker, "docker.Rmd")
-lift(docker_input)
+# copy example file
+dir_example = paste0(tempdir(), '/liftr-minimal/')
+dir.create(dir_example)
+file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_example)
+
+# containerization
+input = paste0(dir_example, "liftr-minimal.Rmd")
+lift(input)
 \dontrun{
-drender(docker_input)
+# render the document with Docker
+drender(input)
+
 # view rendered document
-browseURL(paste0(dir_docker, "docker.html"))}
+browseURL(paste0(dir_example, "liftr-minimal.html"))
+
+# purge the generated Docker image
+purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
 }
 

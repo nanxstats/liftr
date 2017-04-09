@@ -4,20 +4,33 @@
 #' for rendering the R Markdown document, by running
 #' \code{docker stop} and \code{docker rm} commands.
 #'
-#' @param container_name Name of the container to be stopped and removed.
+#' @param input The YAML file (default output of \code{\link{drender}})
+#' storing the information of the container to be stopped and removed.
+#'
+#' @importFrom yaml yaml.load_file
 #'
 #' @export purge_container
 #'
-#' @return status
+#' @return purge results
 #'
 #' @examples
 #' \dontrun{
-#' purge_container("liftr_container_uuid")}
+#' purge_container("liftr-minimal.docker.yml")}
 
-purge_container = function(container_name) {
+purge_container = function(input) {
+
+  if (is.null(input))
+    stop('missing input file')
+  if (!file.exists(normalizePath(input)))
+    stop('input file does not exist')
+
+  lst = yaml.load_file(normalizePath(input))
+  container_name = lst$'container_name'
+
   # TODO: needs exception handling
   system(paste0("docker stop \"", container_name, "\""))
   system(paste0("docker rm -f \"", container_name, "\""))
+
 }
 
 #' Purge Docker Image
@@ -26,7 +39,10 @@ purge_container = function(container_name) {
 #' for rendering the R Markdown document by
 #' running \code{docker rmi} commands.
 #'
-#' @param image_name Name of the image to be removed.
+#' @param input The YAML file (default output of \code{\link{drender}})
+#' storing the information of the image to be removed.
+#'
+#' @importFrom yaml yaml.load_file
 #'
 #' @export purge_image
 #'
@@ -34,30 +50,19 @@ purge_container = function(container_name) {
 #'
 #' @examples
 #' \dontrun{
-#' purge_image("report")}
+#' purge_image("liftr-minimal.docker.yml")}
 
-purge_image = function(image_name) {
+purge_image = function(input) {
+
+  if (is.null(input))
+    stop('missing input file')
+  if (!file.exists(normalizePath(input)))
+    stop('input file does not exist')
+
+  lst = yaml.load_file(normalizePath(input))
+  image_name = lst$'image_name'
+
   # TODO: needs exception handling
   system(paste0("docker rmi -f \"", image_name, "\""))
-}
 
-#' Purge Everything (Container + Image)
-#'
-#' This function will try to purge the Docker container
-#' and Docker image used for rendering the R Markdown document.
-#'
-#' @param container_name Name of the container to be stopped and removed.
-#' @param image_name Name of the image to be removed.
-#'
-#' @export purge_all
-#'
-#' @return status
-#'
-#' @examples
-#' \dontrun{
-#' purge_all("liftr_container_uuid", "report")}
-
-purge_all = function(container_name, image_name) {
-  liftr::purge_container(container_name)
-  liftr::purge_image(image_name)
 }

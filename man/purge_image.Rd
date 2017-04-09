@@ -4,10 +4,11 @@
 \alias{purge_image}
 \title{Purge Docker Image}
 \usage{
-purge_image(image_name)
+purge_image(input)
 }
 \arguments{
-\item{image_name}{Name of the image to be removed.}
+\item{input}{The YAML file (default output of \code{\link{drender}})
+storing the information of the image to be removed.}
 }
 \value{
 status
@@ -19,6 +20,6 @@ running \code{docker rmi} commands.
 }
 \examples{
 \dontrun{
-purge_image("report")}
+purge_image("liftr-minimal.docker.yml")}
 }
 

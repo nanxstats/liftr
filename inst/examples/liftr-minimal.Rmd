@@ -1,24 +1,26 @@
 ---
-title: "Dockerized R Markdown Document"
-author: "Nan Xiao"
+title: "A Minimal Example for liftr"
+author: "Nan Xiao <<me@nanx.me>>"
 date: "`r Sys.Date()`"
 output:
-  html_document
+  tufte::tufte_html: default
 liftr:
   from: "rocker/r-base:latest"
   maintainer: "Nan Xiao"
   maintainer_email: "me@nanx.me"
   cranpkg:
+    - tufte
     - kernlab
 ---
 
-## Spectral clustering example
+## A spectral clustering example
 
-This is an R Markdown document that could be rendered under a Docker container using `liftr`. The document requires the `specc()` function in the `kernlab` package on CRAN to perform a simple spectral clustering:
+This is an R Markdown document that could be rendered under a Docker container using `liftr`. The document requires the `specc()` function in the `kernlab` package from CRAN to perform a simple spectral clustering:
 
-```{r specc, fig.cap = 'Spectral Clustering of Spirals Data'}
+```{r specc, fig.cap = 'Spectral clustering of spirals data.'}
 library("kernlab")
 data(spirals)
+set.seed(42)
 sc = specc(spirals, centers = 2)
 print(sc)
 plot(spirals, col = sc)

@@ -4,13 +4,14 @@
 \alias{purge_container}
 \title{Purge Docker Container}
 \usage{
-purge_container(container_name)
+purge_container(input)
 }
 \arguments{
-\item{container_name}{Name of the container to be stopped and removed.}
+\item{input}{The YAML file (default output of \code{\link{drender}})
+storing the information of the container to be stopped and removed.}
 }
 \value{
-status
+purge results
 }
 \description{
 This function stops and removes the Docker container used
@@ -19,6 +20,6 @@ for rendering the R Markdown document, by running
 }
 \examples{
 \dontrun{
-purge_container("liftr_container_uuid")}
+purge_container("liftr-minimal.docker.yml")}
 }
 
