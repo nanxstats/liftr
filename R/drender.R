@@ -129,6 +129,6 @@ drender = function(
   system(docker_build_cmd)
   system(docker_run_cmd)
 
-  return(c('image_name' = image_name, 'container_name' = container_name))
+  c('image_name' = image_name, 'container_name' = container_name)
 
   }
