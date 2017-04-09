@@ -5,7 +5,7 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 drender(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, no_cache = TRUE, output_yaml = TRUE, ...)
+  container_name = NULL, no_cache = TRUE, purge_info = TRUE, ...)
 }
 \arguments{
 \item{input}{Input file to render in Docker container.}
@@ -27,12 +27,12 @@ most of the Docker image layers will be cached, with only the
 changed (knitr related) image layer being updated.
 Default is \code{TRUE}.}
 
-\item{...}{Additional arguments passed to
-\code{\link[rmarkdown]{render}}.}
-
 \item{purge_info}{Logical. Should we write the Docker container and
 image information to a YAML file for purging later?
 Default is \code{TRUE}.}
+
+\item{...}{Additional arguments passed to
+\code{\link[rmarkdown]{render}}.}
 }
 \value{
 Rendered file is written to the same directory of the input file.

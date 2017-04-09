@@ -64,7 +64,7 @@
 drender = function(
   input = NULL,
   tag = NULL, build_args = NULL, container_name = NULL,
-  no_cache = TRUE, output_yaml = TRUE, ...) {
+  no_cache = TRUE, purge_info = TRUE, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -140,7 +140,7 @@ drender = function(
     'container_name' = container_name,
     'image_name' = image_name)
 
-  if (output_yaml) {
+  if (purge_info) {
     writeLines(as.yaml(res), con = paste0(
       file_dir(input), '/', file_name_sans(input), '.docker.yml'))
   }
