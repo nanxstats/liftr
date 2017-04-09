@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to liftr"
+title: "A Quick Introduction to liftr"
 author: "Nan Xiao <<https://nanx.me>>"
 date: "`r Sys.Date()`"
 output:
@@ -11,7 +11,7 @@ output:
       in_header: header.html
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{An Introduction to liftr}
+  %\VignetteIndexEntry{A Quick Introduction to liftr}
 ---
 
 # Introduction
@@ -54,8 +54,13 @@ All available metadata fields are expained below.
 
 ## Required metadata
 
-  * `maintainer` - Maintainer name for the `Dockerfile`.
-  * `maintainer_email` - Maintainer email address for the `Dockerfile`.
+- `maintainer`
+
+    Maintainer name for the Dockerfile.
+
+- `maintainer_email`
+
+    Maintainer email address for the Dockerfile.
 
 ## Optional metadata
 
@@ -109,9 +114,9 @@ All available metadata fields are expained below.
     We accept the same format as the `repo` argument in
     `devtools::install_github`. Normally, `"username/repo"` is sufficient.
 
-# Use `lift()` and `drender()`
+# Containerize the Document
 
-After adding proper `liftr` metadata to the document YAML data block, we can use `lift()` to parse the document and generate a `Dockerfile` (it will also generate a `Rabixfile` if necessary).
+After adding proper `liftr` metadata to the document YAML data block, we can use `lift()` to parse the document and generate a Dockerfile.
 
 We will use [docker.Rmd](https://github.com/road2stat/liftr/blob/master/inst/docker.Rmd) included in the package as an example. First, we create a new directory and copy the example document to the directory:
 
@@ -121,7 +126,7 @@ dir.create(dir_docker)
 file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
 ```
 
-Then, we use `lift()` to parse the document and generate `Dockerfile`:
+Then, we use `lift()` to parse the document and generate Dockerfile:
 
 ```{r, eval = FALSE}
 library("liftr")
@@ -129,7 +134,9 @@ docker_input = paste0(dir_docker, "docker.Rmd")
 lift(docker_input)
 ```
 
-After successfully running `lift()` on `docker.Rmd`, the `Dockerfile` will be in the `~/liftr_docker/` directory.
+After successfully running `lift()` on `docker.Rmd`, the Dockerfile will be in the `~/liftr_docker/` directory.
+
+# Render the Document
 
 Now we can use `drender()` on `docker.Rmd` to render the document to a html file, under a Docker container:
 
@@ -137,7 +144,7 @@ Now we can use `drender()` on `docker.Rmd` to render the document to a html file
 drender(docker_input)
 ```
 
-The `drender()` function will parse the `Dockerfile`, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
+The `drender()` function will parse the Dockerfile, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
 
 In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `drender()` functions to render the document as above.
 
@@ -145,14 +152,18 @@ In order to share the dockerized R Markdown document, simply share the `.Rmd` fi
 
 Docker is an essential system requirement when using liftr to render the R Markdown documents. Besides Linux, Docker Engine has a much improved near-native support for Mac and Windows since 2016, so there should not be a problem if you use the officially recommended installation. If not, simply make sure that you can run `docker` under shell. For example, to install Docker under Ubuntu:
 
-    sudo apt-get install docker.io
+```bash
+sudo apt-get install docker.io
+```
 
 We should configure Docker to [run without sudo](https://docs.docker.com/installation/ubuntulinux/#create-a-docker-group). To avoid `sudo` when using the `docker` command, simply create a group named `docker` and add yourself to it:
 
-    sudo usermod -aG docker your-username
+```bash
+sudo usermod -aG docker your-username
+```
 
 Here is a [detailed guide]((https://docs.docker.com/installation/)) for installing Docker on the other platforms.
 
 <hr>
 
-[https://liftr.me](https://liftr.me)
+Project website: [https://liftr.me](https://liftr.me)
