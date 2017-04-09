@@ -8,7 +8,6 @@
 - make purge functions clean things up based on this `yml` file.
 - add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`, add this into vignette.
 - Honor remote packages grammar: https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html instead of GitHub packages only in metadata.
-- convert the metadata field list into an Markdown definition list in vignette.
 
 # ui
 
