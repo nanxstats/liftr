@@ -14,6 +14,10 @@ vignette: >
   %\VignetteIndexEntry{Dockerize R Markdown Documents}
 ---
 
+# Introduction
+
+In essence, liftr aims to solve persistent reproducible reporting. To solve this problem, liftr extended the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses Docker to containerize and render R Markdown documents.
+
 # Metadata for Containerization
 
 To dockerize your R Markdown document, the first step is adding `liftr` options in the YAML front-matter of a document. For example:

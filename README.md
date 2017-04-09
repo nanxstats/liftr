@@ -5,7 +5,7 @@
 [![CRAN Version](https://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/liftr)](https://cranlogs.r-pkg.org/badges/liftr)
 
-`liftr` extends the [R Markdown](http://rmarkdown.rstudio.com) metadata format, helps you generate `Dockerfile` for rendering documents in Docker containers.
+In essence, liftr aims to solve persistent reproducible reporting. To solve this problem, liftr extended the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses Docker to containerize and render R Markdown documents.
 
 ## Installation
 
@@ -15,7 +15,7 @@ To download and install `liftr` from CRAN:
 install.packages("liftr")
 ```
 
-Or, you can try the development version on GitHub:
+Or try the development version on GitHub:
 
 ```r
 # install.packages("devtools")
