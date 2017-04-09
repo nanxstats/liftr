@@ -1,5 +1,5 @@
 ---
-title: "Dockerize R Markdown Documents"
+title: "An Introduction to liftr"
 author: "Nan Xiao <<https://nanx.me>>"
 date: "`r Sys.Date()`"
 output:
@@ -11,7 +11,7 @@ output:
       in_header: header.html
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Dockerize R Markdown Documents}
+  %\VignetteIndexEntry{An Introduction to liftr}
 ---
 
 # Introduction
