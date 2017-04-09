@@ -23,3 +23,7 @@ devtools::install_github("road2stat/liftr")
 ```
 
 See the [package vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.
+
+## Video Demo
+
+<a href="https://vimeo.com/212438526"><img src="https://i.imgur.com/VYCiOPu.png" width="100%" alt="Dockerize and Render R Markdown Documents with liftr"></a>
