@@ -35,9 +35,6 @@ file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_exam
 input = paste0(dir_example, "liftr-minimal.Rmd")
 lift(input)
 
-# view generated Dockerfile
-readLines(paste0(dir_example, "Dockerfile"))
-
 \dontrun{
 # render the document with Docker
 render_docker(input)
