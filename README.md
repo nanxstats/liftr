@@ -5,7 +5,7 @@
 [![CRAN Version](https://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/liftr)](https://cranlogs.r-pkg.org/badges/liftr)
 
-In essence, liftr aims to solve persistent reproducible reporting. To solve this problem, liftr extended the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses Docker to containerize and render R Markdown documents.
+liftr aims to solve the problem of _persistent reproducible reporting_. To achieve this goal, it extends the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses Docker to containerize and render R Markdown documents.
 
 ## Installation
 
