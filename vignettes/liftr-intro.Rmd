@@ -138,15 +138,15 @@ After successfully running `lift()` on `docker.Rmd`, the Dockerfile will be in t
 
 # Render the Document
 
-Now we can use `drender()` on `docker.Rmd` to render the document to a html file, under a Docker container:
+Now we can use `render_docker()` on `docker.Rmd` to render the document to a html file, under a Docker container:
 
 ```{r, eval = FALSE}
-drender(docker_input)
+render_docker(docker_input)
 ```
 
-The `drender()` function will parse the Dockerfile, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
+The function `render_docker()` will parse the Dockerfile, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
 
-In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `drender()` functions to render the document as above.
+In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `render_docker()` functions to render the document as above.
 
 # System Requirements
 

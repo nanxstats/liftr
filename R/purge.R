@@ -4,7 +4,7 @@
 #' for rendering the R Markdown document, by running
 #' \code{docker stop} and \code{docker rm} commands.
 #'
-#' @param input The YAML file (default output of \code{\link{drender}})
+#' @param input The YAML file (default output of \code{\link{render_docker}})
 #' storing the information of the container to be stopped and removed.
 #'
 #' @importFrom yaml yaml.load_file
@@ -39,7 +39,7 @@ purge_container = function(input) {
 #' for rendering the R Markdown document by
 #' running \code{docker rmi} commands.
 #'
-#' @param input The YAML file (default output of \code{\link{drender}})
+#' @param input The YAML file (default output of \code{\link{render_docker}})
 #' storing the information of the image to be removed.
 #'
 #' @importFrom yaml yaml.load_file

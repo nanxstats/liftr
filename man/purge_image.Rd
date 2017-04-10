@@ -7,7 +7,7 @@
 purge_image(input)
 }
 \arguments{
-\item{input}{The YAML file (default output of \code{\link{drender}})
+\item{input}{The YAML file (default output of \code{\link{render_docker}})
 storing the information of the image to be removed.}
 }
 \value{

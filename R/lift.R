@@ -5,7 +5,7 @@
 #' \code{Dockerfile} based on the liftr metadata in the RMD document.
 #'
 #' @details
-#' After running \link{lift}, run \link{drender} on the document to
+#' After running \link{lift}, run \link{render_docker} on the document to
 #' render the Dockerized R Markdown document using Docker containers.
 #' See \code{vignette('liftr-intro')} for details about the extended
 #' YAML front-matter metadata format used by liftr.

@@ -4,8 +4,8 @@
 #' Render dockerized R Markdown documents using Docker containers.
 #'
 #' @details
-#' Before using \code{drender()}, run \link{lift} on the RMD document
-#' first to generate the \code{Dockerfile}.
+#' Before using this function, please run \code{\link{lift}} on the
+#' RMD document first to generate the \code{Dockerfile}.
 #'
 #' See \code{vignette('liftr-intro')} for details about the extended
 #' YAML front-matter metadata format and system requirements for
@@ -36,7 +36,7 @@
 #' returned. You will be able to manage them with \code{docker}
 #' commands later or with the cleanup functions.
 #'
-#' @export drender
+#' @export render_docker
 #'
 #' @importFrom rmarkdown render
 #' @importFrom yaml as.yaml
@@ -53,7 +53,7 @@
 #' lift(input)
 #' \dontrun{
 #' # render the document with Docker
-#' drender(input)
+#' render_docker(input)
 #'
 #' # view rendered document
 #' browseURL(paste0(dir_example, "liftr-minimal.html"))
@@ -61,7 +61,7 @@
 #' # purge the generated Docker image
 #' purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
 
-drender = function(
+render_docker = function(
   input = NULL,
   tag = NULL, build_args = NULL, container_name = NULL,
   no_cache = TRUE, purge_info = TRUE, ...) {
@@ -137,8 +137,10 @@ drender = function(
 
   # output container and image info before rendering
   res = list(
-    'container_name' = container_name,
-    'image_name' = image_name)
+    'container_name'   = container_name,
+    'image_name'       = image_name,
+    'docker_build_cmd' = docker_build_cmd,
+    'docker_run_cmd'   = docker_run_cmd)
 
   if (purge_info) {
     writeLines(as.yaml(res), con = paste0(
@@ -149,7 +151,12 @@ drender = function(
   system(docker_build_cmd)
   system(docker_run_cmd)
 
-  # return container and image info
   res
 
   }
+
+#' @rdname render_docker
+#' @export drender
+drender = function(...) {
+  .Deprecated('render_docker')
+}
