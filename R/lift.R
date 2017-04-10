@@ -1,4 +1,4 @@
-#' Dockerize R Markdown Documents
+#' Containerize R Markdown Documents
 #'
 #' @description
 #' Containerize R Markdown documents. This function generates

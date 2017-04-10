@@ -20,7 +20,7 @@ In essence, liftr aims to solve the problem of _persistent reproducible reportin
 
 # Metadata for Containerization
 
-To dockerize your R Markdown document, the first step is adding `liftr` options in the YAML front-matter of a document. For example:
+To containerize your R Markdown document, the first step is adding `liftr` options in the YAML front-matter of a document. For example:
 
 ```yaml
 ---

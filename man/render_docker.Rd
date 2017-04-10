@@ -38,10 +38,15 @@ Default is \code{TRUE}.}
 \code{\link[rmarkdown]{render}}.}
 }
 \value{
-Rendered file is written to the same directory of the input file.
-A character vector with the image name and container name will be
-returned. You will be able to manage them with \code{docker}
-commands later or with the cleanup functions.
+\itemize{
+\item A list containing the image name, container name,
+and Docker commands will be returned.
+\item An YAML file ending with \code{.docker.yml} storing the
+image name, container name, and Docker commands for rendering
+this document will be written to the directory of the input file.
+\item The rendered output will be written to the directory of the
+input file.
+}
 }
 \description{
 Render dockerized R Markdown documents using Docker containers.
@@ -50,9 +55,12 @@ Render dockerized R Markdown documents using Docker containers.
 Before using this function, please run \code{\link{lift}} on the
 RMD document first to generate the \code{Dockerfile}.
 
-See \code{vignette('liftr-intro')} for details about the extended
-YAML front-matter metadata format and system requirements for
-rendering dockerized R Markdown documents.
+After a successful rendering, you will be able to clean up the
+Docker image with \code{\link{purge_image}}.
+
+Please see \code{vignette('liftr-intro')} for details of the extended
+YAML metadata format and system requirements for rendering dockerized
+R Markdown documents.
 }
 \examples{
 # copy example file

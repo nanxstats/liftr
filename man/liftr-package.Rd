@@ -3,9 +3,9 @@
 \docType{package}
 \name{liftr-package}
 \alias{liftr-package}
-\title{Dockerize R Markdown Documents}
+\title{Containerize R Markdown Documents}
 \description{
-Persistent reproducible reporting via
+Persistent reproducible reporting by
 containerization of R Markdown documents.
 }
 \details{

@@ -1,6 +1,6 @@
 Package: liftr
 Type: Package
-Title: Dockerize R Markdown Documents
+Title: Containerize R Markdown Documents
 Version: 0.4.9000
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre")),
@@ -8,7 +8,7 @@ Authors@R: c(
     person("Tengfei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
     )
 Maintainer: Nan Xiao <me@nanx.me>
-Description: Persistent reproducible reporting via containerization of R Markdown documents.
+Description: Persistent reproducible reporting by containerization of R Markdown documents.
 License: GPL-3 | file LICENSE
 SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>)
 VignetteBuilder: knitr

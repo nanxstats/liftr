@@ -2,7 +2,7 @@
 
 ## New Features
 
-- Added RStudio addins as shortcuts to create, dockerize, and render R Markdown documents.
+- Added RStudio addins as shortcuts to create, containerize, and render R Markdown documents.
 - Added new argument `no_cache` to improve rendering speed and fix [#18](https://github.com/road2stat/liftr/issues/18).
 - Added new argument `purge_info` to `render_docker()`. This argument controls whether to output the Docker image and container name into an YAML file for purging purposes later.
 - Separate the creation and removal of Docker containers and images: removed the old argument `reset` in `render_docker()`; added `purge_container()` and `purge_image()` for cleaning up.

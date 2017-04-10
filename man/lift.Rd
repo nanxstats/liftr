@@ -2,7 +2,7 @@
 % Please edit documentation in R/lift.R
 \name{lift}
 \alias{lift}
-\title{Dockerize R Markdown Documents}
+\title{Containerize R Markdown Documents}
 \usage{
 lift(input = NULL, output_dir = NULL)
 }

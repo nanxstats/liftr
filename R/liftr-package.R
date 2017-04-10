@@ -1,6 +1,6 @@
-#' Dockerize R Markdown Documents
+#' Containerize R Markdown Documents
 #'
-#' Persistent reproducible reporting via
+#' Persistent reproducible reporting by
 #' containerization of R Markdown documents.
 #'
 #' \tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
