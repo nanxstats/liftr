@@ -118,33 +118,34 @@ All available metadata fields are expained below.
 
 After adding proper `liftr` metadata to the document YAML data block, we can use `lift()` to parse the document and generate a Dockerfile.
 
-We will use [docker.Rmd](https://github.com/road2stat/liftr/blob/master/inst/docker.Rmd) included in the package as an example. First, we create a new directory and copy the example document to the directory:
+We will use [a minimal example](https://github.com/road2stat/liftr/blob/master/inst/examples/liftr-minimal.Rmd) included in the liftr package. First, we create a new directory and copy the R Markdown document into the directory:
 
 ```{r, eval = FALSE}
-dir_docker = "~/liftr_docker/"
-dir.create(dir_docker)
-file.copy(system.file("docker.Rmd", package = "liftr"), dir_docker)
+dir_example = "~/liftr-minimal/"
+dir.create(dir_example)
+file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_example)
 ```
 
-Then, we use `lift()` to parse the document and generate Dockerfile:
+Then, we use `lift()` to parse the document and generate the Dockerfile:
 
 ```{r, eval = FALSE}
 library("liftr")
-docker_input = paste0(dir_docker, "docker.Rmd")
-lift(docker_input)
+
+input = paste0(dir_example, "liftr-minimal.Rmd")
+lift(input)
 ```
 
-After successfully running `lift()` on `docker.Rmd`, the Dockerfile will be in the `~/liftr_docker/` directory.
+After successfully running `lift()`, the Dockerfile will be in the `~/liftr-minimal/` directory.
 
 # Render the Document
 
-Now we can use `render_docker()` on `docker.Rmd` to render the document to a html file, under a Docker container:
+Now we can use `render_docker()` to render the document into an HTML file, under a Docker container:
 
 ```{r, eval = FALSE}
-render_docker(docker_input)
+render_docker(input)
 ```
 
-The function `render_docker()` will parse the Dockerfile, build a new Docker image, and run a container to render the input document. If successfully rendered, the output `docker.html` will be in the `~/liftr_docker/` directory. You can also passed additional arguments in `rmarkdown::render` to this function.
+The function `render_docker()` will parse the Dockerfile, build a new Docker image, and run a Docker container to render the input document. If successfully rendered, the output `liftr-minimal.html` will be in the `~/liftr-minimal/` directory. You can also pass additional arguments in `rmarkdown::render` to this function.
 
 In order to share the dockerized R Markdown document, simply share the `.Rmd` file. Other users can use the `lift()` and `render_docker()` functions to render the document as above.
 
