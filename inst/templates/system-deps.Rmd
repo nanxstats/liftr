@@ -1,1 +1,1 @@
-RUN apt-get update -qq && apt-get install -t unstable -y --no-install-recommends
+RUN apt-get update -qq && apt-get install -y --no-install-recommends

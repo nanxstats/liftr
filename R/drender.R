@@ -100,7 +100,7 @@ drender = function(
     "\" -u `id -u $USER` -v \"",
     file_dir(dockerfile_path), ":", "/liftrroot/\" ",
     image_name,
-    " /usr/bin/Rscript -e \"library('knitr');library('rmarkdown');",
+    " Rscript -e \"library('knitr');library('rmarkdown');",
     "library('shiny');setwd('/liftrroot/');")
 
   # process additional arguments passed to rmarkdown::render()
