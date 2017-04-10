@@ -53,22 +53,23 @@
 #' @examples
 ## Included in \dontrun{} since users need Docker installed to run them.
 #' # copy example file
-#' dir_example = paste0(tempdir(), '/liftr-minimal/')
+#' dir_example = paste0(tempdir(), '/liftr-tidyverse/')
 #' dir.create(dir_example)
-#' file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_example)
+#' file.copy(system.file("examples/liftr-tidyverse.Rmd", package = "liftr"), dir_example)
 #'
 #' # containerization
-#' input = paste0(dir_example, "liftr-minimal.Rmd")
+#' input = paste0(dir_example, "liftr-tidyverse.Rmd")
 #' lift(input)
+#'
 #' \dontrun{
 #' # render the document with Docker
 #' render_docker(input)
 #'
 #' # view rendered document
-#' browseURL(paste0(dir_example, "liftr-minimal.html"))
+#' browseURL(paste0(dir_example, "liftr-tidyverse.pdf"))
 #'
 #' # purge the generated Docker image
-#' purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
+#' purge_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
 
 render_docker = function(
   input = NULL,

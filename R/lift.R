@@ -31,8 +31,15 @@
 #' input = paste0(dir_example, "liftr-minimal.Rmd")
 #' lift(input)
 #'
-#' # view generated Dockerfile
-#' readLines(paste0(dir_example, "Dockerfile"))
+#' \dontrun{
+#' # render the document with Docker
+#' render_docker(input)
+#'
+#' # view rendered document
+#' browseURL(paste0(dir_example, "liftr-minimal.html"))
+#'
+#' # purge the generated Docker image
+#' purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
 
 lift = function(input = NULL, output_dir = NULL) {
 
