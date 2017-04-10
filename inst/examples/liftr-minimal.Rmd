@@ -34,9 +34,9 @@ The document front-matter metadata includes the options for `liftr`, which is us
 rmarkdown::metadata$liftr
 ```
 
-## System and session information
+## Session information
 
-The R session information of the Docker container is shown below.
+The R session information for compiling this document is shown below.
 
 ```{r session}
 sessionInfo()

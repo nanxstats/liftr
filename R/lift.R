@@ -99,7 +99,7 @@ lift = function(input = NULL, output_dir = NULL) {
   if (!is.null(opt_list$latex)) {
     if (opt_list$latex == TRUE) {
       liftr_texlive = paste(
-        readLines(system.file('templates/texlive.Rmd', package = 'liftr')),
+        readLines(system.file('templates/doc-texlive.Rmd', package = 'liftr')),
         collapse = '\n')
     } else {
       liftr_texlive = NULL

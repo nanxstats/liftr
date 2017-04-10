@@ -22,7 +22,7 @@ Or try the development version on GitHub:
 devtools::install_github("road2stat/liftr")
 ```
 
-See the [package vignette](https://cran.r-project.org/web/packages/liftr/vignettes/liftr-intro.html) (can also be opened with `vignette("liftr-intro")` in R) for a quick-start guide.
+See the [package vignettes](https://liftr.me/articles/) for a quick-start guide.
 
 ## Video Demo
 

@@ -1,0 +1,92 @@
+---
+title: "Explore tidyverse with liftr"
+author: "Nan Xiao <<me@nanx.me>>"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::pdf_document:
+    toc: true
+    number_sections: true
+liftr:
+  from: "rocker/tidyverse:latest"
+  maintainer: "Nan Xiao"
+  maintainer_email: "me@nanx.me"
+  pandoc: false
+  latex: true
+  cranpkg:
+    - nycflights13
+---
+
+\clearpage
+
+# ggplot2
+
+The example is from: https://github.com/tidyverse/ggplot2.
+
+```{r}
+library("ggplot2")
+
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+# tibble
+
+The examples are from: https://github.com/tidyverse/tibble.
+
+```{r}
+library("tibble")
+as_tibble(iris)
+
+tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+
+tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5)
+```
+
+# purrr
+
+The example is from: https://github.com/tidyverse/purrr.
+
+```{r}
+library("purrr")
+
+mtcars %>%
+  split(.$cyl) %>% # from base R
+  map(~ lm(mpg ~ wt, data = .)) %>%
+  map(summary) %>%
+  map_dbl("r.squared")
+```
+
+# dplyr
+
+The examples are from: https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html.
+
+```{r}
+library("dplyr")
+library("nycflights13")
+
+filter(flights, month == 1, day == 1)
+
+slice(flights, 1:10)
+
+arrange(flights, year, month, day)
+
+select(flights, year, month, day)
+
+mutate(flights,
+  gain = arr_delay - dep_delay,
+  speed = distance / air_time * 60)
+
+summarise(flights,
+  delay = mean(dep_delay, na.rm = TRUE))
+```
+
+# Session information
+
+The R session information for compiling this document is shown below.
+
+```{r session}
+sessionInfo()
+```
