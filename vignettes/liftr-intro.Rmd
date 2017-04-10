@@ -16,7 +16,7 @@ vignette: >
 
 # Introduction
 
-In essence, liftr aims to solve the problem of _persistent reproducible reporting_. To achieve this goal, it extends the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses Docker to containerize and render R Markdown documents.
+In essence, liftr aims to solve the problem of _persistent reproducible reporting_. To achieve this goal, it extends the [R Markdown](http://rmarkdown.rstudio.com) metadata format, and uses [Docker](https://www.docker.com) to containerize and render R Markdown documents.
 
 # Metadata for Containerization
 
