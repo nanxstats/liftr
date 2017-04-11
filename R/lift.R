@@ -77,113 +77,29 @@ lift = function(input = NULL, output_dir = NULL) {
   opt_list = opt_all_list$liftr
 
   # base image
-  liftr_from = if (!is.null(opt_list$from))
-    opt_list$from else 'rocker/r-base:latest'
-
+  liftr_from       = parse_from(opt_list$from)
   # maintainer's name
-  if (!is.null(opt_list$maintainer)) {
-    liftr_maintainer = opt_list$maintainer
-  } else {
-    stop('Cannot find `maintainer` option in file header')
-  }
-
+  liftr_maintainer = parse_maintainer(opt_list$maintainer)
   # maintainer's email
-  if (!is.null(opt_list$email)) {
-    liftr_email = opt_list$email
-  } else {
-    stop('Cannot find field `email` in header')
-  }
-
+  liftr_email      = parse_email(opt_list$email)
   # system dependencies
-  if (!is.null(opt_list$sysdeps)) {
-    liftr_sysdeps = paste(
-      readLines(system.file('templates/system-deps.Rmd', package = 'liftr')),
-      paste(opt_list$sysdeps, collapse = ' '), sep = ' ')
-  } else {
-    liftr_sysdeps = NULL
-  }
-
+  liftr_sysdeps    = parse_sysdeps(opt_list$sysdeps)
   # texlive
-  if (!is.null(opt_list$texlive)) {
-    if (opt_list$texlive == TRUE) {
-      liftr_texlive = paste(
-        readLines(system.file('templates/doc-texlive.Rmd', package = 'liftr')),
-        collapse = '\n')
-    } else {
-      liftr_texlive = NULL
-    }
-  } else {
-    liftr_texlive = NULL
-  }
-
+  liftr_texlive    = parse_texlive(opt_list$texlive)
   # pandoc
-  # this solves https://github.com/road2stat/liftr/issues/12
-  if (is_from_bioc(liftr_from) | is_from_rstudio(liftr_from)) {
-    liftr_pandoc = NULL
-  } else {
-    if (!is.null(opt_list$pandoc)) {
-      if (opt_list$pandoc == FALSE) {
-        liftr_pandoc = NULL
-      } else {
-        liftr_pandoc = paste(readLines(
-          system.file('templates/doc-pandoc.Rmd', package = 'liftr')), collapse = '\n')
-      }
-    } else {
-      liftr_pandoc = paste(readLines(
-        system.file('templates/doc-pandoc.Rmd', package = 'liftr')), collapse = '\n')
-    }
-  }
+  liftr_pandoc     = parse_pandoc(liftr_from, opt_list$pandoc)
+  # CRAN packages
+  liftr_cran       = parse_cran(opt_list$cran)
+  # Bioconductor packages
+  liftr_bioc       = parse_bioc(opt_list$bioc)
+  # remote packages
+  liftr_remotes    = parse_remotes(opt_list$remotes)
+  # custom Dockerfile snippet
+  liftr_include    = parse_include(input, opt_list$include)
 
   # factory packages
   liftr_factory = quote_str(c(
     'devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl'))
-
-  # CRAN packages
-  if (!is.null(opt_list$cran)) {
-    liftr_cran = quote_str(opt_list$cran)
-    tmp = tempfile()
-    invisible(knit(
-      input = system.file('templates/pkg-cran.Rmd', package = 'liftr'),
-      output = tmp, quiet = TRUE))
-    liftr_cran = readLines(tmp)
-  } else {
-    liftr_cran = NULL
-  }
-
-  # Bioconductor packages
-  if (!is.null(opt_list$bioc)) {
-    liftr_bioc = quote_str(opt_list$bioc)
-    tmp = tempfile()
-    invisible(knit(
-      input = system.file('templates/pkg-bioc.Rmd', package = 'liftr'),
-      output = tmp, quiet = TRUE))
-    liftr_bioc = readLines(tmp)
-  } else {
-    liftr_bioc = NULL
-  }
-
-  # remote packages
-  if (!is.null(opt_list$remotes)) {
-    liftr_remotes = quote_str(opt_list$remotes)
-    tmp = tempfile()
-    invisible(knit(
-      input = system.file('templates/pkg-remotes.Rmd', package = 'liftr'),
-      output = tmp, quiet = TRUE))
-    liftr_remotes = readLines(tmp)
-  } else {
-    liftr_remotes = NULL
-  }
-
-  # custom Dockerfile snippet
-  if (!is.null(opt_list$include)) {
-    include_file_path = normalizePath(
-      paste0(file_dir(input), '/', opt_list$include))
-    if (!file.exists(include_file_path))
-      stop('include file does not exist')
-    liftr_include = paste(readLines(include_file_path), collapse = '\n')
-  } else {
-    liftr_include = NULL
-  }
 
   # write output files
   if (is.null(output_dir)) output_dir = file_dir(input)
