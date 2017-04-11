@@ -22,12 +22,12 @@ Or try the development version on GitHub:
 devtools::install_github("road2stat/liftr")
 ```
 
-See the [package vignettes](https://liftr.me/articles/) for a quick-start guide.
+See the [package vignettes](https://liftr.me/articles/) for a quick-start guide. A video demo is [here](https://vimeo.com/212438526).
 
 ## Workflow
 
 <img src="https://i.imgur.com/NckhCCc.png" width="100%" alt="Containerize R Markdown Documents with liftr">
 
-## Video Demo
+## License
 
-<a href="https://vimeo.com/212438526"><img src="https://i.imgur.com/VYCiOPu.png" width="100%" alt="Dockerize and Render R Markdown Documents with liftr"></a>
+liftr is free and open source software, licensed under GPL-3.
