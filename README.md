@@ -9,7 +9,7 @@ liftr aims to solve the problem of _persistent reproducible reporting_. To achie
 
 ## Installation
 
-To download and install `liftr` from CRAN:
+Install liftr from CRAN:
 
 ```r
 install.packages("liftr")
@@ -22,7 +22,7 @@ Or try the development version on GitHub:
 devtools::install_github("road2stat/liftr")
 ```
 
-See the [package vignettes](https://liftr.me/articles/) for a quick-start guide. A video demo is [here](https://vimeo.com/212438526).
+[Browse the vignettes](https://liftr.me/articles/) for a quick-start. A video demo is [here](https://vimeo.com/212438526).
 
 ## Workflow
 
