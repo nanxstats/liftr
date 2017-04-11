@@ -4,7 +4,6 @@
 
 # infrastructure
 
-- add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`, add this into vignette. This potentially solves https://github.com/road2stat/liftr/issues/21.
 - add BioC RNA-Seq workflow example.
 
 # ui
