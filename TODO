@@ -1,14 +1,6 @@
-# misc
-
-- merge the following todo list into `news.md` when they are done
-
-# infrastructure
-
-- add BioC RNA-Seq workflow example.
-
 # ui
 
-- add RStudio addins to create, containerize, and render RMD files.
+- add RStudio addins to containerize and render RMD files.
 
 # doc
 
