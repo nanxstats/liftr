@@ -22,7 +22,7 @@ Or try the development version on GitHub:
 devtools::install_github("road2stat/liftr")
 ```
 
-[Browse the vignettes](https://liftr.me/articles/) for a quick-start. A video demo is [here](https://vimeo.com/212438526).
+[Browse the vignettes](https://liftr.me/articles/) or the [demo video](https://vimeo.com/212815497) for a quick-start.
 
 ## Workflow
 
