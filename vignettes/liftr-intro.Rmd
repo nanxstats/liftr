@@ -183,7 +183,7 @@ We should configure Docker to [run without sudo](https://docs.docker.com/install
 sudo usermod -aG docker your-username
 ```
 
-Here is a [detailed guide]((https://docs.docker.com/installation/)) for installing Docker on the other platforms.
+Here is a [detailed guide](https://docs.docker.com/engine/installation/) for installing Docker on the other platforms.
 
 <hr>
 
