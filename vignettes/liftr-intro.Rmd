@@ -45,6 +45,7 @@ liftr:
     - Gviz
   remotes:
     - "road2stat/liftr"
+  include: "DockerfileSnippet"
 ---
 ```
 
@@ -112,6 +113,16 @@ All available metadata fields are expained below.
     The remote package [naming specification](https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html)
     from devtools is accepted here. Packages can be installed from GitHub,
     Bitbucket, Git/SVN servers, URLs, etc.
+
+- `include`
+
+    The path to a text file that contains custom Dockerfile snippet.
+    The snippet will be included in the generated Dockerfile.
+    This can be used to install additional software packages or
+    further configure the system environment.
+
+    Note that this file should be in the same directory as the
+    input R Markdown file.
 
 # Containerize the Document
 

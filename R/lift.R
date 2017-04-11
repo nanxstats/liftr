@@ -174,6 +174,17 @@ lift = function(input = NULL, output_dir = NULL) {
     liftr_remotes = NULL
   }
 
+  # custom Dockerfile snippet
+  if (!is.null(opt_list$include)) {
+    include_file_path = normalizePath(
+      paste0(file_dir(input), '/', opt_list$include))
+    if (!file.exists(include_file_path))
+      stop('include file does not exist')
+    liftr_include = paste(readLines(include_file_path), collapse = '\n')
+  } else {
+    liftr_include = NULL
+  }
+
   # write output files
   if (is.null(output_dir)) output_dir = file_dir(input)
 
