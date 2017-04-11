@@ -28,6 +28,15 @@ devtools::install_github("road2stat/liftr")
 
 <img src="https://i.imgur.com/AKveypK.png" width="100%" alt="Containerize R Markdown Documents with liftr">
 
+## Events
+
+| Time              | Event  | Location |
+|:------------------|:-------|:---------|
+| May 20, 2017 | [The 10th China-R Conference](http://china-r.org/) (talk) | Tsinghua University, Beijng, China |
+| April 18, 2017 | [DockerCon 2017](http://2017.dockercon.com/) (talk) | Austin Convention Center, Austin, TX |
+| December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) (talk) | University of Chicago, Chicago, IL |
+| July 21, 2015 | [BioC 2015](https://bioconductor.org/help/course-materials/2015/BioC2015/) (workshop) | Fred Hutchinson Cancer Research Center, Seattle, WA |
+
 ## License
 
 liftr is free and open source software, licensed under GPL-3.
