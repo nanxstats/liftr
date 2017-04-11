@@ -1,12 +1,17 @@
-parse_from = function(from)
-  if (!is.null(from)) from else 'rocker/r-base:latest'
+parse_from = function(from) {
+  if (!is.null(from)) from else
+    'rocker/r-base:latest'
+}
 
-parse_maintainer = function(maintainer)
+parse_maintainer = function(maintainer) {
   if (!is.null(maintainer)) maintainer else
     stop('Cannot find `maintainer` in header')
+}
 
-parse_email = function(email)
-  if (!is.null(email)) email else stop('Cannot find `email` in header')
+parse_email = function(email) {
+  if (!is.null(email)) email else
+    stop('Cannot find `email` in header')
+}
 
 parse_sysdeps = function(sysdeps) {
   if (!is.null(sysdeps))
