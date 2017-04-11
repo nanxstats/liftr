@@ -31,3 +31,15 @@ is_from_bioc = function (x) substr(str_trim(x), 1L, 13L) == 'bioconductor/'
 #' @importFrom stringr str_trim
 #' @noRd
 is_from_rstudio = function (x) substr(str_trim(x), 1L, 14L) == 'rocker/rstudio'
+
+# remove consecutive blank lines and only keep one
+sanitize_blank = function(txt) {
+  blank = which(txt == "")
+  # if no blank lines at all
+  if (length(blank) == 0L) return(txt)
+  idx = which(diff(blank) == 1L) + 1L
+  # if no consecutive blank lines
+  if (length(idx) == 0L) return(txt)
+  txt = txt[-blank[idx]]
+  txt
+}

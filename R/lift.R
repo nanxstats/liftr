@@ -103,10 +103,17 @@ lift = function(input = NULL, output_dir = NULL) {
 
   # write output files
   if (is.null(output_dir)) output_dir = file_dir(input)
+  output_dockerfile = paste0(normalizePath(output_dir), '/Dockerfile')
 
   invisible(knit(
     system.file('templates/base.Rmd', package = 'liftr'),
-    output = paste0(normalizePath(output_dir), '/Dockerfile'),
-    quiet = TRUE))
+    output = output_dockerfile, quiet = TRUE))
+
+  # remove consecutive blank lines
+  out = readLines(output_dockerfile)
+  out = sanitize_blank(out)
+  writeLines(out, output_dockerfile)
+
+  invisible(out)
 
   }

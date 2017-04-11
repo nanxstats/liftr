@@ -22,7 +22,9 @@ RUN  rm -f /var/lib/dpkg/available \
 RUN Rscript -e "install.packages(c(`r liftr_factory`), repos = 'https://cran.rstudio.com')"
 
 `r liftr_cran`
+
 `r liftr_bioc`
+
 `r liftr_remotes`
 
 `r liftr_include`
