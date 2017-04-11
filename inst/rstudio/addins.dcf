@@ -1,0 +1,14 @@
+Name: 📦 Containerize
+Description: Containerize the R Markdown document.
+Binding: addin_lift
+Interactive: false
+
+Name: 🎉 Containerize + Render
+Description: Containerize and render the R Markdown document.
+Binding: addin_lift_render_docker
+Interactive: false
+
+Name: 🗑 Purge Docker Image
+Description: Purge the Docker image used to render the R Markdown document.
+Binding: addin_purge_image
+Interactive: false

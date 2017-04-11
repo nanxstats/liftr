@@ -21,4 +21,6 @@ Imports:
     knitr,
     rmarkdown,
     stringr
+Suggests:
+    rstudioapi
 RoxygenNote: 5.0.1
