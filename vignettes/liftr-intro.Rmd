@@ -32,20 +32,18 @@ output:
     highlight: haddock
     theme: readable
 liftr:
-  maintainer: "Author Name"
-  maintainer_email: "name@example.com"
+  maintainer: "Maintainer Name"
+  email: "name@example.com"
   from: "rocker/r-base:latest"
-  latex: false
   pandoc: true
-  syslib:
+  texlive: false
+  sysdeps:
     - gfortran
-    - samtools
-  cranpkg:
+  cran:
     - randomForest
-  biocpkg:
+  bioc:
     - Gviz
-    - ggbio
-  ghpkg:
+  remotes:
     - "road2stat/liftr"
 ---
 ```
@@ -56,11 +54,11 @@ All available metadata fields are expained below.
 
 - `maintainer`
 
-    Maintainer name for the Dockerfile.
+    Maintainer's name for the Dockerfile.
 
-- `maintainer_email`
+- `email`
 
-    Maintainer email address for the Dockerfile.
+    Maintainer's email address for the Dockerfile.
 
 ## Optional metadata
 
@@ -68,10 +66,6 @@ All available metadata fields are expained below.
 
     [Base image](https://docs.docker.com/reference/builder/#from) for
     building the docker image. Default is `"rocker/r-base:latest"`.
-
-- `latex`
-
-    Is TeX environment needed when rendering the document? Default is `false`.
 
 - `pandoc`
 
@@ -84,7 +78,11 @@ All available metadata fields are expained below.
     this option will be automatically set to `false` since they already
     have pandoc installed.
 
-- `syslib`
+- `texlive`
+
+    Is TeX environment needed when rendering the document? Default is `false`.
+
+- `sysdeps`
 
     Debian/Ubuntu system software packages depended in the document.
 
@@ -92,7 +90,7 @@ All available metadata fields are expained below.
     included below, such as `gfortran` here required for compiling
     `randomForest`.
 
-- `cranpkg`
+- `cran`
 
     CRAN packages depended in the document.
 
@@ -103,16 +101,17 @@ All available metadata fields are expained below.
     is the current latest version. Note: `pkgversion` must be provided
     to install the archived versions of packages.
 
-- `biocpkg`
+- `bioc`
 
     Bioconductor packages depended in the document.
 
-- `ghpkg`
+- `remotes`
 
-    GitHub R packages depended in the document.
+    Remote R packages that are not available from CRAN or Bioconductor.
 
-    We accept the same format as the `repo` argument in
-    `devtools::install_github`. Normally, `"username/repo"` is sufficient.
+    The remote package [naming specification](https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html)
+    from devtools is accepted here. Packages can be installed from GitHub,
+    Bitbucket, Git/SVN servers, URLs, etc.
 
 # Containerize the Document
 

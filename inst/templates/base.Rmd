@@ -1,6 +1,6 @@
 FROM `r liftr_from`
 
-MAINTAINER `r liftr_maintainer` <`r liftr_maintainer_email`>
+MAINTAINER `r liftr_maintainer` <`r liftr_email`>
 
 # System dependencies for required R packages
 RUN  rm -f /var/lib/dpkg/available \
@@ -13,17 +13,17 @@ RUN  rm -f /var/lib/dpkg/available \
     libxml2-dev \
     git
 
-`r liftr_syslib`
+`r liftr_sysdeps`
 
 `r liftr_texlive`
 
 `r liftr_pandoc`
 
-RUN Rscript -e "install.packages(c(`r liftr_factorypkg`), repos = 'https://cran.rstudio.com')"
+RUN Rscript -e "install.packages(c(`r liftr_factory`), repos = 'https://cran.rstudio.com')"
 
-`r liftr_cranpkg`
-`r liftr_biocpkg`
-`r liftr_ghpkg`
+`r liftr_cran`
+`r liftr_bioc`
+`r liftr_remotes`
 
 RUN mkdir /liftrroot/
 WORKDIR /liftrroot/

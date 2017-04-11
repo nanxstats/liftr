@@ -5,7 +5,6 @@
 # infrastructure
 
 - add a metadata field for including extra custom Dockerfile snippet(s) into the Dockerfile, and support this in `lift()`, add this into vignette. This potentially solves https://github.com/road2stat/liftr/issues/21.
-- Honor remote packages grammar: https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html instead of GitHub packages only in metadata.
 - add BioC RNA-Seq workflow example.
 
 # ui

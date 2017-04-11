@@ -9,10 +9,10 @@ output:
 liftr:
   from: "rocker/tidyverse:latest"
   maintainer: "Nan Xiao"
-  maintainer_email: "me@nanx.me"
+  email: "me@nanx.me"
   pandoc: false
-  latex: true
-  cranpkg:
+  texlive: true
+  cran:
     - nycflights13
 ---
 

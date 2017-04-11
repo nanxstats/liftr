@@ -80,31 +80,32 @@ lift = function(input = NULL, output_dir = NULL) {
   liftr_from = if (!is.null(opt_list$from))
     opt_list$from else 'rocker/r-base:latest'
 
-  # maintainer name
+  # maintainer's name
   if (!is.null(opt_list$maintainer)) {
     liftr_maintainer = opt_list$maintainer
   } else {
     stop('Cannot find `maintainer` option in file header')
   }
 
-  if (!is.null(opt_list$maintainer_email)) {
-    liftr_maintainer_email = opt_list$maintainer_email
+  # maintainer's email
+  if (!is.null(opt_list$email)) {
+    liftr_email = opt_list$email
   } else {
-    stop('Cannot find field `maintainer_email` in header')
+    stop('Cannot find field `email` in header')
   }
 
   # system dependencies
-  if (!is.null(opt_list$syslib)) {
-    liftr_syslib = paste(
+  if (!is.null(opt_list$sysdeps)) {
+    liftr_sysdeps = paste(
       readLines(system.file('templates/system-deps.Rmd', package = 'liftr')),
-      paste(opt_list$syslib, collapse = ' '), sep = ' ')
+      paste(opt_list$sysdeps, collapse = ' '), sep = ' ')
   } else {
-    liftr_syslib = NULL
+    liftr_sysdeps = NULL
   }
 
   # texlive
-  if (!is.null(opt_list$latex)) {
-    if (opt_list$latex == TRUE) {
+  if (!is.null(opt_list$texlive)) {
+    if (opt_list$texlive == TRUE) {
       liftr_texlive = paste(
         readLines(system.file('templates/doc-texlive.Rmd', package = 'liftr')),
         collapse = '\n')
@@ -133,44 +134,44 @@ lift = function(input = NULL, output_dir = NULL) {
     }
   }
 
-  # Factory packages
-  liftr_factorypkgs = c('devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl')
-  liftr_factorypkg = quote_str(liftr_factorypkgs)
+  # factory packages
+  liftr_factory = quote_str(c(
+    'devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl'))
 
   # CRAN packages
-  if (!is.null(opt_list$cranpkg)) {
-    liftr_cranpkgs = quote_str(opt_list$cranpkg)
+  if (!is.null(opt_list$cran)) {
+    liftr_cran = quote_str(opt_list$cran)
     tmp = tempfile()
     invisible(knit(
       input = system.file('templates/pkg-cran.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
-    liftr_cranpkg = readLines(tmp)
+    liftr_cran = readLines(tmp)
   } else {
-    liftr_cranpkg = NULL
+    liftr_cran = NULL
   }
 
   # Bioconductor packages
-  if (!is.null(opt_list$biocpkg)) {
-    liftr_biocpkgs = quote_str(opt_list$biocpkg)
+  if (!is.null(opt_list$bioc)) {
+    liftr_bioc = quote_str(opt_list$bioc)
     tmp = tempfile()
     invisible(knit(
       input = system.file('templates/pkg-bioc.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
-    liftr_biocpkg = readLines(tmp)
+    liftr_bioc = readLines(tmp)
   } else {
-    liftr_biocpkg = NULL
+    liftr_bioc = NULL
   }
 
-  # GitHub packages
-  if (!is.null(opt_list$ghpkg)) {
-    liftr_ghpkgs = quote_str(opt_list$ghpkg)
+  # remote packages
+  if (!is.null(opt_list$remotes)) {
+    liftr_remotes = quote_str(opt_list$remotes)
     tmp = tempfile()
     invisible(knit(
-      input = system.file('templates/pkg-github.Rmd', package = 'liftr'),
+      input = system.file('templates/pkg-remotes.Rmd', package = 'liftr'),
       output = tmp, quiet = TRUE))
-    liftr_ghpkg = readLines(tmp)
+    liftr_remotes = readLines(tmp)
   } else {
-    liftr_ghpkg = NULL
+    liftr_remotes = NULL
   }
 
   # write output files

@@ -7,8 +7,8 @@ output:
 liftr:
   from: "rocker/r-base:latest"
   maintainer: "Nan Xiao"
-  maintainer_email: "me@nanx.me"
-  cranpkg:
+  email: "me@nanx.me"
+  cran:
     - tufte
     - kernlab
 ---

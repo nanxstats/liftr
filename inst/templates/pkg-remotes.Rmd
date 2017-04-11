@@ -1,0 +1,1 @@
+RUN Rscript -e "source('https://cdn.rawgit.com/road2stat/liftrlib/aa132a2d/install_remotes.R');install_remotes(c(`r liftr_remotes`))"
