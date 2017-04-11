@@ -26,7 +26,7 @@ devtools::install_github("road2stat/liftr")
 
 ## Workflow
 
-<img src="https://i.imgur.com/NckhCCc.png" width="100%" alt="Containerize R Markdown Documents with liftr">
+<img src="https://i.imgur.com/AKveypK.png" width="100%" alt="Containerize R Markdown Documents with liftr">
 
 ## License
 
