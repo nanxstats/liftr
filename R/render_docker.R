@@ -22,12 +22,11 @@
 #' \code{--pull=true -m="1024m" --memory-swap="-1"}.
 #' @param container_name Docker container name to run.
 #' If not specified, will use a randomly generated name.
-#' @param no_cache Logical. Controls the \code{--no-cache} argument
+#' @param cache Logical. Controls the \code{--no-cache} argument
 #' in \code{docker run}. Setting this to be \code{TRUE} can accelerate
-#' the rendering speed substantially for repeated compilation since
-#' most of the Docker image layers will be cached, with only the
-#' changed (knitr related) image layer being updated.
-#' Default is \code{TRUE}.
+#' the rendering speed substantially for repeated/interactive rendering
+#' since the Docker image layers will be cached, with only the changed
+#' (knitr related) image layer being updated. Default is \code{TRUE}.
 #' @param purge_info Logical. Should we write the Docker container and
 #' image information to a YAML file for purging later?
 #' Default is \code{TRUE}.
@@ -74,7 +73,7 @@
 render_docker = function(
   input = NULL,
   tag = NULL, build_args = NULL, container_name = NULL,
-  no_cache = TRUE, purge_info = TRUE, ...) {
+  cache = TRUE, purge_info = TRUE, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -93,9 +92,9 @@ render_docker = function(
          please ensure we can use `docker` from shell')
 
   image_name = ifelse(is.null(tag), file_name_sans(input), tag)
-  no_cache = paste0("--no-cache=", ifelse(no_cache, "true", "false"))
+  cache = paste0("--no-cache=", ifelse(cache, "false", "true"))
   docker_build_cmd = paste0(
-    "docker build ", no_cache, " --rm=true ",
+    "docker build ", cache, " --rm=true ",
     build_args, " -t=\"", image_name, "\" ",
     file_dir(dockerfile_path))
 

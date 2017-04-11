@@ -4,11 +4,12 @@
 \alias{purge_image}
 \title{Purge Docker Image}
 \usage{
-purge_image(input)
+purge_image(input_yml)
 }
 \arguments{
-\item{input}{The YAML file (default output of \code{\link{render_docker}})
-storing the information of the image to be removed.}
+\item{input_yml}{The YAML file (default output of
+\code{\link{render_docker}}) storing the information
+of the image to be removed.}
 }
 \value{
 status

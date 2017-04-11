@@ -6,7 +6,7 @@
 \title{Render Dockerized R Markdown Documents}
 \usage{
 render_docker(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, no_cache = TRUE, purge_info = TRUE, ...)
+  container_name = NULL, cache = TRUE, purge_info = TRUE, ...)
 
 drender(...)
 }
@@ -23,12 +23,11 @@ If not specified, it will use the same name as the input file.}
 \item{container_name}{Docker container name to run.
 If not specified, will use a randomly generated name.}
 
-\item{no_cache}{Logical. Controls the \code{--no-cache} argument
+\item{cache}{Logical. Controls the \code{--no-cache} argument
 in \code{docker run}. Setting this to be \code{TRUE} can accelerate
-the rendering speed substantially for repeated compilation since
-most of the Docker image layers will be cached, with only the
-changed (knitr related) image layer being updated.
-Default is \code{TRUE}.}
+the rendering speed substantially for repeated/interactive rendering
+since the Docker image layers will be cached, with only the changed
+(knitr related) image layer being updated. Default is \code{TRUE}.}
 
 \item{purge_info}{Logical. Should we write the Docker container and
 image information to a YAML file for purging later?

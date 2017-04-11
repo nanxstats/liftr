@@ -4,11 +4,12 @@
 \alias{purge_container}
 \title{Purge Docker Container}
 \usage{
-purge_container(input)
+purge_container(input_yml)
 }
 \arguments{
-\item{input}{The YAML file (default output of \code{\link{render_docker}})
-storing the information of the container to be stopped and removed.}
+\item{input_yml}{The YAML file (default output of
+\code{\link{render_docker}}) storing the information
+of the container to be stopped and removed.}
 }
 \value{
 purge results
