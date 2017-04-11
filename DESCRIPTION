@@ -20,7 +20,6 @@ Imports:
     yaml,
     knitr,
     rmarkdown,
-    stringr
-Suggests:
+    stringr,
     rstudioapi
 RoxygenNote: 5.0.1
