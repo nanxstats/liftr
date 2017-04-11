@@ -1,1 +1,2 @@
+- refactor the major part of `lift()` into multiple processors
 - record new video demo
