@@ -10,4 +10,5 @@ addin_lift_render_docker()
 Call this function as an addin to containerize and render
 the current document.
 }
+\keyword{internal}
 

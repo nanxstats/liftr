@@ -9,4 +9,5 @@ addin_lift()
 \description{
 Call this function as an addin to dockerize (lift) the current document.
 }
+\keyword{internal}
 

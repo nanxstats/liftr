@@ -10,4 +10,5 @@ addin_purge_image()
 Call this function as an addin to removes the Docker image used
 for rendering the current document.
 }
+\keyword{internal}
 

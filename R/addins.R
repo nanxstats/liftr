@@ -3,6 +3,8 @@
 #' Call this function as an addin to dockerize (lift) the current document.
 #'
 #' @importFrom rstudioapi getActiveDocumentContext
+#'
+#' @keywords internal
 addin_lift = function() {
 
   context = rstudioapi::getActiveDocumentContext()
@@ -17,6 +19,8 @@ addin_lift = function() {
 #' the current document.
 #'
 #' @importFrom rstudioapi getActiveDocumentContext
+#'
+#' @keywords internal
 addin_lift_render_docker = function() {
 
   context = rstudioapi::getActiveDocumentContext()
@@ -32,6 +36,8 @@ addin_lift_render_docker = function() {
 #' for rendering the current document.
 #'
 #' @importFrom rstudioapi getActiveDocumentContext
+#'
+#' @keywords internal
 addin_purge_image = function() {
 
   context = rstudioapi::getActiveDocumentContext()
