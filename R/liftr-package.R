@@ -8,8 +8,9 @@
 #'
 #' @name liftr-package
 #' @docType package
-#' @author Nan Xiao <\email{me@@nanx.me}>
-#'         Miaozhu Li <\email{miaozhu.li@@duke.edu}>
-#'         Tengfei Yin <\email{tengfei.yin@@sevenbridges.com}>
+#' @author
+#' Nan Xiao <\email{me@@nanx.me}>
+#' Miaozhu Li <\email{miaozhu.li@@duke.edu}>
+#' Tengfei Yin <\email{tengfei.yin@@sevenbridges.com}>
 #'
 NULL

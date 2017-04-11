@@ -7,8 +7,7 @@
 addin_lift_render_docker()
 }
 \description{
-Call this function as an addin to containerize and render
-the current document.
+RStudio addin for containerizing and rendering the current document.
 }
 \keyword{internal}
 

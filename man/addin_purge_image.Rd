@@ -7,8 +7,8 @@
 addin_purge_image()
 }
 \description{
-Call this function as an addin to removes the Docker image used
-for rendering the current document.
+RStudio addin for removing the Docker image used for
+rendering the current document.
 }
 \keyword{internal}
 

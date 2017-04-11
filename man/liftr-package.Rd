@@ -14,7 +14,7 @@ License: \tab GPL-3\cr }
 }
 \author{
 Nan Xiao <\email{me@nanx.me}>
-        Miaozhu Li <\email{miaozhu.li@duke.edu}>
-        Tengfei Yin <\email{tengfei.yin@sevenbridges.com}>
+Miaozhu Li <\email{miaozhu.li@duke.edu}>
+Tengfei Yin <\email{tengfei.yin@sevenbridges.com}>
 }
 
