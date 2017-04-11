@@ -171,19 +171,14 @@ The above input YAML file contains the basic information of the Docker container
 
 # System Requirements
 
-Docker is an essential system requirement when using liftr to render the R Markdown documents. Besides Linux, Docker Engine has a much improved near-native support for Mac and Windows since 2016, so there should not be a problem if you use the officially recommended installation. If not, simply make sure that you can run `docker` under shell. For example, to install Docker under Ubuntu:
+Docker is an essential system requirement when using liftr to render the R Markdown documents. Here is a [detailed guide](https://docs.docker.com/engine/installation/) for installing Docker on major operation systems.
+
+For Linux, we should configure Docker to [run without sudo](https://docs.docker.com/engine/installation/linux/linux-postinstall/). To avoid `sudo` when using the `docker` command, simply create a group named `docker` and add yourself to it:
 
 ```bash
-sudo apt-get install docker.io
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
-
-We should configure Docker to [run without sudo](https://docs.docker.com/installation/ubuntulinux/#create-a-docker-group). To avoid `sudo` when using the `docker` command, simply create a group named `docker` and add yourself to it:
-
-```bash
-sudo usermod -aG docker your-username
-```
-
-Here is a [detailed guide](https://docs.docker.com/engine/installation/) for installing Docker on the other platforms.
 
 <hr>
 
