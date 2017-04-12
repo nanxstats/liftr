@@ -27,10 +27,7 @@ To containerize your R Markdown document, the first step is adding `liftr` optio
 title: "The Missing Example of liftr"
 author: "Author Name"
 date: "`r Sys.Date()`"
-output:
-  html_document:
-    highlight: haddock
-    theme: readable
+output: rmarkdown::html_document
 liftr:
   maintainer: "Maintainer Name"
   email: "name@example.com"
@@ -40,7 +37,7 @@ liftr:
   sysdeps:
     - gfortran
   cran:
-    - randomForest
+    - glmnet
   bioc:
     - Gviz
   remotes:
