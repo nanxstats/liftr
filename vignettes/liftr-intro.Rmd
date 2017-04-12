@@ -62,8 +62,11 @@ All available metadata fields are expained below.
 
 - `from`
 
-    [Base image](https://docs.docker.com/reference/builder/#from) for
-    building the docker image. Default is `"rocker/r-base:latest"`.
+    Base image for building the docker image. Default is
+    `"rocker/r-base:latest"`. For R users, the images offered
+    by the [rocker project](https://github.com/rocker-org)
+    and [Bioconductor](https://bioconductor.org/help/docker/)
+    can be considered first.
 
 - `pandoc`
 
@@ -79,14 +82,14 @@ All available metadata fields are expained below.
 - `texlive`
 
     Is TeX environment needed when rendering the document? Default is `false`.
+    Should be `true` particularly when the output format is PDF.
 
 - `sysdeps`
 
     Debian/Ubuntu system software packages depended in the document.
 
     Please also include software packages depended by the R packages
-    included below, such as `gfortran` here required for compiling
-    `randomForest`.
+    below. For example, here `gfortran` is required for compiling `glmnet`.
 
 - `cran`
 
