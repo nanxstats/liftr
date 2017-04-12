@@ -113,9 +113,8 @@ All available metadata fields are expained below.
 
     Remote R packages that are not available from CRAN or Bioconductor.
 
-    The remote package
-    [naming specification](https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html)
-    from devtools is accepted here. Packages can be installed from GitHub,
+    The [remote package naming specification](https://github.com/hadley/devtools/blob/master/vignettes/dependencies.Rmd)
+    from devtools is adopted here. Packages can be installed from GitHub,
     Bitbucket, Git/SVN servers, URLs, etc.
 
 - `include`

@@ -6,7 +6,7 @@
 - Added new argument `cache` in `render_docker()` to improve rendering speed significantly by caching Docker image layers [[#18](https://github.com/road2stat/liftr/issues/18)].
 - Added new argument `purge_info` to `render_docker()`. This argument controls whether to output the Docker image and container name into an YAML file for purging purposes later.
 - Separate the creation and removal of Docker containers and images: removed the old argument `reset` in `render_docker()`; added `purge_container()` and `purge_image()` for cleaning up.
-- The `ghpkg` field is now deprecated. The new `remotes` field supports [devtools remote packages format](https://cran.r-project.org/web/packages/devtools/vignettes/dependencies.html). Now packages can be installed from GitHub, Bitbucket, Git/SVN servers, URLs, etc.
+- The `ghpkg` field is now deprecated. The new `remotes` field supports [devtools remote package name format](https://github.com/hadley/devtools/blob/master/vignettes/dependencies.Rmd). Now packages can be installed from GitHub, Bitbucket, Git/SVN servers, URLs, etc.
 - Added new metadata field `include` for including any custom Dockerfile snippets into the final Dockerfile. This also fixes [#21](https://github.com/road2stat/liftr/issues/21).
 
 ## Improvements
