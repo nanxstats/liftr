@@ -2,3 +2,4 @@
 data/* binary
 src/* text=lf
 R/* text=lf
+inst/examples/bioc-rnaseq.bib linguist-vendored=true
