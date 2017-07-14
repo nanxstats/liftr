@@ -17,9 +17,6 @@
 #' @param input Input file to render in Docker container.
 #' @param tag Docker image name to build, sent as docker argument \code{-t}.
 #' If not specified, it will use the same name as the input file.
-#' @param build_args A character string specifying additional
-#' \code{docker build} arguments. For example,
-#' \code{--pull=true -m="1024m" --memory-swap="-1"}.
 #' @param container_name Docker container name to run.
 #' If not specified, will use a randomly generated name.
 #' @param cache Logical. Controls the \code{--no-cache} argument
@@ -30,6 +27,11 @@
 #' @param purge_info Logical. Should we write the Docker container and
 #' image information to a YAML file for purging later?
 #' Default is \code{TRUE}.
+#' @param build_args A character string specifying additional
+#' \code{docker build} arguments. For example,
+#' \code{--pull=true -m="1024m" --memory-swap="-1"}.
+#' @param run_args A character string specifying additional
+#' \code{docker run} arguments. For example, \code{--privileged=true}.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -71,9 +73,9 @@
 #' purge_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
 
 render_docker = function(
-  input = NULL,
-  tag = NULL, build_args = NULL, container_name = NULL,
-  cache = TRUE, purge_info = TRUE, ...) {
+  input = NULL, tag = NULL, container_name = NULL,
+  cache = TRUE, purge_info = TRUE,
+  build_args = NULL, run_args = NULL, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -105,7 +107,8 @@ render_docker = function(
     container_name)
 
   docker_run_cmd_base = paste0(
-    "docker run --rm --name \"", container_name,
+    "docker run --rm ", run_args,
+    " --name \"", container_name,
     "\" -u `id -u $USER` -v \"",
     file_dir(dockerfile_path), ":", "/liftrroot/\" ",
     image_name,

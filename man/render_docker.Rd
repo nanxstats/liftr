@@ -5,8 +5,9 @@
 \alias{render_docker}
 \title{Render Dockerized R Markdown Documents}
 \usage{
-render_docker(input = NULL, tag = NULL, build_args = NULL,
-  container_name = NULL, cache = TRUE, purge_info = TRUE, ...)
+render_docker(input = NULL, tag = NULL, container_name = NULL,
+  cache = TRUE, purge_info = TRUE, build_args = NULL, run_args = NULL,
+  ...)
 
 drender(...)
 }
@@ -15,10 +16,6 @@ drender(...)
 
 \item{tag}{Docker image name to build, sent as docker argument \code{-t}.
 If not specified, it will use the same name as the input file.}
-
-\item{build_args}{A character string specifying additional
-\code{docker build} arguments. For example,
-\code{--pull=true -m="1024m" --memory-swap="-1"}.}
 
 \item{container_name}{Docker container name to run.
 If not specified, will use a randomly generated name.}
@@ -32,6 +29,13 @@ since the Docker image layers will be cached, with only the changed
 \item{purge_info}{Logical. Should we write the Docker container and
 image information to a YAML file for purging later?
 Default is \code{TRUE}.}
+
+\item{build_args}{A character string specifying additional
+\code{docker build} arguments. For example,
+\code{--pull=true -m="1024m" --memory-swap="-1"}.}
+
+\item{run_args}{A character string specifying additional
+\code{docker run} arguments. For example, \code{--privileged=true}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
