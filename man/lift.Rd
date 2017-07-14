@@ -4,10 +4,18 @@
 \alias{lift}
 \title{Containerize R Markdown Documents}
 \usage{
-lift(input = NULL, output_dir = NULL)
+lift(input = NULL, use_config = FALSE, config_file = "_liftr.yml",
+  output_dir = NULL)
 }
 \arguments{
 \item{input}{Input (R Markdown) file.}
+
+\item{use_config}{If \code{TRUE}, will parse the liftr metadata from
+a YAML file, if \code{FALSE}, will parse such information from the
+metadata section in the R Markdown file. Default is \code{FALSE}.}
+
+\item{config_file}{Name of the YAML configuration file, under the
+same directory as the input file. Default is \code{"_liftr.yml"}.}
 
 \item{output_dir}{Directory to output \code{Dockerfile}.
 If not provided, will be the same directory as \code{input}.}

@@ -63,7 +63,7 @@ R Markdown documents.
 }
 \examples{
 # copy example file
-dir_example = paste0(tempdir(), '/liftr-tidyverse/')
+dir_example = paste0(tempdir(), "/liftr-tidyverse/")
 dir.create(dir_example)
 file.copy(system.file("examples/liftr-tidyverse.Rmd", package = "liftr"), dir_example)
 

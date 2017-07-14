@@ -11,6 +11,11 @@
 #' YAML front-matter metadata format used by liftr.
 #'
 #' @param input Input (R Markdown) file.
+#' @param use_config If \code{TRUE}, will parse the liftr metadata from
+#' a YAML file, if \code{FALSE}, will parse such information from the
+#' metadata section in the R Markdown file. Default is \code{FALSE}.
+#' @param config_file Name of the YAML configuration file, under the
+#' same directory as the input file. Default is \code{"_liftr.yml"}.
 #' @param output_dir Directory to output \code{Dockerfile}.
 #' If not provided, will be the same directory as \code{input}.
 #'
@@ -41,40 +46,56 @@
 #' # purge the generated Docker image
 #' purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
 
-lift = function(input = NULL, output_dir = NULL) {
+lift = function(
+  input = NULL,
+  use_config = FALSE, config_file = '_liftr.yml',
+  output_dir = NULL) {
 
   if (is.null(input))
     stop('missing input file')
   if (!file.exists(normalizePath(input)))
     stop('input file does not exist')
 
-  # locate YAML metadata block
-  doc_content = readLines(normalizePath(input))
-  header_pos = which(doc_content == '---')
+  if (!use_config) {
 
-  # handling YAML blocks ending with three dots
-  if (length(header_pos) == 1L) {
-    header_dot_pos = which(doc_content == '...')
-    if (length(header_dot_pos) == 0L) {
-      stop('Cannot correctly locate YAML metadata block.
-           Please use three hyphens (---) as start line & end line,
-           or three hyphens (---) as start line with three dots (...)
-           as end line.')
-    } else {
-      header_pos[2L] = header_dot_pos[1L]
+    # locate YAML metadata block
+    doc_content = readLines(normalizePath(input))
+    header_pos = which(doc_content == '---')
+
+    # handling YAML blocks ending with three dots
+    if (length(header_pos) == 1L) {
+      header_dot_pos = which(doc_content == '...')
+      if (length(header_dot_pos) == 0L) {
+        stop('Cannot correctly locate YAML metadata block.
+             Please use three hyphens (---) as start line & end line,
+             or three hyphens (---) as start line with three dots (...)
+             as end line.')
+      } else {
+        header_pos[2L] = header_dot_pos[1L]
+      }
     }
+
+    doc_yaml = paste(
+      doc_content[(header_pos[1L] + 1L):(header_pos[2L] - 1L)],
+      collapse = '\n')
+    opt_all_list = yaml.load(doc_yaml)
+
+    # liftr options handling
+    if (is.null(opt_all_list$liftr))
+      stop('Cannot find `liftr` option in file header')
+
+    opt_list = opt_all_list$liftr
+
+    }
+
+  if (use_config) {
+
+    liftrfile_path = paste0(file_dir(input), '/', config_file)
+    if (!file.exists(normalizePath(liftrfile_path)))
+      stop('The YAML config file does not exist')
+    opt_list = yaml.load_file(liftrfile_path)
+
   }
-
-  doc_yaml = paste(
-    doc_content[(header_pos[1L] + 1L):(header_pos[2L] - 1L)],
-    collapse = '\n')
-  opt_all_list = yaml.load(doc_yaml)
-
-  # liftr options handling
-  if (is.null(opt_all_list$liftr))
-    stop('Cannot find `liftr` option in file header')
-
-  opt_list = opt_all_list$liftr
 
   # base image
   liftr_from       = parse_from(opt_list$from)
@@ -116,4 +137,4 @@ lift = function(input = NULL, output_dir = NULL) {
 
   invisible(out)
 
-  }
+    }
