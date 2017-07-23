@@ -1,8 +1,8 @@
-# liftr 0.6 (2017-07-14)
+# liftr 0.6 (2017-07-23)
 
 ## New Features
 
-- Supports parsing the liftr metadata from a standalone YAML congfiguration file. This feature makes it possible to use liftr without editing the original R Markdown file [[#22](https://github.com/road2stat/liftr/issues/22)].
+- Supports parsing the liftr metadata from a standalone YAML congfiguration file. This feature makes it possible to run liftr without editing the original R Markdown file [[#22](https://github.com/road2stat/liftr/issues/22)].
 
 # liftr 0.5 (2017-04-11)
 
