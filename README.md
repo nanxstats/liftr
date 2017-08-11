@@ -34,6 +34,7 @@ devtools::install_github("road2stat/liftr")
 
 | Time            | Event                   | Location                         |
 |:----------------|:------------------------|:---------------------------------|
+| July 27, 2017 | [BioC 2017](https://bioconductor.org/help/course-materials/2017/BioC2017/) (poster on DockFlow.org) | Dana-Farber Cancer Institute, Boston, MA |
 | May 20, 2017 | [The 10th China-R Conference](http://china-r.org/) (talk) | Tsinghua University, Beijng, China |
 | April 18, 2017 | [DockerCon 2017](http://2017.dockercon.com/) (talk) | Austin Convention Center, Austin, TX |
 | December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) (talk) | The University of Chicago, Chicago, IL |
