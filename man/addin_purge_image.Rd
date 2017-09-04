@@ -11,4 +11,3 @@ RStudio addin for removing the Docker image used for
 rendering the current document.
 }
 \keyword{internal}
-

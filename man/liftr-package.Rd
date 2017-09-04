@@ -17,4 +17,3 @@ Nan Xiao <\email{me@nanx.me}>
 Miaozhu Li <\email{miaozhu.li@duke.edu}>
 Tengfei Yin <\email{tengfei.yin@sevenbridges.com}>
 }
-

@@ -10,4 +10,3 @@ addin_lift_render_docker()
 RStudio addin for containerizing and rendering the current document.
 }
 \keyword{internal}
-

@@ -10,4 +10,3 @@ addin_lift()
 RStudio addin for containerizing the current document.
 }
 \keyword{internal}
-

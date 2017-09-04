@@ -23,4 +23,3 @@ running \code{docker rmi} commands.
 \dontrun{
 purge_image("liftr-minimal.docker.yml")}
 }
-

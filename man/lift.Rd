@@ -53,4 +53,3 @@ browseURL(paste0(dir_example, "liftr-minimal.html"))
 # purge the generated Docker image
 purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))}
 }
-

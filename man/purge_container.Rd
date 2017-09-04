@@ -23,4 +23,3 @@ for rendering the R Markdown document, by running
 \dontrun{
 purge_container("liftr-minimal.docker.yml")}
 }
-
