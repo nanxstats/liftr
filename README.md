@@ -40,6 +40,10 @@ devtools::install_github("road2stat/liftr")
 | December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) (talk) | The University of Chicago, Chicago, IL |
 | July 21, 2015 | [BioC 2015](https://bioconductor.org/help/course-materials/2015/BioC2015/) (workshop) | Fred Hutchinson Cancer Research Center, Seattle, WA |
 
+## Contribute
+
+To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 ## License
 
 liftr is free and open source software, licensed under GPL-3.
