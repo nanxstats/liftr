@@ -7,8 +7,6 @@ output:
     toc: true
     number_sections: true
     css: liftr.css
-    includes:
-      in_header: header.html
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{A Quick Introduction to liftr}
@@ -205,4 +203,4 @@ sudo usermod -aG docker $USER
 
 <hr>
 
-Project website: [https://liftr.me](https://liftr.me)
+[https://liftr.me](https://liftr.me)
