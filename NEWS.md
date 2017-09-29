@@ -1,3 +1,9 @@
+# liftr 0.7 (2017-09-29)
+
+## Improvements
+
+- Use system font stack instead of Google Fonts in vignettes to avoid pandoc SSL issue.
+
 # liftr 0.6 (2017-07-23)
 
 ## New Features
