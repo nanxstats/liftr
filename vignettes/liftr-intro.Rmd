@@ -200,7 +200,3 @@ named `docker` and add yourself to it:
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
-
-<hr>
-
-[https://liftr.me](https://liftr.me)
