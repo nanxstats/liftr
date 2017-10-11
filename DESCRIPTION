@@ -1,9 +1,10 @@
 Package: liftr
 Type: Package
 Title: Containerize R Markdown Documents
-Version: 0.7
+Version: 0.7.9000
 Authors@R: c(
-    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre")),
+    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0250-5673")),
     person("Miaozhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
     person("Tengfei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
     )
