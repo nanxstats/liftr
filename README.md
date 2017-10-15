@@ -34,7 +34,7 @@ devtools::install_github("road2stat/liftr")
 
 | Time            | Event                   | Location                         |
 |:----------------|:------------------------|:---------------------------------|
-| July 27, 2017 | [BioC 2017](https://bioconductor.org/help/course-materials/2017/BioC2017/) (poster on DockFlow.org) | Dana-Farber Cancer Institute, Boston, MA |
+| July 27, 2017 | [BioC 2017](https://bioconductor.org/help/course-materials/2017/BioC2017/) ([poster](https://nanx.me/posters/dockflow-poster-bioc2017.pdf) for [dockflow.org](https://dockflow.org/)) | Dana-Farber Cancer Institute, Boston, MA |
 | May 20, 2017 | [The 10th China-R Conference](http://china-r.org/) (talk) | Tsinghua University, Beijng, China |
 | April 18, 2017 | [DockerCon 2017](http://2017.dockercon.com/) (talk) | Austin Convention Center, Austin, TX |
 | December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) (talk) | The University of Chicago, Chicago, IL |
@@ -42,7 +42,7 @@ devtools::install_github("road2stat/liftr")
 
 ## Contribute
 
-To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+To contribute to this project, please take a look at the [Contributing Guidelines](https://github.com/road2stat/liftr/blob/master/CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](https://github.com/road2stat/liftr/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## License
 
