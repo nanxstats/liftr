@@ -5,8 +5,8 @@ Version: 0.7.9000
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0250-5673")),
-    person("Miaozhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
-    person("Tengfei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
+    person("Miao-Zhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
+    person("Teng-Fei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
     )
 Maintainer: Nan Xiao <me@nanx.me>
 Description: Persistent reproducible reporting by containerization of R Markdown documents.
