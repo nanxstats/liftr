@@ -55,7 +55,8 @@ install_docker = function() {
 #' @return \code{TRUE} if Docker was deteted, \code{FALSE} otherwise.
 #'
 #' @examples
-#' check_docker_install()
+#' \dontrun{
+#' check_docker_install()}
 
 check_docker_install = function() {
   x = system('docker -v', intern = TRUE)
@@ -71,7 +72,8 @@ check_docker_install = function() {
 #' @return \code{TRUE} if Docker daemon is running, \code{FALSE} otherwise.
 #'
 #' @examples
-#' check_docker_running()
+#' \dontrun{
+#' check_docker_running()}
 
 check_docker_running = function() {
   if (!check_docker_install()) FALSE else suppressWarnings(

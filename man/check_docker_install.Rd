@@ -15,5 +15,6 @@ installed and discoverable by R and liftr.
 If still not usable, please start Docker daemon
 }
 \examples{
-check_docker_install()
+\dontrun{
+check_docker_install()}
 }

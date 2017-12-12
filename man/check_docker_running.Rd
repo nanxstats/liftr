@@ -13,5 +13,6 @@ check_docker_running()
 This function checks if the Docker daemon is running.
 }
 \examples{
-check_docker_running()
+\dontrun{
+check_docker_running()}
 }
