@@ -1,18 +1,18 @@
-#' Render Dockerized R Markdown Documents
+#' Render Containerized R Markdown Documents
 #'
 #' @description
-#' Render dockerized R Markdown documents using Docker containers.
+#' Render R Markdown documents using Docker.
 #'
 #' @details
 #' Before using this function, please run \code{\link{lift}} on the
 #' RMD document first to generate the \code{Dockerfile}.
 #'
 #' After a successful rendering, you will be able to clean up the
-#' Docker image with \code{\link{purge_image}}.
+#' Docker image with \code{\link{prune_image}}.
 #'
 #' Please see \code{vignette('liftr-intro')} for details of the extended
-#' YAML metadata format and system requirements for rendering dockerized
-#' R Markdown documents.
+#' YAML metadata format and system requirements for writing and rendering
+#' containerized R Markdown documents.
 #'
 #' @param input Input file to render in Docker container.
 #' @param tag Docker image name to build, sent as docker argument \code{-t}.
@@ -24,14 +24,17 @@
 #' the rendering speed substantially for repeated/interactive rendering
 #' since the Docker image layers will be cached, with only the changed
 #' (knitr related) image layer being updated. Default is \code{TRUE}.
-#' @param purge_info Logical. Should we write the Docker container and
-#' image information to a YAML file for purging later?
-#' Default is \code{TRUE}.
 #' @param build_args A character string specifying additional
 #' \code{docker build} arguments. For example,
 #' \code{--pull=true -m="1024m" --memory-swap="-1"}.
 #' @param run_args A character string specifying additional
 #' \code{docker run} arguments. For example, \code{--privileged=true}.
+#' @param prune Logical. Should we clean up all dangling containers,
+#' volumes, networks, and images in case the rendering was not successful?
+#' Default is \code{TRUE}.
+#' @param prune_info Logical. Should we save the Docker container and
+#' image information to a YAML file (name ended with \code{.docker.yml})
+#' for manual pruning or inspections later? Default is \code{TRUE}.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -69,13 +72,13 @@
 #' # view rendered document
 #' browseURL(paste0(dir_example, "liftr-tidyverse.pdf"))
 #'
-#' # purge the generated Docker image
-#' purge_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
+#' # remove the generated Docker image
+#' prune_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
 
 render_docker = function(
   input = NULL, tag = NULL, container_name = NULL,
-  cache = TRUE, purge_info = TRUE,
-  build_args = NULL, run_args = NULL, ...) {
+  cache = TRUE, build_args = NULL, run_args = NULL,
+  prune = TRUE, prune_info = TRUE, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -87,7 +90,7 @@ render_docker = function(
 
   if (!file.exists(dockerfile_path))
     stop('Cannot find Dockerfile in the same directory of input file,
-         please dockerize the R Markdown document via lift() first.')
+         please containerize the R Markdown document via lift() first.')
 
   if (Sys.which('docker') == '')
     stop('Cannot find `docker` on system search path,
@@ -154,7 +157,7 @@ render_docker = function(
     'docker_build_cmd' = docker_build_cmd,
     'docker_run_cmd'   = docker_run_cmd)
 
-  if (purge_info) {
+  if (prune_info) {
     writeLines(as.yaml(res), con = paste0(
       file_dir(input), '/', file_name_sans(input), '.docker.yml'))
   }
@@ -162,6 +165,12 @@ render_docker = function(
   # render
   system(docker_build_cmd)
   system(docker_run_cmd)
+
+  # cleanup dangling containers, images, volumes, and networks
+  if (prune) {
+    cat('Cleaning up...\n')
+    on.exit(system('docker system prune --force'))
+  }
 
   res
 

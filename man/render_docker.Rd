@@ -3,11 +3,11 @@
 \name{render_docker}
 \alias{render_docker}
 \alias{drender}
-\title{Render Dockerized R Markdown Documents}
+\title{Render Containerized R Markdown Documents}
 \usage{
 render_docker(input = NULL, tag = NULL, container_name = NULL,
-  cache = TRUE, purge_info = TRUE, build_args = NULL, run_args = NULL,
-  ...)
+  cache = TRUE, build_args = NULL, run_args = NULL, prune = TRUE,
+  prune_info = TRUE, ...)
 
 drender(...)
 }
@@ -26,16 +26,20 @@ the rendering speed substantially for repeated/interactive rendering
 since the Docker image layers will be cached, with only the changed
 (knitr related) image layer being updated. Default is \code{TRUE}.}
 
-\item{purge_info}{Logical. Should we write the Docker container and
-image information to a YAML file for purging later?
-Default is \code{TRUE}.}
-
 \item{build_args}{A character string specifying additional
 \code{docker build} arguments. For example,
 \code{--pull=true -m="1024m" --memory-swap="-1"}.}
 
 \item{run_args}{A character string specifying additional
 \code{docker run} arguments. For example, \code{--privileged=true}.}
+
+\item{prune}{Logical. Should we clean up all dangling containers,
+volumes, networks, and images in case the rendering was not successful?
+Default is \code{TRUE}.}
+
+\item{prune_info}{Logical. Should we save the Docker container and
+image information to a YAML file (name ended with \code{.docker.yml})
+for manual pruning or inspections later? Default is \code{TRUE}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
@@ -52,18 +56,18 @@ input file.
 }
 }
 \description{
-Render dockerized R Markdown documents using Docker containers.
+Render R Markdown documents using Docker.
 }
 \details{
 Before using this function, please run \code{\link{lift}} on the
 RMD document first to generate the \code{Dockerfile}.
 
 After a successful rendering, you will be able to clean up the
-Docker image with \code{\link{purge_image}}.
+Docker image with \code{\link{prune_image}}.
 
 Please see \code{vignette('liftr-intro')} for details of the extended
-YAML metadata format and system requirements for rendering dockerized
-R Markdown documents.
+YAML metadata format and system requirements for writing and rendering
+containerized R Markdown documents.
 }
 \examples{
 # copy example file
@@ -82,6 +86,6 @@ render_docker(input)
 # view rendered document
 browseURL(paste0(dir_example, "liftr-tidyverse.pdf"))
 
-# purge the generated Docker image
-purge_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
+# remove the generated Docker image
+prune_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))}
 }
