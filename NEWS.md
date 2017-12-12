@@ -13,6 +13,7 @@
 - The argument `purge_info` was renamed to `prune_info` in `render_docker`.
 - Previous functions for cleaning up specific Docker containers and images `purge_container` and `purge_image` are now renamed to `prune_container` and `prune_image`.
 - RStudio addin: the old addin for removing Docker images was refactored into two new addins: one for removing dangling containers and images, one for removing the successfully built image that corresponds to the current document.
+- Added two new vignettes. Check out `vignette("liftr-addins")` and `vignette("liftr-tidyverse")`.
 
 # liftr 0.7 (2017-09-29)
 
