@@ -1,3 +1,19 @@
+# liftr 0.8 (2017-12-12)
+
+## New Features
+
+- Add a new argument `prune` in `render_docker` to automatically clean up dangling containers and images in case the image build or compilation was not successful ([#27](https://github.com/road2stat/liftr/issues/27)). We thank Nicolas Roelandt for suggesting this feature ([#25](https://github.com/road2stat/liftr/issues/25)).
+- Added functions `prune_container_auto`, `prune_image_auto`, and `prune_all_auto` for automatic pruning of dangling containers or images without particular names specified.
+- Added function `install_docker` for guiding the installation of Docker.
+- Added function `check_docker_install`for checking if Docker is properly installed and discoverable.
+- Added function `check_docker_running` for checking if Docker daemon is running.
+
+## Improvements
+
+- The argument `purge_info` was renamed to `prune_info` in `render_docker`.
+- Previous functions for cleaning up specific Docker containers and images `purge_container` and `purge_image` are now renamed to `prune_container` and `prune_image`.
+- RStudio addin: the old addin for removing Docker images was refactored into two new addins: one for removing dangling containers and images, one for removing the successfully built image that corresponds to the current document.
+
 # liftr 0.7 (2017-09-29)
 
 ## Improvements
