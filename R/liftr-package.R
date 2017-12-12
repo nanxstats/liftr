@@ -10,7 +10,7 @@
 #' @docType package
 #' @author
 #' Nan Xiao <\email{me@@nanx.me}>
-#' Miaozhu Li <\email{miaozhu.li@@duke.edu}>
-#' Tengfei Yin <\email{tengfei.yin@@sevenbridges.com}>
+#' Miao-Zhu Li <\email{miaozhu.li@@duke.edu}>
+#' Teng-Fei Yin <\email{tengfei.yin@@sevenbridges.com}>
 #'
 NULL
