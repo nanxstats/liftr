@@ -1,0 +1,17 @@
+---
+title: "RStudio Addins for liftr"
+author: "Nan Xiao <<https://nanx.me>>"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: true
+    css: liftr.css
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{RStudio Addins for liftr}
+---
+
+# RStudio Addins
+
+Four RStudio addins are available for ...
