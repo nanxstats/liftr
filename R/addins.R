@@ -25,17 +25,30 @@ addin_lift_render_docker = function() {
   render_docker(path)
 }
 
-#' RStudio Addin: Purge Docker Image
+#' RStudio Addin: Remove Dangling Container + Image
 #'
-#' RStudio addin for removing the Docker image used for
+#' RStudio addin for removing any dangling Docker
+#' containers and images automatically.
+#'
+#' @importFrom rstudioapi getActiveDocumentContext
+#'
+#' @keywords internal
+addin_prune_dangling = function() {
+  prune_container_auto()
+  prune_image_auto()
+}
+
+#' RStudio Addin: Remove the Built Docker Image
+#'
+#' RStudio addin for removing the Docker images used for
 #' rendering the current document.
 #'
 #' @importFrom rstudioapi getActiveDocumentContext
 #'
 #' @keywords internal
-addin_purge_image = function() {
+addin_prune_image = function() {
   context = rstudioapi::getActiveDocumentContext()
   path = normalizePath(context$'path')
   path = paste0(file_dir(path), '/', file_name_sans(path), '.docker.yml')
-  purge_image(path)
+  prune_image(path)
 }
