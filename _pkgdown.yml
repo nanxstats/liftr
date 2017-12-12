@@ -2,3 +2,28 @@ template:
   params:
     bootswatch: flatly
     ganalytics: UA-65001771-1
+
+reference:
+  - title: "Docker Installation"
+    desc: >
+      Functions for guiding Docker installation and checking Docker status.
+    contents:
+      - install_docker
+      - check_docker_install
+      - check_docker_running
+  - title: "Containerization and Rendering"
+    desc: >
+      Functions for containerizing and rendering R Markdown documents.
+    contents:
+      - lift
+      - render_docker
+      - liftr-package
+  - title: "Docker Housekeeping"
+    desc: >
+      Functions for cleaning up dangling or existing containers and images".
+    contents:
+      - prune_container
+      - prune_image
+      - prune_container_auto
+      - prune_image_auto
+      - prune_all_auto
