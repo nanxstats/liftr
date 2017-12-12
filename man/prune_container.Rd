@@ -7,7 +7,7 @@
 \usage{
 prune_container(input_yml)
 
-purge_container(...)
+purge_container()
 }
 \arguments{
 \item{input_yml}{The YAML file path (output of \code{\link{render_docker}})

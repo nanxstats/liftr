@@ -79,7 +79,7 @@ prune_container = function(input_yml) {
 
 #' @rdname prune_container
 #' @export purge_container
-purge_container = function(...) {
+purge_container = function() {
   .Deprecated('prune_container')
 }
 
@@ -97,7 +97,7 @@ purge_container = function(...) {
 #' \dontrun{
 #' prune_image_auto()}
 
-prune_image_auto = function(input_yml) {
+prune_image_auto = function() {
 
   cat('Cleaning up dangling images...\n')
   system('docker image prune --force')
@@ -141,6 +141,6 @@ prune_image = function(input_yml) {
 
 #' @rdname prune_image
 #' @export purge_image
-purge_image = function(...) {
+purge_image = function() {
   .Deprecated('prune_image')
 }

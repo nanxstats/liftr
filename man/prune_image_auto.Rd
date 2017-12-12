@@ -4,7 +4,7 @@
 \alias{prune_image_auto}
 \title{Remove Dangling Docker Images}
 \usage{
-prune_image_auto(input_yml)
+prune_image_auto()
 }
 \value{
 prune results
