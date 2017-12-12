@@ -6,7 +6,7 @@
 #'
 #' @details
 #' After running \link{lift}, run \link{render_docker} on the document to
-#' render the Dockerized R Markdown document using Docker containers.
+#' render the containerized R Markdown document using Docker containers.
 #' See \code{vignette('liftr-intro')} for details about the extended
 #' YAML front-matter metadata format used by liftr.
 #'
@@ -57,7 +57,6 @@ lift = function(
     stop('input file does not exist')
 
   if (!use_config) {
-
     # locate YAML metadata block
     doc_content = readLines(normalizePath(input))
     header_pos = which(doc_content == '---')
@@ -85,16 +84,13 @@ lift = function(
       stop('Cannot find `liftr` option in file header')
 
     opt_list = opt_all_list$liftr
-
     }
 
   if (use_config) {
-
     liftrfile_path = paste0(file_dir(input), '/', config_file)
     if (!file.exists(normalizePath(liftrfile_path)))
       stop('The YAML config file does not exist')
     opt_list = yaml.load_file(liftrfile_path)
-
   }
 
   # base image
