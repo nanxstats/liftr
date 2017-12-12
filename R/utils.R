@@ -56,3 +56,9 @@ sanitize_blank = function(txt) {
   txt = txt[-blank[idx]]
   txt
 }
+
+# determine os type
+check_os = function() {
+  if (Sys.info()[['sysname']] == 'Darwin') 'mac' else if
+  (.Platform$OS.type == 'windows') 'win' else 'lnx'
+}
