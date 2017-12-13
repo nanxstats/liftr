@@ -42,14 +42,12 @@ Let's create a new folder first and copy the example R Markdown document
 to this folder:
 
 ```{r, eval = FALSE}
-dir_example = paste0("~/liftr-tidyverse/")
+path = paste0("~/liftr-tidyverse/")
 
-dir.create(dir_example)
-file.copy(system.file(
-  "examples/liftr-tidyverse.Rmd",
-  package = "liftr"), dir_example)
+dir.create(path)
+file.copy(system.file("examples/liftr-tidyverse.Rmd", package = "liftr"), path)
 
-input = paste0(dir_example, "liftr-tidyverse.Rmd")
+input = paste0(path, "liftr-tidyverse.Rmd")
 ```
 
 If we open the R Markdown file, we will see the header section
@@ -112,7 +110,7 @@ render_docker(input)
 Let's view the rendered document:
 
 ```{r, eval = FALSE}
-browseURL(paste0(dir_example, "liftr-tidyverse.pdf"))
+browseURL(paste0(path, "liftr-tidyverse.pdf"))
 ```
 
 In the last section of the rendered PDF, we will see that the session
@@ -134,7 +132,7 @@ and get larger gradually as you build more images. Let's remove
 the generated Docker image to save some disk space:
 
 ```{r, eval = FALSE}
-prune_image(paste0(dir_example, "liftr-tidyverse.docker.yml"))
+prune_image(paste0(path, "liftr-tidyverse.docker.yml"))
 ```
 
 If we do this, the Docker container will be rebuilt next time
