@@ -36,7 +36,7 @@ and follow the guidelines to install it. After that, `check_docker_install()`
 and `check_docker_running()` would help you make sure that Docker has been
 installed and running properly.
 
-# Example Document
+# Example document
 
 Let's create a new folder first and copy the example R Markdown document
 to this folder:
@@ -85,7 +85,7 @@ tidyverse image already includes `pandoc`.
 - We included TeXLive here since we intend to render a PDF file in the end.
 - The CRAN data package `nycflights13` will be installed.
 
-# Containerize the Document
+# Containerize the document
 
 Let's containerize this document by generating a `Dockerfile` for it,
 using `liftr::lift`:
@@ -98,7 +98,7 @@ A file named `Dockerfile` will be generated under the same directory
 of the input RMD file. It contains the necessary commands for building
 the Docker container for rendering the document.
 
-# Render the Document
+# Render the document
 
 We can use `render_docker()` to start the Docker container,
 and render the document inside it:
