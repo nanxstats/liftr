@@ -136,9 +136,9 @@ included in the liftr package. First, we create a new directory and copy
 the R Markdown document into the directory:
 
 ```{r, eval = FALSE}
-dir_example = "~/liftr-minimal/"
-dir.create(dir_example)
-file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), dir_example)
+path = "~/liftr-minimal/"
+dir.create(path)
+file.copy(system.file("examples/liftr-minimal.Rmd", package = "liftr"), path)
 ```
 
 Then, we use `lift()` to parse the document and generate the Dockerfile:
@@ -146,7 +146,7 @@ Then, we use `lift()` to parse the document and generate the Dockerfile:
 ```{r, eval = FALSE}
 library("liftr")
 
-input = paste0(dir_example, "liftr-minimal.Rmd")
+input = paste0(path, "liftr-minimal.Rmd")
 lift(input)
 ```
 
@@ -187,7 +187,7 @@ image (whose information will be stored in an output YAML file)
 after sucessful rendering, use `prune_container()` and `prune_image()`:
 
 ```{r, eval = FALSE}
-purge_image(paste0(dir_example, "liftr-minimal.docker.yml"))
+purge_image(paste0(path, "liftr-minimal.docker.yml"))
 ```
 
 The above input YAML file contains the basic information of the
@@ -201,12 +201,5 @@ the R Markdown documents. `install_docker()` will help you find the
 proper guide to install and set up Docker in your system.
 To check if Docker is correctly installed, use `check_docker_install()`;
 to check if the Docker daemon is running, use `check_docker_running()`.
-
-For Linux users, we should configure Docker to [run without sudo](https://docs.docker.com/engine/installation/linux/linux-postinstall/).
-To avoid `sudo` when using the `docker` command, simply create a group
-named `docker` and add yourself to it:
-
-```bash
-sudo groupadd docker
-sudo usermod -aG docker $USER
-```
+In particular, Linux users should configure Docker to
+[run without sudo](https://docs.docker.com/engine/installation/linux/linux-postinstall/).
