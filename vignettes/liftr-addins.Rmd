@@ -24,13 +24,13 @@ containerizing and rendering your documents with liftr.
 
 This addin helps you generate the `Dockerfile` for the current
 R Markdown document opened in RStudio (with liftr meta),
-using `liftr::lift()`.
+using `lift()`.
 
 # Addin: Render
 
 This addin will generate the `Dockerfile` based on the document,
 create the Docker container, and render the document inside the
-container using `liftr::render_docker()`.
+container using `render_docker()`.
 
 # Addin: Prune Dangling
 
