@@ -12,6 +12,34 @@ vignette: >
   %\VignetteIndexEntry{RStudio Addins for liftr}
 ---
 
-# RStudio Addins
+# RStudio addins to the rescue
 
-Four RStudio addins are available for ...
+If you use RStudio, there is a good chance that you love the
+`Knit` button that will give you the power of one-click R Markdown document compilation. Luckily, we also prepared four RStudio addins that supports
+containerizing and rendering your documents with liftr.
+
+<img src="https://i.imgur.com/HahL1l2.png" width="100%" class="img-responsive" alt="RStudio addins for liftr">
+
+# Addin: Containerize
+
+This addin helps you generate the `Dockerfile` for the current
+R Markdown document opened in RStudio (with liftr meta),
+using `liftr::lift()`.
+
+# Addin: Render
+
+This addin will generate the `Dockerfile` based on the document,
+create the Docker container, and render the document inside the
+container using `liftr::render_docker()`.
+
+# Addin: Prune Dangling
+
+Sometimes the Docker image build fails due to various reasons,
+this addin will help you clean up the unused dangling containers
+and images automatically.
+
+# Addin: Remove Image
+
+After having a satisfying rendered document, maybe you would
+not need the Docker image for rendering the document for a long time.
+This addin helps you remove that particular Docker image.
