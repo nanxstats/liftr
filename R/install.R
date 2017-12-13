@@ -4,6 +4,8 @@
 #'
 #' @export install_docker
 #'
+#' @importFrom utils browseURL
+#'
 #' @return NULL
 #'
 #' @references \url{https://docs.docker.com/engine/installation/}
