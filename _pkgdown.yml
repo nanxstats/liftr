@@ -20,7 +20,7 @@ reference:
       - liftr-package
   - title: "Docker Housekeeping"
     desc: >
-      Functions for cleaning up dangling or existing containers and images".
+      Functions for cleaning up dangling or existing containers and images.
     contents:
       - prune_container
       - prune_image
