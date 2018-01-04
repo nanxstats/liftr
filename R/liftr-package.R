@@ -1,4 +1,4 @@
-#' Containerize R Markdown Documents
+#' Containerize R Markdown Documents for Continuous Reproducibility
 #'
 #' Persistent reproducible reporting by
 #' containerization of R Markdown documents.

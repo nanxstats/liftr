@@ -3,7 +3,7 @@
 \docType{package}
 \name{liftr-package}
 \alias{liftr-package}
-\title{Containerize R Markdown Documents}
+\title{Containerize R Markdown Documents for Continuous Reproducibility}
 \description{
 Persistent reproducible reporting by
 containerization of R Markdown documents.

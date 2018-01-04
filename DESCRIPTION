@@ -1,6 +1,6 @@
 Package: liftr
 Type: Package
-Title: Containerize R Markdown Documents
+Title: Containerize R Markdown Documents for Continuous Reproducibility
 Version: 0.8.9000
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
