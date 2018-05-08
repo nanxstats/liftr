@@ -15,12 +15,12 @@
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-65001771-1"></script><script>
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-66394392-1"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-65001771-1');
+  gtag('config', 'UA-66394392-1');
 </script>
 </head>
 <body>
@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">liftr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.9001</span>
       </span>
     </div>
 
@@ -94,9 +94,9 @@
       <h1>Explore tidyverse with liftr</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2018-04-21</h4>
+            <h4 class="date">2018-05-07</h4>
       
-      <small>Source: <a href="https://github.com/road2stat/liftr/blob/master/vignettes/liftr-tidyverse.Rmd"><code>vignettes/liftr-tidyverse.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/road2stat/liftr/blob/master/vignettes/liftr-tidyverse.Rmd"><code>vignettes/liftr-tidyverse.Rmd</code></a></small>
       <div class="hidden name"><code>liftr-tidyverse.Rmd</code></div>
 
     </div>
@@ -118,30 +118,30 @@
 <h1 class="hasAnchor">
 <a href="#example-document" class="anchor"></a>Example document</h1>
 <p>Let’s create a new folder first and copy the example R Markdown document to this folder:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">path =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"~/liftr-tidyverse/"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">dir.create</span>(path)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">file.copy</span>(<span class="kw">system.file</span>(<span class="st">"examples/liftr-tidyverse.Rmd"</span>, <span class="dt">package =</span> <span class="st">"liftr"</span>), path)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">input =<span class="st"> </span><span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.Rmd"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"~/liftr-tidyverse/"</span>)
+
+<span class="kw">dir.create</span>(path)
+<span class="kw">file.copy</span>(<span class="kw">system.file</span>(<span class="st">"examples/liftr-tidyverse.Rmd"</span>, <span class="dt">package =</span> <span class="st">"liftr"</span>), path)
+
+input =<span class="st"> </span><span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.Rmd"</span>)</code></pre></div>
 <p>If we open the R Markdown file, we will see the header section includes a <code>liftr</code> section, which defines the Docker system environment required to render this document. For our case, it is very straightforward and simple indeed:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">"Explore tidyverse with liftr"</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="fu">author:</span><span class="at"> </span><span class="st">"Nan Xiao &lt;&lt;me@nanx.me&gt;&gt;"</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="fu">date:</span><span class="at"> </span><span class="st">"2018-04-21"</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="fu">output:</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">  <span class="fu">rmarkdown:</span><span class="at">:pdf_document:</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="fu">toc:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="fu">number_sections:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="fu">liftr:</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">  <span class="fu">from:</span><span class="at"> </span><span class="st">"rocker/tidyverse:latest"</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">  <span class="fu">maintainer:</span><span class="at"> </span><span class="st">"Nan Xiao"</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">  <span class="fu">email:</span><span class="at"> </span><span class="st">"me@nanx.me"</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">  <span class="fu">pandoc:</span><span class="at"> false</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">  <span class="fu">texlive:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">  <span class="fu">cran:</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">    <span class="kw">-</span> nycflights13</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">title:</span><span class="at"> </span><span class="st">"Explore tidyverse with liftr"</span>
+<span class="fu">author:</span><span class="at"> </span><span class="st">"Nan Xiao &lt;&lt;me@nanx.me&gt;&gt;"</span>
+<span class="fu">date:</span><span class="at"> </span><span class="st">"2018-05-07"</span>
+<span class="fu">output:</span>
+  <span class="fu">rmarkdown:</span><span class="at">:pdf_document:</span>
+    <span class="fu">toc:</span><span class="at"> true</span>
+    <span class="fu">number_sections:</span><span class="at"> true</span>
+<span class="fu">liftr:</span>
+  <span class="fu">from:</span><span class="at"> </span><span class="st">"rocker/tidyverse:latest"</span>
+  <span class="fu">maintainer:</span><span class="at"> </span><span class="st">"Nan Xiao"</span>
+  <span class="fu">email:</span><span class="at"> </span><span class="st">"me@nanx.me"</span>
+  <span class="fu">pandoc:</span><span class="at"> false</span>
+  <span class="fu">texlive:</span><span class="at"> true</span>
+  <span class="fu">cran:</span>
+    <span class="kw">-</span> nycflights13
+<span class="ot">---</span></code></pre></div>
 <p>Most of the fields are self-explanatory:</p>
 <ul>
 <li>Here we simply specified the latest <code>rocker/tidyverse</code> image as our base image, which would save us a lot of time creating a custom base image with all the tidyverse dependencies.</li>
@@ -154,16 +154,16 @@
 <h1 class="hasAnchor">
 <a href="#containerize-the-document" class="anchor"></a>Containerize the document</h1>
 <p>Let’s containerize this document by generating a <code>Dockerfile</code> for it, using <code><a href="../reference/lift.html">liftr::lift</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/lift.html">lift</a></span>(input)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/lift.html">lift</a></span>(input)</code></pre></div>
 <p>A file named <code>Dockerfile</code> will be generated under the same directory of the input RMD file. It contains the necessary commands for building the Docker container for rendering the document.</p>
 </div>
 <div id="render-the-document" class="section level1">
 <h1 class="hasAnchor">
 <a href="#render-the-document" class="anchor"></a>Render the document</h1>
 <p>We can use <code><a href="../reference/render_docker.html">render_docker()</a></code> to start the Docker container, and render the document inside it:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/render_docker.html">render_docker</a></span>(input)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/render_docker.html">render_docker</a></span>(input)</code></pre></div>
 <p>Let’s view the rendered document:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">browseURL</span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.pdf"</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">browseURL</span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.pdf"</span>))</code></pre></div>
 <p>In the last section of the rendered PDF, we will see that the session information are probably different with your current system’s information. Yes, that is because the document is completed generated by a newly built, isolated Linux system environment, using Docker.</p>
 <p>In this way, the R Markdown document gains a higher, system level reproducibility, thus easily replicable by other users who might not have the identical system and R package environment to yours. This is a good thing for team collaboration and large-scale document orchestration. The best part is, all you need to share is still the document itself, only with a few extra metadata fields.</p>
 </div>
@@ -171,7 +171,7 @@
 <h1 class="hasAnchor">
 <a href="#housekeeping" class="anchor"></a>Housekeeping</h1>
 <p>The Docker images stored in your system could take a few gigabytes and get larger gradually as you build more images. Let’s remove the generated Docker image to save some disk space:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/prune_image.html">prune_image</a></span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.docker.yml"</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/prune_image.html">prune_image</a></span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-tidyverse.docker.yml"</span>))</code></pre></div>
 <p>If we do this, the Docker container will be rebuilt next time when you use <code><a href="../reference/render_docker.html">render_docker()</a></code>. If not, the image will be cached in the system and reused when compiling the document later and save some time for you.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -179,7 +179,7 @@
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-wickham2014tidy">
-<p>Wickham, Hadley. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10):1–23.</p>
+<p>Wickham, Hadley. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
 </div>
 </div>
 </div>

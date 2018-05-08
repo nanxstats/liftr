@@ -15,12 +15,12 @@
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-65001771-1"></script><script>
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-66394392-1"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-65001771-1');
+  gtag('config', 'UA-66394392-1');
 </script>
 </head>
 <body>
@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">liftr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.9001</span>
       </span>
     </div>
 
@@ -94,9 +94,9 @@
       <h1>A Quick Introduction to liftr</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2018-04-21</h4>
+            <h4 class="date">2018-05-07</h4>
       
-      <small>Source: <a href="https://github.com/road2stat/liftr/blob/master/vignettes/liftr-intro.Rmd"><code>vignettes/liftr-intro.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/road2stat/liftr/blob/master/vignettes/liftr-intro.Rmd"><code>vignettes/liftr-intro.Rmd</code></a></small>
       <div class="hidden name"><code>liftr-intro.Rmd</code></div>
 
     </div>
@@ -112,27 +112,27 @@
 <h1 class="hasAnchor">
 <a href="#metadata-for-containerization" class="anchor"></a>Metadata for containerization</h1>
 <p>To containerize your R Markdown document, the first step is adding <code>liftr</code> fields to the YAML metadata section of the document. For example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="ot">---</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">title:</span><span class="at"> </span><span class="st">"The Missing Example of liftr"</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="fu">author:</span><span class="at"> </span><span class="st">"Author Name"</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="fu">date:</span><span class="at"> </span><span class="st">"2018-04-21"</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="fu">output:</span><span class="at"> rmarkdown::html_document</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="fu">liftr:</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="fu">maintainer:</span><span class="at"> </span><span class="st">"Maintainer Name"</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="fu">email:</span><span class="at"> </span><span class="st">"name@example.com"</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">  <span class="fu">from:</span><span class="at"> </span><span class="st">"rocker/r-base:latest"</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">  <span class="fu">pandoc:</span><span class="at"> true</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">  <span class="fu">texlive:</span><span class="at"> false</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">  <span class="fu">sysdeps:</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="kw">-</span> gfortran</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">  <span class="fu">cran:</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">    <span class="kw">-</span> glmnet</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">  <span class="fu">bioc:</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">    <span class="kw">-</span> Gviz</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">  <span class="fu">remotes:</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">    <span class="kw">-</span> <span class="st">"road2stat/liftr"</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">  <span class="fu">include:</span><span class="at"> </span><span class="st">"DockerfileSnippet"</span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="ot">---</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">title:</span><span class="at"> </span><span class="st">"The Missing Example of liftr"</span>
+<span class="fu">author:</span><span class="at"> </span><span class="st">"Author Name"</span>
+<span class="fu">date:</span><span class="at"> </span><span class="st">"2018-05-07"</span>
+<span class="fu">output:</span><span class="at"> rmarkdown::html_document</span>
+<span class="fu">liftr:</span>
+  <span class="fu">maintainer:</span><span class="at"> </span><span class="st">"Maintainer Name"</span>
+  <span class="fu">email:</span><span class="at"> </span><span class="st">"name@example.com"</span>
+  <span class="fu">from:</span><span class="at"> </span><span class="st">"rocker/r-base:latest"</span>
+  <span class="fu">pandoc:</span><span class="at"> true</span>
+  <span class="fu">texlive:</span><span class="at"> false</span>
+  <span class="fu">sysdeps:</span>
+    <span class="kw">-</span> gfortran
+  <span class="fu">cran:</span>
+    <span class="kw">-</span> glmnet
+  <span class="fu">bioc:</span>
+    <span class="kw">-</span> Gviz
+  <span class="fu">remotes:</span>
+    <span class="kw">-</span> <span class="st">"road2stat/liftr"</span>
+  <span class="fu">include:</span><span class="at"> </span><span class="st">"DockerfileSnippet"</span>
+<span class="ot">---</span></code></pre></div>
 <p>All available metadata fields are expained below.</p>
 <div id="required-metadata" class="section level2">
 <h2 class="hasAnchor">
@@ -197,21 +197,21 @@
 <a href="#containerize-the-document" class="anchor"></a>Containerize the document</h1>
 <p>After adding proper <code>liftr</code> metadata to the document YAML data block, we can use <code><a href="../reference/lift.html">lift()</a></code> to parse the document and generate a Dockerfile.</p>
 <p>We will use <a href="https://github.com/road2stat/liftr/blob/master/inst/examples/liftr-minimal.Rmd">a minimal example</a> included in the liftr package. First, we create a new directory and copy the R Markdown document into the directory:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path =<span class="st"> "~/liftr-minimal/"</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">dir.create</span>(path)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">file.copy</span>(<span class="kw">system.file</span>(<span class="st">"examples/liftr-minimal.Rmd"</span>, <span class="dt">package =</span> <span class="st">"liftr"</span>), path)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path =<span class="st"> "~/liftr-minimal/"</span>
+<span class="kw">dir.create</span>(path)
+<span class="kw">file.copy</span>(<span class="kw">system.file</span>(<span class="st">"examples/liftr-minimal.Rmd"</span>, <span class="dt">package =</span> <span class="st">"liftr"</span>), path)</code></pre></div>
 <p>Then, we use <code><a href="../reference/lift.html">lift()</a></code> to parse the document and generate the Dockerfile:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(<span class="st">"liftr"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">input =<span class="st"> </span><span class="kw">paste0</span>(path, <span class="st">"liftr-minimal.Rmd"</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="../reference/lift.html">lift</a></span>(input)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"liftr"</span>)
+
+input =<span class="st"> </span><span class="kw">paste0</span>(path, <span class="st">"liftr-minimal.Rmd"</span>)
+<span class="kw"><a href="../reference/lift.html">lift</a></span>(input)</code></pre></div>
 <p>After successfully running <code><a href="../reference/lift.html">lift()</a></code>, the Dockerfile will be in the <code>~/liftr-minimal/</code> directory.</p>
 </div>
 <div id="render-the-document" class="section level1">
 <h1 class="hasAnchor">
 <a href="#render-the-document" class="anchor"></a>Render the document</h1>
 <p>Now we can use <code><a href="../reference/render_docker.html">render_docker()</a></code> to render the document into an HTML file, under a Docker container:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/render_docker.html">render_docker</a></span>(input)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/render_docker.html">render_docker</a></span>(input)</code></pre></div>
 <p>The function <code><a href="../reference/render_docker.html">render_docker()</a></code> will parse the Dockerfile, build a new Docker image, and run a Docker container to render the input document. If successfully rendered, the output <code>liftr-minimal.html</code> will be in the <code>~/liftr-minimal/</code> directory. You can also pass additional arguments in <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/render">rmarkdown::render</a></code> to this function.</p>
 <p>In order to share the dockerized R Markdown document, simply share the <code>.Rmd</code> file. Other users can use the <code><a href="../reference/lift.html">lift()</a></code> and <code><a href="../reference/render_docker.html">render_docker()</a></code> functions to render the document as above.</p>
 </div>
@@ -221,7 +221,7 @@
 <p>Normally, the argument <code>prune</code> is set to <code>TRUE</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code>. This means any dangling containers or images due to unsuccessful builds will be automatically cleaned.</p>
 <p>To clean up the dangling containers, images, and everything without specifying names, please use <code><a href="../reference/prune_container_auto.html">prune_container_auto()</a></code>, <code><a href="../reference/prune_image_auto.html">prune_image_auto()</a></code>, and <code><a href="../reference/prune_all_auto.html">prune_all_auto()</a></code>.</p>
 <p>If you wish to manually remove the Docker container or image (whose information will be stored in an output YAML file) after sucessful rendering, use <code><a href="../reference/prune_container.html">prune_container()</a></code> and <code><a href="../reference/prune_image.html">prune_image()</a></code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/prune_image.html">purge_image</a></span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-minimal.docker.yml"</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/prune_image.html">purge_image</a></span>(<span class="kw">paste0</span>(path, <span class="st">"liftr-minimal.docker.yml"</span>))</code></pre></div>
 <p>The above input YAML file contains the basic information of the Docker container, image, and commands to render the document. It is generated by setting <code>purge_info = TRUE</code> (default) in <code><a href="../reference/render_docker.html">render_docker()</a></code>.</p>
 </div>
 <div id="install-docker" class="section level1">
