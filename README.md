@@ -1,4 +1,4 @@
-# liftr  <a href="https://liftr.me"><img src="https://i.imgur.com/3SCYZu0.png" align="right" alt="logo" height="180" width="180" /></a>
+# liftr  <a href="https://nanx.me/liftr/"><img src="https://i.imgur.com/3SCYZu0.png" align="right" alt="logo" height="180" width="180" /></a>
 
 [![Build Status](https://travis-ci.org/road2stat/liftr.svg?branch=master)](https://travis-ci.org/road2stat/liftr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/liftr?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/liftr)
@@ -24,7 +24,7 @@ Or try the development version on GitHub:
 devtools::install_github("road2stat/liftr")
 ```
 
-[Browse the vignettes](https://liftr.me/articles/) or the [demo video](https://vimeo.com/212815497) for a quick-start.
+[Browse the vignettes](https://nanx.me/liftr/articles/) or the [demo video](https://vimeo.com/212815497) for a quick-start.
 
 ## Workflow
 

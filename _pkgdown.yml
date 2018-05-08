@@ -1,7 +1,7 @@
 template:
   params:
     bootswatch: flatly
-    ganalytics: UA-65001771-1
+    ganalytics: UA-66394392-1
 
 reference:
   - title: "Docker Installation"

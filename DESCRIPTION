@@ -1,7 +1,7 @@
 Package: liftr
 Type: Package
 Title: Containerize R Markdown Documents for Continuous Reproducibility
-Version: 0.8.9000
+Version: 0.8.9001
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0250-5673")),
@@ -13,7 +13,7 @@ Description: Persistent reproducible reporting by containerization of R Markdown
 License: GPL-3 | file LICENSE
 SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>)
 VignetteBuilder: knitr
-URL: https://liftr.me, https://github.com/road2stat/liftr
+URL: https://nanx.me/liftr/, https://github.com/road2stat/liftr
 BugReports: https://github.com/road2stat/liftr/issues
 Depends:
     R (>= 3.0.2)
@@ -24,4 +24,4 @@ Imports:
     stringr,
     rstudioapi
 Encoding: UTF-8
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
