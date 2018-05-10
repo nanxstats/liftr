@@ -1,7 +1,8 @@
-# liftr 0.8.9001
+# liftr 0.8.9002
 
 ## Improvements
 
+- Add a new argument `dry_run` in `render_docker()` for debugging: when set to `TRUE`, it will only return the Docker commands and not actually run them.
 - New URL for the documentation website: https://nanx.me/liftr/.
 
 # liftr 0.8 (2017-12-12)
