@@ -7,7 +7,7 @@
 \usage{
 render_docker(input = NULL, tag = NULL, container_name = NULL,
   cache = TRUE, build_args = NULL, run_args = NULL, prune = TRUE,
-  prune_info = TRUE, ...)
+  prune_info = TRUE, dry_run = FALSE, ...)
 
 drender(...)
 }
@@ -40,6 +40,9 @@ Default is \code{TRUE}.}
 \item{prune_info}{Logical. Should we save the Docker container and
 image information to a YAML file (name ended with \code{.docker.yml})
 for manual pruning or inspections later? Default is \code{TRUE}.}
+
+\item{dry_run}{Preview the Docker commands but do not run them?
+Useful for debugging purposes. Default is \code{FALSE}.}
 
 \item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{render}}.}
@@ -80,6 +83,9 @@ input = paste0(dir_example, "liftr-tidyverse.Rmd")
 lift(input)
 
 \dontrun{
+# print the Docker commands first
+render_docker(input, dry_run = TRUE)
+
 # render the document with Docker
 render_docker(input)
 

@@ -35,6 +35,8 @@
 #' @param prune_info Logical. Should we save the Docker container and
 #' image information to a YAML file (name ended with \code{.docker.yml})
 #' for manual pruning or inspections later? Default is \code{TRUE}.
+#' @param dry_run Preview the Docker commands but do not run them?
+#' Useful for debugging purposes. Default is \code{FALSE}.
 #' @param ... Additional arguments passed to
 #' \code{\link[rmarkdown]{render}}.
 #'
@@ -66,6 +68,9 @@
 #' lift(input)
 #'
 #' \dontrun{
+#' # print the Docker commands first
+#' render_docker(input, dry_run = TRUE)
+#'
 #' # render the document with Docker
 #' render_docker(input)
 #'
@@ -78,7 +83,7 @@
 render_docker = function(
   input = NULL, tag = NULL, container_name = NULL,
   cache = TRUE, build_args = NULL, run_args = NULL,
-  prune = TRUE, prune_info = TRUE, ...) {
+  prune = TRUE, prune_info = TRUE, dry_run = FALSE, ...) {
 
   if (is.null(input))
     stop('missing input file')
@@ -157,19 +162,25 @@ render_docker = function(
     'docker_build_cmd' = docker_build_cmd,
     'docker_run_cmd'   = docker_run_cmd)
 
-  if (prune_info) {
-    writeLines(as.yaml(res), con = paste0(
-      file_dir(input), '/', file_name_sans(input), '.docker.yml'))
-  }
+  # run docker commands or only return the commands
+  if (!dry_run) {
 
-  # render
-  system(docker_build_cmd)
-  system(docker_run_cmd)
+    # write the docker container info to a file
+    if (prune_info) {
+      writeLines(as.yaml(res), con = paste0(
+        file_dir(input), '/', file_name_sans(input), '.docker.yml'))
+    }
 
-  # cleanup dangling containers, images, volumes, and networks
-  if (prune) {
-    cat('Cleaning up...\n')
-    on.exit(system('docker system prune --force'))
+    # render
+    system(docker_build_cmd)
+    system(docker_run_cmd)
+
+    # cleanup dangling containers, images, volumes, and networks
+    if (prune) {
+      cat('Cleaning up...\n')
+      on.exit(system('docker system prune --force'))
+    }
+
   }
 
   res
