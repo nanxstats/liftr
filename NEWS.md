@@ -1,4 +1,4 @@
-# liftr 0.8.9002
+# liftr 0.9 (2018-05-13)
 
 ## Improvements
 
