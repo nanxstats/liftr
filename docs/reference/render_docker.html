@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">liftr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.9001</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.9</span>
       </span>
     </div>
 
@@ -138,7 +138,7 @@
 
     <pre class="usage"><span class='fu'>render_docker</span>(<span class='kw'>input</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>container_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>build_args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>run_args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>prune_info</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+  <span class='kw'>prune_info</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dry_run</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
 <span class='fu'>drender</span>(<span class='no'>...</span>)</pre>
     
@@ -191,6 +191,11 @@ image information to a YAML file (name ended with <code>.docker.yml</code>)
 for manual pruning or inspections later? Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
+      <th>dry_run</th>
+      <td><p>Preview the Docker commands but do not run them?
+Useful for debugging purposes. Default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional arguments passed to
 <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code>.</p></td>
@@ -230,6 +235,9 @@ containerized R Markdown documents.</p>
 <span class='co'># containerization</span>
 <span class='no'>input</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(<span class='no'>dir_example</span>, <span class='st'>"liftr-tidyverse.Rmd"</span>)
 <span class='fu'><a href='lift.html'>lift</a></span>(<span class='no'>input</span>)</div><span class='co'># NOT RUN {</span>
+<span class='co'># print the Docker commands first</span>
+<span class='fu'>render_docker</span>(<span class='no'>input</span>, <span class='kw'>dry_run</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
 <span class='co'># render the document with Docker</span>
 <span class='fu'>render_docker</span>(<span class='no'>input</span>)
 
