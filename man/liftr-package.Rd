@@ -9,8 +9,10 @@ Persistent reproducible reporting by
 containerization of R Markdown documents.
 }
 \details{
-\tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
-License: \tab GPL-3\cr }
+\tabular{ll}{
+Package: \tab liftr\cr
+Type: \tab Package\cr
+License: \tab GPL-3}
 }
 \author{
 Nan Xiao <\email{me@nanx.me}>

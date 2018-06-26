@@ -3,8 +3,10 @@
 #' Persistent reproducible reporting by
 #' containerization of R Markdown documents.
 #'
-#' \tabular{ll}{ Package: \tab liftr\cr Type: \tab Package\cr
-#' License: \tab GPL-3\cr }
+#' \tabular{ll}{
+#' Package: \tab liftr\cr
+#' Type: \tab Package\cr
+#' License: \tab GPL-3}
 #'
 #' @name liftr-package
 #' @docType package
