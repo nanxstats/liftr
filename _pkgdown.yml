@@ -1,8 +1,3 @@
-template:
-  params:
-    bootswatch: flatly
-    ganalytics: UA-66394392-1
-
 reference:
   - title: "Docker Installation"
     desc: >
