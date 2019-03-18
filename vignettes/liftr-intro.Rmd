@@ -42,7 +42,7 @@ liftr:
   bioc:
     - Gviz
   remotes:
-    - "road2stat/liftr"
+    - "nanxstats/liftr"
   include: "DockerfileSnippet"
 ---
 ```
@@ -131,7 +131,7 @@ After adding proper `liftr` metadata to the document YAML data block,
 we can use `lift()` to parse the document and generate a Dockerfile.
 
 We will use
-[a minimal example](https://github.com/road2stat/liftr/blob/master/inst/examples/liftr-minimal.Rmd)
+[a minimal example](https://github.com/nanxstats/liftr/blob/master/inst/examples/liftr-minimal.Rmd)
 included in the liftr package. First, we create a new directory and copy
 the R Markdown document into the directory:
 

@@ -31,7 +31,7 @@ parse_texlive = function(texlive) {
   }
 }
 
-# this solves https://github.com/road2stat/liftr/issues/12
+# this solves https://github.com/nanxstats/liftr/issues/12
 parse_pandoc = function(liftr_from, pandoc) {
   if (is_from_bioc(liftr_from) | is_from_rstudio(liftr_from)) {
     NULL

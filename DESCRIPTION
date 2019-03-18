@@ -13,8 +13,8 @@ Description: Persistent reproducible reporting by containerization of R Markdown
 License: GPL-3 | file LICENSE
 SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>)
 VignetteBuilder: knitr
-URL: https://nanx.me/liftr/, https://github.com/road2stat/liftr
-BugReports: https://github.com/road2stat/liftr/issues
+URL: https://nanx.me/liftr/, https://github.com/nanxstats/liftr
+BugReports: https://github.com/nanxstats/liftr/issues
 Depends:
     R (>= 3.0.2)
 Imports:

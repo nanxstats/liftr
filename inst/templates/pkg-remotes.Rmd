@@ -1,1 +1,1 @@
-RUN Rscript -e "source('https://cdn.jsdelivr.net/gh/road2stat/liftrlib@aa132a2deb1c55a781b8ef89881b611a10030c58/install_remotes.R');install_remotes(c(`r liftr_remotes`))"
+RUN Rscript -e "source('https://cdn.jsdelivr.net/gh/nanxstats/liftrlib@aa132a2deb1c55a781b8ef89881b611a10030c58/install_remotes.R');install_remotes(c(`r liftr_remotes`))"

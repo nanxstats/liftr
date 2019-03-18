@@ -102,7 +102,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/road2stat/liftr">
+  <a href="https://github.com/nanxstats/liftr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -120,7 +120,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/road2stat/liftr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <small>Source: <a href='https://github.com/nanxstats/liftr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="liftr-09-2018-05-13" class="section level1">
@@ -144,7 +144,7 @@
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New Features</h2>
 <ul>
-<li>Add a new argument <code>prune</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code> to automatically clean up dangling containers and images in case the image build or compilation was not successful (<a href="https://github.com/road2stat/liftr/issues/27"><a href='https://github.com/road2stat/liftr/issues/27'>#27</a></a>). We thank Nicolas Roelandt for suggesting this feature (<a href="https://github.com/road2stat/liftr/issues/25"><a href='https://github.com/road2stat/liftr/issues/25'>#25</a></a>).</li>
+<li>Add a new argument <code>prune</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code> to automatically clean up dangling containers and images in case the image build or compilation was not successful (<a href="https://github.com/nanxstats/liftr/issues/27"><a href='https://github.com/nanxstats/liftr/issues/27'>#27</a></a>). We thank Nicolas Roelandt for suggesting this feature (<a href="https://github.com/nanxstats/liftr/issues/25"><a href='https://github.com/nanxstats/liftr/issues/25'>#25</a></a>).</li>
 <li>Added functions <code><a href="../reference/prune_container_auto.html">prune_container_auto()</a></code>, <code><a href="../reference/prune_image_auto.html">prune_image_auto()</a></code>, and <code><a href="../reference/prune_all_auto.html">prune_all_auto()</a></code> for automatic pruning of dangling containers or images without particular names specified.</li>
 <li>Added function <code><a href="../reference/install_docker.html">install_docker()</a></code> for guiding the installation of Docker.</li>
 <li>Added function <code><a href="../reference/check_docker_install.html">check_docker_install()</a></code>for checking if Docker is properly installed and discoverable.</li>
@@ -182,7 +182,7 @@
 <h2 class="hasAnchor">
 <a href="#new-features-1" class="anchor"></a>New Features</h2>
 <ul>
-<li>Supports parsing the liftr metadata from a standalone YAML congfiguration file. This feature makes it possible to run liftr without editing the original R Markdown file [<a href="https://github.com/road2stat/liftr/issues/22"><a href='https://github.com/road2stat/liftr/issues/22'>#22</a></a>].</li>
+<li>Supports parsing the liftr metadata from a standalone YAML congfiguration file. This feature makes it possible to run liftr without editing the original R Markdown file [<a href="https://github.com/nanxstats/liftr/issues/22"><a href='https://github.com/nanxstats/liftr/issues/22'>#22</a></a>].</li>
 </ul>
 </div>
 </div>
@@ -195,11 +195,11 @@
 <a href="#new-features-2" class="anchor"></a>New Features</h2>
 <ul>
 <li>Added RStudio addins as shortcuts to containerize and render R Markdown documents.</li>
-<li>Added new argument <code>cache</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code> to improve rendering speed significantly by caching Docker image layers [<a href="https://github.com/road2stat/liftr/issues/18"><a href='https://github.com/road2stat/liftr/issues/18'>#18</a></a>].</li>
+<li>Added new argument <code>cache</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code> to improve rendering speed significantly by caching Docker image layers [<a href="https://github.com/nanxstats/liftr/issues/18"><a href='https://github.com/nanxstats/liftr/issues/18'>#18</a></a>].</li>
 <li>Added new argument <code>purge_info</code> to <code><a href="../reference/render_docker.html">render_docker()</a></code>. This argument controls whether to output the Docker image and container name into an YAML file for purging purposes later.</li>
 <li>Separate the creation and removal of Docker containers and images: removed the old argument <code>reset</code> in <code><a href="../reference/render_docker.html">render_docker()</a></code>; added <code><a href="../reference/prune_container.html">purge_container()</a></code> and <code><a href="../reference/prune_image.html">purge_image()</a></code> for cleaning up.</li>
 <li>The <code>ghpkg</code> field is now deprecated. The new <code>remotes</code> field supports <a href="https://github.com/hadley/devtools/blob/master/vignettes/dependencies.Rmd">devtools remote package name format</a>. Now packages can be installed from GitHub, Bitbucket, Git/SVN servers, URLs, etc.</li>
-<li>Added new metadata field <code>include</code> for including any custom Dockerfile snippets into the final Dockerfile. This also fixes <a href="https://github.com/road2stat/liftr/issues/21"><a href='https://github.com/road2stat/liftr/issues/21'>#21</a></a>.</li>
+<li>Added new metadata field <code>include</code> for including any custom Dockerfile snippets into the final Dockerfile. This also fixes <a href="https://github.com/nanxstats/liftr/issues/21"><a href='https://github.com/nanxstats/liftr/issues/21'>#21</a></a>.</li>
 </ul>
 </div>
 <div id="improvements-3" class="section level2">
@@ -220,7 +220,7 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
 <ul>
-<li>Removed <code>-t</code> and <code>-i</code> from <code>docker run</code> to fix <a href="https://github.com/road2stat/liftr/issues/17"><a href='https://github.com/road2stat/liftr/issues/17'>#17</a></a>.</li>
+<li>Removed <code>-t</code> and <code>-i</code> from <code>docker run</code> to fix <a href="https://github.com/nanxstats/liftr/issues/17"><a href='https://github.com/nanxstats/liftr/issues/17'>#17</a></a>.</li>
 </ul>
 </div>
 </div>
@@ -272,7 +272,7 @@
 <h2 class="hasAnchor">
 <a href="#new-features-4" class="anchor"></a>New Features</h2>
 <ul>
-<li>Added new R Markdown header option <code>pandoc</code> to control Pandoc installation. Automatically set this to <code>false</code> for <code>rocker/rstudio</code> and <code>bioconductor/...</code> images. This solves <a href="https://github.com/road2stat/liftr/issues/12"><a href='https://github.com/road2stat/liftr/issues/12'>#12</a></a>.</li>
+<li>Added new R Markdown header option <code>pandoc</code> to control Pandoc installation. Automatically set this to <code>false</code> for <code>rocker/rstudio</code> and <code>bioconductor/...</code> images. This solves <a href="https://github.com/nanxstats/liftr/issues/12"><a href='https://github.com/nanxstats/liftr/issues/12'>#12</a></a>.</li>
 </ul>
 </div>
 </div>
