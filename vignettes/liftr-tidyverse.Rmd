@@ -4,10 +4,13 @@ author: "Nan Xiao <<https://nanx.me>>"
 date: "`r Sys.Date()`"
 bibliography: liftr-tidyverse.bib
 output:
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     toc: true
+    toc_float: false
+    toc_depth: 4
     number_sections: true
-    css: liftr.css
+    highlight: "textmate"
+    css: "custom.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Explore tidyverse with liftr}
