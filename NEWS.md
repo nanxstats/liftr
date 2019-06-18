@@ -1,3 +1,9 @@
+# liftr 0.9.2 (2019-06-18)
+
+## Bug Fixes
+
+- Switched to absolute URLs for the contributing guidelines and contributor code of conduct in the readme.
+
 # liftr 0.9.1 (2019-06-18)
 
 ## Bug Fixes
