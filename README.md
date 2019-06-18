@@ -6,7 +6,7 @@
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/liftr)](https://cran.r-project.org/package=liftr)
 
 liftr aims to solve the problem of _persistent reproducible reporting_.
-To achieve this goal, it extends the [R Markdown](http://rmarkdown.rstudio.com)
+To achieve this goal, it extends the [R Markdown](https://rmarkdown.rstudio.com)
 metadata format, and uses Docker to containerize and render R Markdown documents.
 
 ## Installation
@@ -36,14 +36,14 @@ devtools::install_github("nanxstats/liftr")
 |:----------------|:------------------------|:---------------------------------|
 | July 30, 2018 | [JSM 2018](https://ww2.amstat.org/meetings/JSM/2018/onlineprogram/AbstractDetails.cfm?abstractid=329348) ([talk](https://nanx.me/talks/jsm2018-liftr-nanxiao.pdf)) | Vancouver, Canada |
 | July 27, 2017 | [BioC 2017](https://bioconductor.org/help/course-materials/2017/BioC2017/) ([poster](https://nanx.me/posters/dockflow-poster-bioc2017.pdf) for [dockflow.org](https://dockflow.org/)) | Dana-Farber Cancer Institute, Boston, MA |
-| May 20, 2017 | [The 10th China-R Conference](http://china-r.org/) ([talk](https://nanx.me/talks/chinar2017-liftr-nanxiao.pdf)) | Tsinghua University, Beijng, China |
+| May 20, 2017 | [The 10th China-R Conference](https://china-r.org) ([talk](https://nanx.me/talks/chinar2017-liftr-nanxiao.pdf)) | Tsinghua University, Beijng, China |
 | April 18, 2017 | DockerCon 2017 ([talk](https://nanx.me/talks/dockercon2017-liftr-nanxiao.pdf)) | Austin Convention Center, Austin, TX |
-| December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) ([talk](https://nanx.me/talks/cri2015-reproducible-research-nanxiao.pdf)) | The University of Chicago, Chicago, IL |
+| December 3, 2015 | [CRI Bioinformatics Workshop](https://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) ([talk](https://nanx.me/talks/cri2015-reproducible-research-nanxiao.pdf)) | The University of Chicago, Chicago, IL |
 | July 21, 2015 | [BioC 2015](https://bioconductor.org/help/course-materials/2015/BioC2015/) ([workshop](https://www.bioconductor.org/help/course-materials/2015/BioC2015/bioc2015-workshop-nanxiao.pdf)) | Fred Hutchinson Cancer Research Center, Seattle, WA |
 
 ## Contribute
 
-To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+To contribute to this project, please take a look at the [Contributing Guidelines](https://github.com/nanxstats/liftr/blob/master/CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](https://github.com/nanxstats/liftr/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## License
 
