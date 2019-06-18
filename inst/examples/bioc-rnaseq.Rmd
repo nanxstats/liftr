@@ -27,7 +27,7 @@ liftr:
     - PoiClaClu
     - ggbeeswarm
   bioc:
-    - BiocStyle
+    - BiocStyle/3.9
     - airway
     - Rsamtools
     - GenomicFeatures

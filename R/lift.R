@@ -116,7 +116,7 @@ lift = function(
 
   # factory packages
   liftr_factory = quote_str(c(
-    'devtools', 'knitr', 'rmarkdown', 'shiny', 'RCurl'))
+    'devtools', 'BiocManager','knitr', 'rmarkdown', 'shiny', 'RCurl'))
 
   # write output files
   if (is.null(output_dir)) output_dir = file_dir(input)

@@ -40,7 +40,7 @@ liftr:
   cran:
     - glmnet
   bioc:
-    - Gviz
+    - Gviz/3.9
   remotes:
     - "nanxstats/liftr"
   include: "DockerfileSnippet"
@@ -106,6 +106,8 @@ All available metadata fields are expained below.
 - `bioc`
 
     Bioconductor packages depended in the document.
+    If used, first package must be followed by desired Bioconductor version (e.g. `Gviz/3.9`).
+    All the packages used must be installed from the same Bioconductor version. 
 
 - `remotes`
 
