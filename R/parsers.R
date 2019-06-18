@@ -68,7 +68,7 @@ parse_cran = function(cran) {
 parse_bioc = function(bioc) {
   if (!is.null(bioc)) {
     liftr_bioc_version = gsub('.*\\/(.*)', '\\1', bioc[1])
-    bioc_package<- gsub('(.*)\\/.*', '\\1', bioc)
+    bioc_package = gsub('(.*)\\/.*', '\\1', bioc)
     liftr_bioc = quote_str(bioc_package)
     tmp = tempfile()
     invisible(knit(
