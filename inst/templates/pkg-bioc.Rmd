@@ -1,1 +1,1 @@
-RUN Rscript -e "source('http://bioconductor.org/biocLite.R');biocLite(c(`r liftr_bioc`))"
+RUN Rscript -e "BiocManager::install(c(`r liftr_bioc`), version = `r liftr_bioc_version`)"
