@@ -37,7 +37,7 @@ devtools::install_github("nanxstats/liftr")
 | July 30, 2018 | [JSM 2018](https://ww2.amstat.org/meetings/JSM/2018/onlineprogram/AbstractDetails.cfm?abstractid=329348) ([talk](https://nanx.me/talks/jsm2018-liftr-nanxiao.pdf)) | Vancouver, Canada |
 | July 27, 2017 | [BioC 2017](https://bioconductor.org/help/course-materials/2017/BioC2017/) ([poster](https://nanx.me/posters/dockflow-poster-bioc2017.pdf) for [dockflow.org](https://dockflow.org/)) | Dana-Farber Cancer Institute, Boston, MA |
 | May 20, 2017 | [The 10th China-R Conference](http://china-r.org/) ([talk](https://nanx.me/talks/chinar2017-liftr-nanxiao.pdf)) | Tsinghua University, Beijng, China |
-| April 18, 2017 | [DockerCon 2017](http://2017.dockercon.com/) ([talk](https://nanx.me/talks/dockercon2017-liftr-nanxiao.pdf)) | Austin Convention Center, Austin, TX |
+| April 18, 2017 | DockerCon 2017 ([talk](https://nanx.me/talks/dockercon2017-liftr-nanxiao.pdf)) | Austin Convention Center, Austin, TX |
 | December 3, 2015 | [CRI Bioinformatics Workshop](http://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/) ([talk](https://nanx.me/talks/cri2015-reproducible-research-nanxiao.pdf)) | The University of Chicago, Chicago, IL |
 | July 21, 2015 | [BioC 2015](https://bioconductor.org/help/course-materials/2015/BioC2015/) ([workshop](https://www.bioconductor.org/help/course-materials/2015/BioC2015/bioc2015-workshop-nanxiao.pdf)) | Fred Hutchinson Cancer Research Center, Seattle, WA |
 
