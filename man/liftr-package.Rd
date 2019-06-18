@@ -2,20 +2,29 @@
 % Please edit documentation in R/liftr-package.R
 \docType{package}
 \name{liftr-package}
+\alias{liftr}
 \alias{liftr-package}
-\title{Containerize R Markdown Documents for Continuous Reproducibility}
+\title{liftr: Containerize R Markdown Documents for Continuous Reproducibility}
 \description{
-Persistent reproducible reporting by
-containerization of R Markdown documents.
+Persistent reproducible reporting by containerization of R Markdown documents.
 }
-\details{
-\tabular{ll}{
-Package: \tab liftr\cr
-Type: \tab Package\cr
-License: \tab GPL-3}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://nanx.me/liftr/}
+  \item \url{https://github.com/nanxstats/liftr}
+  \item Report bugs at \url{https://github.com/nanxstats/liftr/issues}
+}
+
 }
 \author{
-Nan Xiao <\email{me@nanx.me}>
-Miao-Zhu Li <\email{miaozhu.li@duke.edu}>
-Teng-Fei Yin <\email{tengfei.yin@sevenbridges.com}>
+\strong{Maintainer}: Nan Xiao \email{me@nanx.me} (0000-0002-0250-5673)
+
+Other contributors:
+\itemize{
+  \item Miao-Zhu Li \email{miaozhu.li@duke.edu} [contributor]
+  \item Teng-Fei Yin \email{yintengfei@gmail.com} [contributor]
 }
+
+}
+\keyword{internal}
