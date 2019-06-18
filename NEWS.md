@@ -1,15 +1,21 @@
+# liftr 0.9.1 (2019-06-18)
+
+## Bug Fixes
+
+- Fixed the issue of parsing Bioconductor package names ([#45](https://github.com/nanxstats/liftr/issues/45)) for R >= 3.5 and the introduction of BiocManager. We thank Tiago Lubiana for contributing the patch.
+
 # liftr 0.9 (2018-05-13)
 
 ## Improvements
 
-- Add a new argument `dry_run` in `render_docker()` for debugging: when set to `TRUE`, it will only return the Docker commands and not actually run them.
+- Added a new argument `dry_run` in `render_docker()` for debugging: when set to `TRUE`, it will only return the Docker commands and not actually run them.
 - New URL for the documentation website: https://nanx.me/liftr/.
 
 # liftr 0.8 (2017-12-12)
 
 ## New Features
 
-- Add a new argument `prune` in `render_docker()` to automatically clean up dangling containers and images in case the image build or compilation was not successful ([#27](https://github.com/nanxstats/liftr/issues/27)). We thank Nicolas Roelandt for suggesting this feature ([#25](https://github.com/nanxstats/liftr/issues/25)).
+- Added a new argument `prune` in `render_docker()` to automatically clean up dangling containers and images in case the image build or compilation was not successful ([#27](https://github.com/nanxstats/liftr/issues/27)). We thank Nicolas Roelandt for suggesting this feature ([#25](https://github.com/nanxstats/liftr/issues/25)).
 - Added functions `prune_container_auto()`, `prune_image_auto()`, and `prune_all_auto()` for automatic pruning of dangling containers or images without particular names specified.
 - Added function `install_docker()` for guiding the installation of Docker.
 - Added function `check_docker_install()`for checking if Docker is properly installed and discoverable.
