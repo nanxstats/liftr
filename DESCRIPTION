@@ -1,17 +1,17 @@
 Package: liftr
 Type: Package
 Title: Containerize R Markdown Documents for Continuous Reproducibility
-Version: 0.9
+Version: 0.9.1
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0250-5673")),
     person("Miao-Zhu", "Li", email = "miaozhu.li@duke.edu", role = "ctb"),
-    person("Teng-Fei", "Yin", email = "tengfei.yin@sevenbridges.com", role = "ctb")
+    person("Teng-Fei", "Yin", email = "yintengfei@gmail.com", role = "ctb")
     )
 Maintainer: Nan Xiao <me@nanx.me>
 Description: Persistent reproducible reporting by containerization of R Markdown documents.
 License: GPL-3 | file LICENSE
-SystemRequirements: Docker (see <https://docs.docker.com/engine/installation/>)
+SystemRequirements: Docker (see <https://docs.docker.com/install/>)
 VignetteBuilder: knitr
 URL: https://nanx.me/liftr/, https://github.com/nanxstats/liftr
 BugReports: https://github.com/nanxstats/liftr/issues
