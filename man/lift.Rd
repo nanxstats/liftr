@@ -4,8 +4,12 @@
 \alias{lift}
 \title{Containerize R Markdown Documents}
 \usage{
-lift(input = NULL, use_config = FALSE, config_file = "_liftr.yml",
-  output_dir = NULL)
+lift(
+  input = NULL,
+  use_config = FALSE,
+  config_file = "_liftr.yml",
+  output_dir = NULL
+)
 }
 \arguments{
 \item{input}{Input (R Markdown) file.}

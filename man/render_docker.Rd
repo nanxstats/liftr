@@ -5,9 +5,18 @@
 \alias{drender}
 \title{Render Containerized R Markdown Documents}
 \usage{
-render_docker(input = NULL, tag = NULL, container_name = NULL,
-  cache = TRUE, build_args = NULL, run_args = NULL, prune = TRUE,
-  prune_info = TRUE, dry_run = FALSE, ...)
+render_docker(
+  input = NULL,
+  tag = NULL,
+  container_name = NULL,
+  cache = TRUE,
+  build_args = NULL,
+  run_args = NULL,
+  prune = TRUE,
+  prune_info = TRUE,
+  dry_run = FALSE,
+  ...
+)
 
 drender(...)
 }
