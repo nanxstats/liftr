@@ -13,7 +13,7 @@ metadata format, and uses Docker to containerize and render R Markdown documents
 
 To cite this work and the related software, please use
 
-Nüst D, Eddelbuettel D, Bennett D et al. (2020). The Rockerverse: Packages and Applications for Containerisation with R. _The R Journal_ 12 (1), 437-461.
+Nüst D, Eddelbuettel D, Bennett D et al. (2020). [The Rockerverse: Packages and Applications for Containerisation with R](https://doi.org/10.32614/RJ-2020-007). _The R Journal_ 12 (1), 437-461.
 
 ## Installation
 
