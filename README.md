@@ -9,6 +9,12 @@ liftr aims to solve the problem of _persistent reproducible reporting_.
 To achieve this goal, it extends the [R Markdown](https://rmarkdown.rstudio.com)
 metadata format, and uses Docker to containerize and render R Markdown documents.
 
+## Citation
+
+To cite this work, please use
+
+> Nüst et al. (2020). The Rockerverse: packages and applications for containerisation with R. _The R Journal_ 12 (1), 437-461.
+
 ## Installation
 
 Install liftr from CRAN:
@@ -20,8 +26,7 @@ install.packages("liftr")
 Or try the development version on GitHub:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("nanxstats/liftr")
+remotes::install_github("nanxstats/liftr")
 ```
 
 [Browse the vignettes](https://nanx.me/liftr/articles/) or the [demo video](https://vimeo.com/212815497) for a quick-start.
