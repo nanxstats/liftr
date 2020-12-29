@@ -9,11 +9,11 @@ liftr aims to solve the problem of _persistent reproducible reporting_.
 To achieve this goal, it extends the [R Markdown](https://rmarkdown.rstudio.com)
 metadata format, and uses Docker to containerize and render R Markdown documents.
 
-## Citation
+## Paper
 
-To cite this work, please use
+To cite this work and the related software, please use
 
-> Nüst et al. (2020). The Rockerverse: packages and applications for containerisation with R. _The R Journal_ 12 (1), 437-461.
+Nüst D, Eddelbuettel D, Bennett D et al. (2020). The Rockerverse: Packages and Applications for Containerisation with R. _The R Journal_ 12 (1), 437-461.
 
 ## Installation
 
