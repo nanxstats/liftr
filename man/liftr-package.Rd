@@ -6,6 +6,8 @@
 \alias{liftr-package}
 \title{liftr: Containerize R Markdown Documents for Continuous Reproducibility}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 Persistent reproducible reporting by containerization of R Markdown documents.
 }
 \seealso{
