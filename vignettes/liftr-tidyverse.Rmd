@@ -1,7 +1,6 @@
 ---
 title: "Explore tidyverse with liftr"
 author: "Nan Xiao <<https://nanx.me>>"
-date: "`r Sys.Date()`"
 bibliography: liftr-tidyverse.bib
 output:
   rmarkdown::html_document:

@@ -93,13 +93,12 @@
 
       
 
-      </header><script src="liftr-intro_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="liftr-intro_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Quick Introduction to liftr</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2021-02-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nanxstats/liftr/blob/master/vignettes/liftr-intro.Rmd"><code>vignettes/liftr-intro.Rmd</code></a></small>
       <div class="hidden name"><code>liftr-intro.Rmd</code></div>
@@ -120,7 +119,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"The Missing Example of liftr"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Author Name"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2021-02-07"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2021-03-03"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rmarkdown::html_document</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">liftr</span><span class="kw">:</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">maintainer</span><span class="kw">:</span><span class="at"> </span><span class="st">"Maintainer Name"</span></span>
@@ -220,7 +219,7 @@
 <p>Now we can use <code><a href="../reference/render_docker.html">render_docker()</a></code> to render the document into an HTML file, under a Docker container:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/render_docker.html">render_docker</a></span><span class="op">(</span><span class="va">input</span><span class="op">)</span></code></pre></div>
-<p>The function <code><a href="../reference/render_docker.html">render_docker()</a></code> will parse the Dockerfile, build a new Docker image, and run a Docker container to render the input document. If successfully rendered, the output <code>liftr-minimal.html</code> will be in the <code>~/liftr-minimal/</code> directory. You can also pass additional arguments in <code><a href="https://rdrr.io/pkg/rmarkdown/man/render.html">rmarkdown::render</a></code> to this function.</p>
+<p>The function <code><a href="../reference/render_docker.html">render_docker()</a></code> will parse the Dockerfile, build a new Docker image, and run a Docker container to render the input document. If successfully rendered, the output <code>liftr-minimal.html</code> will be in the <code>~/liftr-minimal/</code> directory. You can also pass additional arguments in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">rmarkdown::render</a></code> to this function.</p>
 <p>In order to share the dockerized R Markdown document, simply share the <code>.Rmd</code> file. Other users can use the <code><a href="../reference/lift.html">lift()</a></code> and <code><a href="../reference/render_docker.html">render_docker()</a></code> functions to render the document as above.</p>
 </div>
 <div id="housekeeping" class="section level1">

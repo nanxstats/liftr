@@ -1,7 +1,6 @@
 ---
 title: "RStudio Addins for liftr"
 author: "Nan Xiao <<https://nanx.me>>"
-date: "`r Sys.Date()`"
 output:
   rmarkdown::html_document:
     toc: true
