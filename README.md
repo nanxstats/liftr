@@ -1,7 +1,10 @@
 # liftr  <a href="https://nanx.me/liftr/"><img src="man/figures/logo.png" align="right" height="180" /></a>
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/nanxstats/liftr/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/liftr/actions)
 [![CRAN Version](https://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/liftr)](https://cran.r-project.org/package=liftr)
+<!-- badges: end -->
 
 liftr aims to solve the problem of _persistent reproducible reporting_.
 To achieve this goal, it extends the [R Markdown](https://rmarkdown.rstudio.com)
