@@ -34,7 +34,7 @@ remotes::install_github("nanxstats/liftr")
 
 ## Workflow
 
-<img src="https://i.imgur.com/AKveypK.png" width="100%" alt="Containerize R Markdown Documents with liftr">
+<img src="man/figures/liftr-workflow.png" width="100%" alt="Containerize R Markdown Documents with liftr">
 
 ## Events
 
