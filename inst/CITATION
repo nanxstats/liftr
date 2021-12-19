@@ -1,0 +1,14 @@
+citHeader("To cite the liftr package in your publication:")
+
+citEntry(
+entry="Article",
+title = "The {Rockerverse}: Packages and Applications for Containerisation with {R}",
+journal= "{The R Journal}",
+year = "2020",
+author = "Daniel N{\\\"u}st and Dirk Eddelbuettel and Dom Bennett and Robrecht Cannoodt and Dav Clark and Gergely Dar{\\\'o}czi and Mark Edmondson and Colin Fay and Ellis Hughes and Lars Kjeldgaard and Sean Lopp and Ben Marwick and Heather Nolis and Jacqueline Nolis and Hong Ooi and Karthik Ram and Noam Ross and Lori Shepherd and P{\\\'e}ter S{\\\'o}lymos and Tyson Lee Swetnam and Nitesh Turaga and Charlotte Van Petegem and Jason Williams and Craig Willis and Nan Xiao",
+volume = "12",
+number = "1",
+pages = "437--461",
+doi = "10.32614/RJ-2020-007",
+textVersion = "Nüst D, Eddelbuettel D, Bennett D et al. (2020). The Rockerverse: Packages and Applications for Containerisation with R. The R Journal 12 (1), 437-461."
+)
