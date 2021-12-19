@@ -1,3 +1,8 @@
+url: https://liftr.me/
+
+template:
+  bootstrap: 5
+
 reference:
   - title: "Docker Installation"
     desc: >

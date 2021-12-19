@@ -7,7 +7,7 @@ output:
     toc: true
     toc_float: false
     toc_depth: 4
-    number_sections: true
+    number_sections: false
     highlight: "textmate"
     css: "custom.css"
 vignette: >
@@ -15,7 +15,14 @@ vignette: >
   %\VignetteIndexEntry{Explore tidyverse with liftr}
 ---
 
-# Introduction
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE
+)
+```
+
+## Introduction
 
 Creating Docker images from scratch can be time and labor consuming.
 Fortunately, many pre-built and regularly updated Docker images
@@ -31,14 +38,14 @@ and devtools environment loved by many data scientists [@wickham2014tidy].
 We will demonstrate how to containerize and render your tidyverse-heavy
 R Markdown document using Docker in only a few minutes.
 
-# Install Docker
+## Install Docker
 
 If Docker has not been installed on your system, please use `install_docker()`
 and follow the guidelines to install it. After that, `check_docker_install()`
 and `check_docker_running()` would help you make sure that Docker has been
 installed and running properly.
 
-# Example document
+## Example document
 
 Let's create a new folder first and copy the example R Markdown document
 to this folder:
@@ -87,7 +94,7 @@ tidyverse image already includes `pandoc`.
 - We included TeXLive here since we intend to render a PDF file in the end.
 - The CRAN data package `nycflights13` will be installed.
 
-# Containerize the document
+## Containerize the document
 
 Let's containerize this document by generating a `Dockerfile` for it,
 using `liftr::lift`:
@@ -100,7 +107,7 @@ A file named `Dockerfile` will be generated under the same directory
 of the input RMD file. It contains the necessary commands for building
 the Docker container for rendering the document.
 
-# Render the document
+## Render the document
 
 We can use `render_docker()` to start the Docker container,
 and render the document inside it:
@@ -127,7 +134,7 @@ This is a good thing for team collaboration and large-scale document
 orchestration. The best part is, all you need to share is still the
 document itself, only with a few extra metadata fields.
 
-# Housekeeping
+## Housekeeping
 
 The Docker images stored in your system could take a few gigabytes
 and get larger gradually as you build more images. Let's remove
@@ -142,4 +149,4 @@ when you use `render_docker()`. If not, the image will be cached
 in the system and reused when compiling the document later
 and save some time for you.
 
-# References
+## References
