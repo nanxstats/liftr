@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Persistent reproducible reporting by containerization of R Markdown documents.">
 <title>Containerize R Markdown Documents for Continuous Reproducibility • liftr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -12,121 +13,101 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="Containerize R Markdown Documents for Continuous Reproducibility">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Containerize R Markdown Documents for Continuous Reproducibility">
 <meta property="og:description" content="Persistent reproducible reporting by containerization of R Markdown documents.">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="https://liftr.me/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">liftr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.2</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">liftr</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.2</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/liftr-addins.html">RStudio Addins for liftr</a>
-    </li>
-    <li>
-      <a href="articles/liftr-intro.html">A Quick Introduction to liftr</a>
-    </li>
-    <li>
-      <a href="articles/liftr-tidyverse.html">Explore tidyverse with liftr</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/nanxstats/liftr/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/liftr-addins.html">RStudio Addins for liftr</a>
+    <a class="dropdown-item" href="articles/liftr-intro.html">A Quick Introduction to liftr</a>
+    <a class="dropdown-item" href="articles/liftr-tidyverse.html">Explore tidyverse with liftr</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/nanxstats/liftr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="liftr-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#liftr-" class="anchor"></a>liftr <a href="https://nanx.me/liftr/"><img src="reference/figures/logo.png" align="right" height="180"></a>
-</h1></div>
+    
+  </div>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="liftr-">liftr <a class="anchor" aria-label="anchor" href="#liftr-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
-<p>liftr aims to solve the problem of <em>persistent reproducible reporting</em>. To achieve this goal, it extends the <a href="https://rmarkdown.rstudio.com">R Markdown</a> metadata format, and uses Docker to containerize and render R Markdown documents.</p>
-<div id="paper" class="section level2">
-<h2 class="hasAnchor">
-<a href="#paper" class="anchor"></a>Paper</h2>
+<p>liftr aims to solve the problem of <em>persistent reproducible reporting</em>. To achieve this goal, it extends the <a href="https://rmarkdown.rstudio.com" class="external-link">R Markdown</a> metadata format, and uses Docker to containerize and render R Markdown documents.</p>
+<div class="section level2">
+<h2 id="paper">Paper<a class="anchor" aria-label="anchor" href="#paper"></a>
+</h2>
 <p>To cite this work and the related software, please use</p>
-<p>Nüst D, Eddelbuettel D, Bennett D et al. (2020). <a href="https://doi.org/10.32614/RJ-2020-007">The Rockerverse: Packages and Applications for Containerisation with R</a>. <em>The R Journal</em> 12 (1), 437-461.</p>
+<p>Nüst D, Eddelbuettel D, Bennett D et al. (2020). <a href="https://doi.org/10.32614/RJ-2020-007" class="external-link">The Rockerverse: Packages and Applications for Containerisation with R</a>. <em>The R Journal</em> 12 (1), 437-461.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Install liftr from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"liftr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"liftr"</span><span class="op">)</span></code></pre></div>
 <p>Or try the development version on GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"nanxstats/liftr"</span><span class="op">)</span></code></pre></div>
-<p><a href="https://nanx.me/liftr/articles/">Browse the vignettes</a> or the <a href="https://vimeo.com/212815497">demo video</a> for a quick-start.</p>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"nanxstats/liftr"</span><span class="op">)</span></code></pre></div>
+<p><a href="https://nanx.me/liftr/articles/" class="external-link">Browse the vignettes</a> or the <a href="https://vimeo.com/212815497" class="external-link">demo video</a> for a quick-start.</p>
 </div>
-<div id="workflow" class="section level2">
-<h2 class="hasAnchor">
-<a href="#workflow" class="anchor"></a>Workflow</h2>
+<div class="section level2">
+<h2 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
+</h2>
 <p><img src="reference/figures/liftr-workflow.png" width="100%" alt="Containerize R Markdown Documents with liftr"></p>
 </div>
-<div id="events" class="section level2">
-<h2 class="hasAnchor">
-<a href="#events" class="anchor"></a>Events</h2>
+<div class="section level2">
+<h2 id="events">Events<a class="anchor" aria-label="anchor" href="#events"></a>
+</h2>
 <table class="table">
 <colgroup>
 <col width="22%">
@@ -142,113 +123,121 @@
 <tr class="odd">
 <td align="left">July 30, 2018</td>
 <td align="left">
-<a href="https://ww2.amstat.org/meetings/JSM/2018/onlineprogram/AbstractDetails.cfm?abstractid=329348">JSM 2018</a> (<a href="https://nanx.me/talks/jsm2018-liftr-nanxiao.pdf">talk</a>)</td>
+<a href="https://ww2.amstat.org/meetings/JSM/2018/onlineprogram/AbstractDetails.cfm?abstractid=329348" class="external-link">JSM 2018</a> (<a href="https://nanx.me/talks/jsm2018-liftr-nanxiao.pdf" class="external-link">talk</a>)</td>
 <td align="left">Vancouver, Canada</td>
 </tr>
 <tr class="even">
 <td align="left">July 27, 2017</td>
 <td align="left">
-<a href="https://bioconductor.org/help/course-materials/2017/BioC2017/">BioC 2017</a> (<a href="https://nanx.me/posters/dockflow-poster-bioc2017.pdf">poster</a> for <a href="https://dockflow.org/">dockflow.org</a>)</td>
+<a href="https://bioconductor.org/help/course-materials/2017/BioC2017/" class="external-link">BioC 2017</a> (<a href="https://nanx.me/posters/dockflow-poster-bioc2017.pdf" class="external-link">poster</a> for <a href="https://dockflow.org/" class="external-link">dockflow.org</a>)</td>
 <td align="left">Dana-Farber Cancer Institute, Boston, MA</td>
 </tr>
 <tr class="odd">
 <td align="left">May 20, 2017</td>
 <td align="left">
-<a href="https://china-r.org">The 10th China-R Conference</a> (<a href="https://nanx.me/talks/chinar2017-liftr-nanxiao.pdf">talk</a>)</td>
+<a href="https://china-r.org" class="external-link">The 10th China-R Conference</a> (<a href="https://nanx.me/talks/chinar2017-liftr-nanxiao.pdf" class="external-link">talk</a>)</td>
 <td align="left">Tsinghua University, Beijng, China</td>
 </tr>
 <tr class="even">
 <td align="left">April 18, 2017</td>
-<td align="left">DockerCon 2017 (<a href="https://nanx.me/talks/dockercon2017-liftr-nanxiao.pdf">talk</a>)</td>
+<td align="left">DockerCon 2017 (<a href="https://nanx.me/talks/dockercon2017-liftr-nanxiao.pdf" class="external-link">talk</a>)</td>
 <td align="left">Austin Convention Center, Austin, TX</td>
 </tr>
 <tr class="odd">
 <td align="left">December 3, 2015</td>
 <td align="left">
-<a href="https://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/">CRI Bioinformatics Workshop</a> (<a href="https://nanx.me/talks/cri2015-reproducible-research-nanxiao.pdf">talk</a>)</td>
+<a href="https://learn.cri.uchicago.edu/2015-cri-bioinformatics-workshop/" class="external-link">CRI Bioinformatics Workshop</a> (<a href="https://nanx.me/talks/cri2015-reproducible-research-nanxiao.pdf" class="external-link">talk</a>)</td>
 <td align="left">The University of Chicago, Chicago, IL</td>
 </tr>
 <tr class="even">
 <td align="left">July 21, 2015</td>
 <td align="left">
-<a href="https://bioconductor.org/help/course-materials/2015/BioC2015/">BioC 2015</a> (<a href="https://www.bioconductor.org/help/course-materials/2015/BioC2015/bioc2015-workshop-nanxiao.pdf">workshop</a>)</td>
+<a href="https://bioconductor.org/help/course-materials/2015/BioC2015/" class="external-link">BioC 2015</a> (<a href="https://www.bioconductor.org/help/course-materials/2015/BioC2015/bioc2015-workshop-nanxiao.pdf" class="external-link">workshop</a>)</td>
 <td align="left">Fred Hutchinson Cancer Research Center, Seattle, WA</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="contribute" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contribute" class="anchor"></a>Contribute</h2>
-<p>To contribute to this project, please take a look at the <a href="https://github.com/nanxstats/liftr/blob/master/CONTRIBUTING.md">Contributing Guidelines</a> first. Please note that this project is released with a <a href="https://github.com/nanxstats/liftr/blob/master/CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
+</h2>
+<p>To contribute to this project, please take a look at the <a href="https://github.com/nanxstats/liftr/blob/master/CONTRIBUTING.md" class="external-link">Contributing Guidelines</a> first. Please note that this project is released with a <a href="https://github.com/nanxstats/liftr/blob/master/CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
-<div id="license" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h2>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
 <p>liftr is free and open source software, licensed under GPL-3.</p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=liftr">https://​cloud.r-project.org/​package=liftr</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/nanxstats/liftr/">https://​github.com/​nanxstats/​liftr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/nanxstats/liftr/issues">https://​github.com/​nanxstats/​liftr/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=liftr" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/nanxstats/liftr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/nanxstats/liftr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing liftr</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Nan Xiao <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0250-5673" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li>Nan Xiao <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0250-5673" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/nanxstats/liftr/actions"><img src="https://github.com/nanxstats/liftr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://cran.r-project.org/package=liftr"><img src="https://www.r-pkg.org/badges/version/liftr" alt="CRAN Version"></a></li>
-<li><a href="https://cran.r-project.org/package=liftr"><img src="https://cranlogs.r-pkg.org/badges/liftr" alt="Downloads from the RStudio CRAN mirror"></a></li>
+<li><a href="https://github.com/nanxstats/liftr/actions" class="external-link"><img src="https://github.com/nanxstats/liftr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=liftr" class="external-link"><img src="https://www.r-pkg.org/badges/version/liftr" alt="CRAN Version"></a></li>
+<li><a href="https://cran.r-project.org/package=liftr" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/liftr" alt="Downloads from the RStudio CRAN mirror"></a></li>
 </ul>
 </div>
-</div>
-</div>
 
-
-      <footer><div class="copyright">
-  <p>Developed by Nan Xiao.</p>
+  </aside>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Nan Xiao.</p>
 </div>
 
-      </footer>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+</div>
+
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
