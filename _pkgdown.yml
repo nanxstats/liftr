@@ -6,7 +6,7 @@ template:
     preset: "bootstrap"
 
 reference:
-  - title: "Docker Installation"
+  - title: "Docker installation"
     desc: >
       Functions for guiding Docker installation and checking Docker status.
     contents:
@@ -20,7 +20,7 @@ reference:
       - lift
       - render_docker
       - liftr-package
-  - title: "Docker Housekeeping"
+  - title: "Docker housekeeping"
     desc: >
       Functions for cleaning up dangling or existing containers and images.
     contents:
