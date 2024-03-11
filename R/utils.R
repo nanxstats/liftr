@@ -32,17 +32,15 @@ uuid = function() {
 }
 
 #' check if from Bioconductor base images
-#' @importFrom stringr str_trim
 #' @noRd
 is_from_bioc = function(x) {
-  substr(str_trim(x), 1L, 13L) == 'bioconductor/'
+  substr(trimws(x), 1L, 13L) == 'bioconductor/'
 }
 
 #' check if from the rocker/rstudio base image
-#' @importFrom stringr str_trim
 #' @noRd
 is_from_rstudio = function(x) {
-  substr(str_trim(x), 1L, 14L) == 'rocker/rstudio'
+  substr(trimws(x), 1L, 14L) == 'rocker/rstudio'
 }
 
 # remove consecutive blank lines and only keep one

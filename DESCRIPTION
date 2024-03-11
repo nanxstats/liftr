@@ -18,10 +18,9 @@ BugReports: https://github.com/nanxstats/liftr/issues
 Depends:
     R (>= 3.0.2)
 Imports:
-    yaml,
     knitr,
     rmarkdown,
-    stringr,
-    rstudioapi
+    rstudioapi,
+    yaml
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
