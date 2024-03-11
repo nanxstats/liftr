@@ -49,7 +49,11 @@ remotes::install_github("nanxstats/liftr")
 
 ## Contribute
 
-To contribute to this project, please take a look at the [Contributing Guidelines](https://github.com/nanxstats/liftr/blob/master/CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](https://github.com/nanxstats/liftr/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
+To contribute to this project, please take a look at the
+[Contributing Guidelines](https://liftr.me/CONTRIBUTING.html) first.
+Please note that the liftr project is released with a
+[Contributor Code of Conduct](https://liftr.me/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 
