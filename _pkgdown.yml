@@ -2,6 +2,8 @@ url: https://liftr.me/
 
 template:
   bootstrap: 5
+  bslib:
+    preset: "bootstrap"
 
 reference:
   - title: "Docker Installation"
