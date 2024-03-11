@@ -1,7 +1,7 @@
 # liftr <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/nanxstats/liftr/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/liftr/actions)
+[![R-CMD-check](https://github.com/nanxstats/liftr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nanxstats/liftr/actions/workflows/R-CMD-check.yaml)
 [![CRAN Version](https://www.r-pkg.org/badges/version/liftr)](https://cran.r-project.org/package=liftr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/liftr)](https://cran.r-project.org/package=liftr)
 <!-- badges: end -->
