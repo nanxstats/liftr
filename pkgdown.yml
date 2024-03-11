@@ -1,0 +1,12 @@
+pandoc: 3.1.11
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  liftr-addins: liftr-addins.html
+  liftr-intro: liftr-intro.html
+  liftr-tidyverse: liftr-tidyverse.html
+last_built: 2024-03-11T21:59Z
+urls:
+  reference: https://liftr.me/reference
+  article: https://liftr.me/articles
+
